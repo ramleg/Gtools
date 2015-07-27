@@ -1,0 +1,542 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Proy-NewHires</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../Scripts/bootstrap-3.3.5/css/bootstrap.min.css">
+  <script src="../Scripts/JQuery/jquery-2.1.4.min.js"></script>
+  <script src="../Scripts/JQuery/jquery.table2excel.js"></script>
+  <script src="../Scripts/bootstrap-3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" style="background-color:#C1D736">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                
+      </button>
+      <img src="../Imagens/Logo.JPG" alt="GlOBANT">
+      <!--<a class="navbar-brand">GLOBANT - Newhires</a>-->
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="dropdown"><a href="Index.html" style="color:black">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Users<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="background-color:#C1D736">
+            <li><a href="ABM_Users.html">Alta Usuarios</a></li>
+            <li><a href="Importar_NH.html">Import Users</a></li>
+            <li><a href="">Search users</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Positions<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="background-color:#C1D736">
+            <li><a href="Posisiones.html">Alta Positions</a></li>
+            <li><a href="#">Search Positions</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Sites<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="background-color:#C1D736">
+          <li><a href="ABM_Sites.html">Alta Sites</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Internos<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="background-color:#C1D736">
+          <li><a href="Internos.html">Import Internos</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a style="color:black"><span class="glyphicon glyphicon-user" style="color:black"></span>  Nombre del usuario </a></li>
+        <li><a href="#" data-toggle="modal" data-target="#myModal" style="color:black"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div> 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <!-- Modal content-->
+      <div class="modal-content" style="background-color:#C1D736">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
+        </div>
+        <div class="modal-body"> 
+          <form role="form" action="login" id="frm-modal">
+           <div class="form-group">
+            <label for="email">User:</label>
+            <input type="text" class="form-control" id="txt-usr" placeholder="Username" data-bvStrict="notEmpty">
+            <div class="help-block error-message">Required field</div>
+           </div>
+           <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="txt-pwd" placeholder="Password" data-bvStrict="notEmpty">
+            <div class="help-block error-message"></div>
+           </div>
+           <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+          </form>     
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+</nav>
+
+  
+<div id="div-grilla"class="container-fluid table-responsive" style="width:95%">
+  <table id="grid-user" class="js-dynamitable table table-bordered table-hover">
+    <thead>
+      <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->
+        <th id="txt-nombre" style="text-align:center">First name<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+        <th id="txt-apellido" style="text-align:center">Last name<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+        <th id="txt-dni" style="text-align:center">DNI<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+        <th id="txt-user" style="text-align:center">user name<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+        <th id="txt-UO" style="text-align:center">OU Org<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+        <th id="txt-position" style="text-align:center">Position <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+        <th id="txt-site" style="text-align:center">Site<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+        <th id="txt-mailgroup" style="text-align:center">Mail group<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>      
+        <th id="txt-interno" style="text-align:center;width:auto">Interno<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+        <th id="txt-pais" style="text-align:center">Pais<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>      
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Lorena</td>
+        <td>Rodriguez</td>
+        <td style="text-align:center">56320445</td>
+        <td>lorena.rodriguez</td>
+        <td>Developer</td>
+        <td>Web UI Developer</td>
+        <td>Laminar</td>
+        <td>laminar-mailgroup</td>
+        <td style="text-align:center">12563</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Pedro</td>
+        <td>Garcia</td>
+        <td style="text-align:center">30652985</td>
+        <td>pedro.garcia</td>
+        <td>QC</td>
+        <td>Test Automation</td>
+        <td>Cordoba Capitalinas</td>
+        <td>cordoba-mailgroup</td>
+        <td style="text-align:center">19856</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>Perez</td>
+        <td style="text-align:center">123456789</td>
+        <td>juan.perez</td>
+        <td>Developer</td>
+        <td>Java Developer</td>
+        <td>Rosario Nordlink</td>
+        <td>rosario-mailgroup</td>
+        <td style="text-align:center">15265</td>
+        <td>Argentina</td>
+      </tr>
+
+    </tbody>
+   </table> 
+</div> 
+
+<!--<div class="container-fluid" style="width:95%">
+ <button id="btn-export" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-export"></span> Export file .XLS</button>
+ <script>
+  $("#btn-export").click(function(){
+   $("#grid-user").table2excel({ filename: "Export NewHires"});
+  });
+ </script>
+</div>-->
+
+
+<script src="../Scripts/JQuery/dynamitable.jquery.min.js"></script>
+<script src="../Scripts/JQuery/jquery.bdt.js"></script>
+
+<script>
+  $(document).ready( function () {
+    $('#grid-user').bdt();
+  });
+</script>
+
+</body>
+</html>
