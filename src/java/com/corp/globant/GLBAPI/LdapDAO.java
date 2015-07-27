@@ -42,7 +42,7 @@ public class LdapDAO {
         ctls.setSearchScope(SearchControls.SUBTREE_SCOPE);
         
         DirContext ctx = LdapDAO.getContext();
-        
+        //Realiza la consulta, aplicando el filtro y trayendo los atributos especificados
         NamingEnumeration resultSet = ctx.search(cn,filter, ctls);
         while(resultSet.hasMore()){
             SearchResult result = (SearchResult) resultSet.next();
