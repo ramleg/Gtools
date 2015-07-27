@@ -12,15 +12,13 @@ import javax.naming.directory.SearchResult;
  * @author ramiro.acoglanis
  */
 public class LdapDAO {
-        
-    
-    public static DirContext connectToLDAP(String url, String user, String password) throws NamingException{
-        Hashtable<String, String> env = new Hashtable<String, String>();
+    public static DirContext getContext() throws NamingException{
+        Hashtable<String, String> env = new Hashtable<>();
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-        env.put(Context.PROVIDER_URL, url);
+        env.put(Context.PROVIDER_URL, "ldap://susexx.globant.com:389");
         env.put(Context.SECURITY_AUTHENTICATION,"simple");
-        env.put(Context.SECURITY_PRINCIPAL, user);
-        env.put(Context.SECURITY_CREDENTIALS,password);
+        env.put(Context.SECURITY_PRINCIPAL, "ramiro.acoglanis");
+        env.put(Context.SECURITY_CREDENTIALS,"Batamanta6");
         //Conseguimos contexto de conexion
         DirContext ctx = new InitialDirContext(env);
         return ctx;
@@ -34,29 +32,24 @@ public class LdapDAO {
         }
     }
 
-    public static void buscar (String user, DirContext ctx) throws NamingException{ 
-        //Recordar que el username tiene que tener toda la ruta de OUs/DCs/CNs
+    public static void search (String cn, String filter, String[] atr) throws NamingException{ 
         
         SearchControls ctls = new SearchControls();
-        ctls. setReturningObjFlag (true); // Para que devuelva los elementos que buscamos
-
-        String returning[] = new String[2];
-        returning[0] = "mail";
-        returning[1] = "cn";
+        // Para que devuelva los elementos que buscamos
+        ctls.setReturningObjFlag (true);
         //Asignamos los atributos a devolver
-        ctls.setReturningAttributes(returning);
+        ctls.setReturningAttributes(atr);
         ctls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-
-//        String search = user; // Search es "en donde buscar" de los directorios del servidor
-//        String filter = "name=" + user; // filtro trivial
-        String search = "DC=globant,DC=com"; // Search es "en donde buscar" de los directorios del servidor
-        String filter = "(userPrincipalName=ramiro.acoglanis@globant.com)";// filtro trivial
         
-        NamingEnumeration answer = ctx.search(search,filter, ctls);       	
-        SearchResult result = (SearchResult) answer.next(); // Sabemos que habra un solo resultado
-        String field1 = result.getAttributes().get("mail").get().toString();
-        String field2 = result.getAttributes().get("cn").get().toString();
-        System.out.println(user + ": " + field1 + ", " + field2);
- }
-
+        DirContext ctx = LdapDAO.getContext();
+        
+        NamingEnumeration resultSet = ctx.search(cn,filter, ctls);
+        while(resultSet.hasMore()){
+            SearchResult result = (SearchResult) resultSet.next();
+            for(String atributo : atr){
+                System.out.println(result.getAttributes().get(atributo).get().toString());
+            }
+        }
+        ctx.close();
+    }
 }
