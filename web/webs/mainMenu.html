@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="background-color:#C1D736">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -6,63 +6,78 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                
       </button>
-      <a class="navbar-brand">GLOBANT - Newhires</a>
+        <img src="resources/img/Logo.JPG" alt="GlOBANT">
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="dropdown"><a href="Index.html">Home</a></li>
+          <li class="dropdown"><a href="index.jsp" style="color:black">Home</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Altas <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="ABM_Users.html">Usuarios</a></li>
-            <li><a href="Posisiones.html">Posisiones</a></li>
-            <li><a href="Internos.html">Internos</a></li>
-            <li><a href="ABM_Sites.html">Sites</a></li>
-            <li class="divider"></li>
-            <li><a href="Importar_NH.html">Import Users</a></li>
-
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Users<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="background-color:#C1D736">
+            <li><a href="abm-users.jsp">Alta Usuarios</a></li>
+            <li><a href="import-nh.jsp">Import Users</a></li>
+            <li><a href="search-users.jsp">Search users</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Busquedas <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Usuarios</a></li>
-            <li><a href="#">Internos Libres</a></li>
-            <li><a href="#">Sites</a></li>
-            <li><a href="#">Posisiones y UO Org</a></li>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Positions<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="background-color:#C1D736">
+              <li><a href="positions.jsp">Alta Positions</a></li>
+            <li><a href="#">Search Positions</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Sites<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="background-color:#C1D736">
+              <li><a href="abm-sites.jsp">Alta Sites</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Internos<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="background-color:#C1D736">
+              <li><a href="internos.jsp">Import Internos</a></li>
           </ul>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a><span class="glyphicon glyphicon-user"></span>  Nombre del usuario </a></li>
-        <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a style="color:black"><span class="glyphicon glyphicon-user" style="color:black"></span>  Nombre del usuario </a></li>
+        <li><a href="#" data-toggle="modal" data-target="#myModal" style="color:black"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
-    </div>
+    </div> 
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog modal-sm">
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content" style="background-color:#C1D736">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
         </div>
         <div class="modal-body"> 
-          <form role="form" action="login">
+          <form role="form" action="login" id="frm-modal">
            <div class="form-group">
             <label for="email">User:</label>
-            <input type="text" class="form-control" id="txt-usr">
+            <input type="text" class="form-control" id="txt-usr" placeholder="Username" data-bvStrict="notEmpty">
+            <div class="help-block error-message">Required field</div>
            </div>
            <div class="form-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="txt-pwd">
+            <input type="password" class="form-control" id="txt-pwd" placeholder="Password" data-bvStrict="notEmpty">
+            <div class="help-block error-message"></div>
            </div>
-           <button type="submit" class="btn btn-success btn-block"  ><span class="glyphicon glyphicon-off"></span> Login</button>
+           <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
           </form>     
         </div>
       </div>
     </div>
-  </div>
-  
+   </div>
+   
+ <!--  <script src="../Scripts/JQuery/bvalidator.jquery.js"></script>
+   <script>
+    $(function(){
+     $('#frm-modal').bValidator();
+    });
+   </script>-->
+
   </div>
 </nav>
