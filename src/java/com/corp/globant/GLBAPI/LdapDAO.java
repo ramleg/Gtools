@@ -1,4 +1,5 @@
 package com.corp.globant.GLBAPI;
+import java.util.HashMap;
 import java.util.Hashtable;
 import javax.naming.Context;
 import javax.naming.NamingEnumeration;
@@ -23,7 +24,7 @@ public class LdapDAO {
         DirContext ctx = new InitialDirContext(env);
         return ctx;
     }
-    public static void closeConnectionToLDAP(DirContext ctx) {
+    public static void close(DirContext ctx) {
         try {
             ctx.close();
         } catch (NamingException e) {
@@ -50,6 +51,6 @@ public class LdapDAO {
                 System.out.println(result.getAttributes().get(atributo).get().toString());
             }
         }
-        ctx.close();
+        LdapDAO.close(ctx);
     }
 }
