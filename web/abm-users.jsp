@@ -22,43 +22,6 @@
     });
   });
 </script>
-<script> //CAMPOS OBLIGATORIOS
-  $(document).ready(function(){  
-
-    //$("#txt-firstname").blur(function(){
-    // if ($("#txt-firstname").val() == "" || $("#txt-firstname").val() == null) {   
-    //     $("#modal-alert").modal();
-    // };
-    //});
-    $("#txt-lastname").blur(function(){
-     if ($("#txt-lastname").val() == "" || $("#txt-lastname").val() == null) {   
-         $("#modal-alert").modal();
-     };
-    });
-    $("#txt-dni").blur(function(){
-     if ($("#txt-dni").val() == "" || $("#txt-dni").val() == null) {   
-         $("#modal-alert").modal();
-     };
-    });
-    $("#txt-username").blur(function(){
-     if ($("#txt-username").val() == "" || $("#txt-username").val() == null) {   
-         $("#modal-alert").modal();
-     };
-     $("#txt-mail").val($("#txt-username").val() + "@globant.com") ; 
-    });
-    $("#txt-position").blur(function(){
-     if ($("#txt-position").val() == "" || $("#txt-position").val() == null) {   
-         $("#modal-alert").modal();
-     };
-    });
-    $("#txt-interno").blur(function(){
-     if ($("#txt-interno").val() == "" || $("#txt-interno").val() == null) {   
-         $("#modal-alert").modal();
-     };
-    });
- 
-  });
-</script>
 
 </head>
 
@@ -83,40 +46,42 @@
       </div>
      </div>  
      
-     <div class="form-group">
+     <div class="row form-group">
       <label class="control-label col-sm-2" for="txt-firstname" style="width:200px">First Name: </label>
       <div class="col-sm-10" style="width:400px"> 
        <input type="text" class="form-control" id="txt-firstname" data-bvStrict="notEmpty" placeholder="First Name" style="width: 100%">
-       <div class="help-block error-message">Fill your name</div>
+       <div class="help-block error-message">Required Field</div>
       </div>
      </div>
      
-     <div class="form-group">
+     <div class="row form-group">
       <label class="control-label col-sm-2" for="txt-lastname" style="width:200px">Last Name: </label>
       <div class="col-sm-10" style="width:400px"> 
-       <input type="text" class="form-control" id="txt-lastname" placeholder="Last Name" style="width: 100%">
-       <div class="help-block error-message">Fill your name</div>
+       <input type="text" class="form-control" id="txt-lastname" placeholder="Last Name" data-bvStrict="notEmpty" style="width: 100%">
+       <div class="help-block error-message">Required Field</div>
       </div>
      </div>
      
-     <div class="form-group">
+     <div class="row form-group">
       <label class="control-label col-sm-2" for="txt-dni" style="width:200px">DNI/Passport/etc: </label>
       <div class="col-sm-10" style="width:400px"> 
-       <input type="text" class="form-control" id="txt-dni" placeholder="DNI/Passport/etc.." style="width: 100%">
+       <input type="text" class="form-control" id="txt-dni" data-bvStrict="notEmpty" placeholder="DNI/Passport/etc.." style="width: 100%">
+       <div class="help-block error-message">Required Field</div>
       </div>
      </div>
      
-     <div class="form-group">
+     <div class="row form-group">
       <label class="control-label col-sm-2" for="txt-username" style="width:200px">Domain Name: </label>
       <div class="col-sm-10" style="width:400px"> 
-       <input type="text" class="form-control" id="txt-username" placeholder="User Name" style="width: 100%; background-color:aqua" maxlength="17">
+       <input type="text" class="form-control" id="txt-username" data-bvStrict="notEmpty" placeholder="User Name" style="width: 100%; background-color:aqua" maxlength="17">
+       <div class="help-block error-message">Required Field</div>      
       </div>
       <div>
        <button id="btn_check" type="button" class="btn btn-success" data-complete-text="User OK">CheckUser</button>
       </div>
      </div>
      
-     <div class="form-group"> 
+     <div class="row form-group"> 
       <label class="control-label col-sm-2" for="id-uoorg" style="width:200px">UO Organization: </label> 
       <div class="col-sm-10" style="width:400px">
        <select class="form-control" id="id-uoorg">
@@ -130,7 +95,7 @@
       </div>
      </div>
 
-     <div class="form-group"> 
+     <div class="row form-group"> 
       <label class="control-label col-sm-2" for="id-site" style="width:200px">Site: </label> 
       <div class="col-sm-10" style="width:400px">
        <select class="form-control" id="id-site">
@@ -144,7 +109,7 @@
       </div>
      </div>
 
-     <div class="form-group"> 
+     <div class="row form-group"> 
       <label class="control-label col-sm-2" for="id-sitemail" style="width:200px">site Mail: </label> 
       <div class="col-sm-10" style="width:400px">
        <select class="form-control" id="id-mail">
@@ -158,28 +123,31 @@
       </div>
      </div>
      
-     <div class="form-group">
+     <div class="row form-group">
       <label class="control-label col-sm-2" for="txt-mail" style="width:200px">Email: </label>
       <div class="col-sm-10" style="width:400px"> 
-       <input type="text" class="form-control" id="txt-mail" placeholder="mail" style="width: 100%">
+       <input type="text" class="form-control" id="txt-mail" data-bvStrict="notEmpty" placeholder="mail" style="width: 100%">
+       <div class="help-block error-message">Required Field</div>
       </div>
      </div>
 
-     <div class="form-group">
+     <div class="row form-group">
       <label class="control-label col-sm-2" for="txt-position" style="width:200px">Position: </label>
       <div class="col-sm-10" style="width:400px"> 
-       <input type="text" class="form-control" id="txt-position" placeholder="Position" style="width: 100%">
+       <input type="text" class="form-control" id="txt-position" data-bvStrict="notEmpty" placeholder="Position" style="width: 100%">
+       <div class="help-block error-message">Required Field</div>
       </div>
      </div>
      
-      <div class="form-group">
+      <div class="row form-group">
       <label class="control-label col-sm-2" for="txt-interno" style="width:200px">Nro Interno: </label>
       <div class="col-sm-10" style="width:400px"> 
-       <input type="text" class="form-control" id="txt-interno" placeholder="Nro Interno" style="width: 100%">
+       <input type="text" class="form-control" id="txt-interno" data-bvStrict="notEmpty" placeholder="Nro Interno" style="width: 100%">
+       <div class="help-block error-message">Required Field</div>
       </div>
      </div>
 
-     <div class="form-group"> 
+     <div class="row form-group"> 
       <label class="control-label col-sm-2" for="id-pais" style="width:200px">Pais: </label> 
       <div class="col-sm-10" style="width:400px">
        <select class="form-control" id="id-pais">
@@ -200,23 +168,6 @@
       
    </form>
    
- <!-- alertas -->
-  <!-- Modal-alerta -->
-  <div class="modal fade" id="modal-alert" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-body">
-            <div class="alert alert-danger">
-              <strong>Este campo es obligatorio</strong> 
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>  
-      </div>
-    </div>    
-  </div>  
   <!-- Modal-Submit -->
   <div class="modal fade" id="modal-submit" role="dialog">
     <div class="modal-dialog modal-sm">
@@ -235,8 +186,6 @@
   </div> 
  
 </div>
-
-<script src="resources/js/JQuery/bvalidator.jquery.js"></script>
 
 <script type="text/javascript">
  $(function(){
