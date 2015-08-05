@@ -289,13 +289,13 @@ url: https://github.com/jBenes/jQuery-bValidator
 					.removeClass(settings.validClass);
 
 				elem.parents('form')
-					.find('.error-'+elem.attr('name'))
+					.find('.error-'+elem.attr('id'))
 					.removeClass(settings.errorClass)
 					.removeClass(settings.validClass)
 					.hide();
 
 				elem.parents('form')
-					.find('label[for="'+elem.attr('name')+'"]')
+					.find('label[for="'+elem.attr('id')+'"]')
 					.removeClass(settings.errorClass)
 					.removeClass(settings.validClass);
 
@@ -314,11 +314,11 @@ url: https://github.com/jBenes/jQuery-bValidator
 
 				elem.addClass(settings.validClass);
 
-				form.find('.error-'+elem.attr('name'))
+				form.find('.error-'+elem.attr('id'))
 					.addClass(settings.validClass)
 					.hide();
 
-				form.find('label[for="'+elem.attr('name')+'"]')
+				form.find('label[for="'+elem.attr('id')+'"]')
 					.addClass(settings.validClass);
 
 			} else {
@@ -342,11 +342,11 @@ url: https://github.com/jBenes/jQuery-bValidator
 
 				elem.addClass(settings.errorClass);
 
-				form.find('.error-'+elem.attr('name'))
+				form.find('.error-'+elem.attr('id'))
 					.addClass(settings.errorClass)
 					.show();
 
-				form.find('label[for="'+elem.attr('name')+'"]')
+				form.find('label[for="'+elem.attr('id')+'"]')
 					.addClass(settings.errorClass);
 
 			} else {
@@ -465,7 +465,7 @@ jQuery.bValidator
 	// arg[1] = name of other input
 	// arg[2] = name of other input rule
 	// arg[3] = name of current input rule
-	var input = elem.parents('form').find('[name="'+args[1]+'"]');
+	var input = elem.parents('form').find('[id="'+args[1]+'"]');
 	if(input.bValidator('isValid', Array(args[2]))) {
 		return (elem.bValidator('isValid', Array(args[3])));
 	} else return true;
@@ -476,13 +476,13 @@ jQuery.bValidator
 	// arg[1] = name of other input
 	// arg[2] = value of other input rule
 	// arg[3] = name of current input rule
-	if(elem.parents('form').find('[name="'+args[1]+'"]').val() == args[2]) {
+	if(elem.parents('form').find('[id="'+args[1]+'"]').val() == args[2]) {
 		return (elem.bValidator('isValid', Array(args[3])));
 	} else return true;
 
 })
 .validation('same', function(value, args) {
-	return (value == $('form [name="'+args[1]+'"]').val());
+	return (value == $('form [id="'+args[1]+'"]').val());
 })
 .validation('reg', function(value, args) {
 	return (value.match(args[1]) != null);

@@ -1,9 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Proy-NewHires</title>
-  <meta charset="utf-8">
   <%@include file="webs/commonHead.html" %>
 
 <script> //CHECK BUTTON
@@ -26,11 +25,11 @@
 <script> //CAMPOS OBLIGATORIOS
   $(document).ready(function(){  
 
-    $("#txt-firstname").blur(function(){
-     if ($("#txt-firstname").val() == "" || $("#txt-firstname").val() == null) {   
-         $("#modal-alert").modal();
-     };
-    });
+    //$("#txt-firstname").blur(function(){
+    // if ($("#txt-firstname").val() == "" || $("#txt-firstname").val() == null) {   
+    //     $("#modal-alert").modal();
+    // };
+    //});
     $("#txt-lastname").blur(function(){
      if ($("#txt-lastname").val() == "" || $("#txt-lastname").val() == null) {   
          $("#modal-alert").modal();
@@ -68,7 +67,7 @@
 <%@include file="webs/mainMenu.html" %>
 
 <div class="container-fluid">
-   <form class="form-horizontal" role="form">
+   <form class="form-horizontal" role="form" id="form-user">
      
      <div class="form-group"> 
       <label class="control-label col-sm-2" for="id-org" style="width:200px">Sub Organization: </label> 
@@ -87,7 +86,8 @@
      <div class="form-group">
       <label class="control-label col-sm-2" for="txt-firstname" style="width:200px">First Name: </label>
       <div class="col-sm-10" style="width:400px"> 
-       <input type="text" class="form-control" id="txt-firstname" placeholder="First Name" style="width: 100%">
+       <input type="text" class="form-control" id="txt-firstname" data-bvStrict="notEmpty" placeholder="First Name" style="width: 100%">
+       <div class="help-block error-message">Fill your name</div>
       </div>
      </div>
      
@@ -95,6 +95,7 @@
       <label class="control-label col-sm-2" for="txt-lastname" style="width:200px">Last Name: </label>
       <div class="col-sm-10" style="width:400px"> 
        <input type="text" class="form-control" id="txt-lastname" placeholder="Last Name" style="width: 100%">
+       <div class="help-block error-message">Fill your name</div>
       </div>
      </div>
      
@@ -216,7 +217,6 @@
       </div>
     </div>    
   </div>  
-  
   <!-- Modal-Submit -->
   <div class="modal fade" id="modal-submit" role="dialog">
     <div class="modal-dialog modal-sm">
@@ -235,6 +235,14 @@
   </div> 
  
 </div>
+
+<script src="resources/js/JQuery/bvalidator.jquery.js"></script>
+
+<script type="text/javascript">
+ $(function(){
+  $('#form-user').bValidator();
+ });
+</script>
 
 </body>
 
