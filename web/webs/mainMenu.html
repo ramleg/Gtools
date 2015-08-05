@@ -14,7 +14,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Users<span class="caret"></span></a>
           <ul class="dropdown-menu" style="background-color:#C1D736">
-            <li><a href="abm-users.jsp">Alta Usuarios</a></li>
+              <li><a href="abm-users.jsp">Alta Usuarios</a></li>
             <li><a href="import-nh.jsp">Import Users</a></li>
             <li><a href="search-users.jsp">Search users</a></li>
           </ul>
@@ -57,13 +57,11 @@
           <form role="form" action="login" id="frm-modal">
            <div class="form-group">
             <label for="email">User:</label>
-            <input type="text" class="form-control" id="txt-usr" placeholder="Username" data-bvStrict="notEmpty">
-            <div class="help-block error-message">Required field</div>
+            <input type="text" class="form-control" id="txt-usr" placeholder="Username">
            </div>
            <div class="form-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="txt-pwd" placeholder="Password" data-bvStrict="notEmpty">
-            <div class="help-block error-message"></div>
+            <input type="password" class="form-control" id="txt-pwd" placeholder="Password">
            </div>
            <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
           </form>     
@@ -71,13 +69,6 @@
       </div>
     </div>
    </div>
-   
- <!--  <script src="../Scripts/JQuery/bvalidator.jquery.js"></script>
-   <script>
-    $(function(){
-     $('#frm-modal').bValidator();
-    });
-   </script>-->
 
   </div>
 </nav>

@@ -1,7 +1,3 @@
-/**
-url: https://github.com/jBenes/jQuery-bValidator
-*/
-
 (function($) {
 
 	$.bValidator = {

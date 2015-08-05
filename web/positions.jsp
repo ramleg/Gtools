@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Proy-NewHires</title>
@@ -43,14 +43,12 @@
 
 <%@include file="webs/mainMenu.html" %>
   
-<div class="container-fluid">
-  <h3>Alta de Posisiones</h3>
+<div class="container">
   <br>
    <form class="form-horizontal" role="form">
-     
      <div class="form-group"> 
-      <label class="control-label col-sm-2" for="id-uoorg" style="width:200px">UO Organization: </label> 
-      <div class="col-sm-10" style="width:400px">
+      <label class="control-label col-sm-2" for="id-uoorg">UO Organization: </label> 
+      <div class="col-sm-10">
        <select class="form-control" id="id-uoorg">
         <option>Development</option>
         <option>QC</option>
@@ -67,9 +65,9 @@
      </div>  
         
      <div class="form-group">
-      <label class="control-label col-sm-2" for="txt-position" style="width:200px">New Position: </label>
-      <div class="col-sm-10" style="width:400px"> 
-       <input type="text" class="form-control" id="txt-position" placeholder="Position" style="width: 100%">
+      <label class="control-label col-sm-2" for="txt-position">New Position: </label>
+      <div class="col-sm-10"> 
+       <input type="text" class="form-control" id="txt-position" placeholder="Position">
       </div>      
       <div>
        <button id="btn-submit" type="button" class="btn btn-success pull-left">Submit</button>
@@ -79,16 +77,14 @@
    </form>
 </div>
 
-<div class="container-fluid">
- <br> 
- <br>
-  <div class="progress" style="width:40%">
+<div class="container">
+  <div class="progress" style="width:60%">
     <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%;background-color:black">
     </div>
   </div>
 </div>
 
-<div id="div-grilla"class="container-fluid table-responsive pull-left" style="width:40%">
+<div id="div-grilla" class="container table-responsive" style="width:40%">
   <table id="grid-user" class="js-dynamitable table table-bordered table-hover">
     <thead>
       <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->

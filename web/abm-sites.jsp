@@ -19,29 +19,62 @@
 <%@include file="webs/mainMenu.html" %> <!-- Llama  menu-->
     
 <div class="container">
-   <form class="form-horizontal" role="form">
-    <div>
-      <div class="form-group">
-       <label class="control-label col-sm-2" for="site">Site Name: </label>
-       <div class="col-sm-10" style="left: 0px; top: 0px; width: 400px"> 
-        <input type="text" class="form-control" id="txt-site" value="" placeholder="site" style="width: 100%">
-       </div>
-       <div>
-        <button id="btn-submit" type="button" class="btn btn-success pull-left">Submit</button>
+    <form class="form-horizontal" role="form" id="form-sites">
+       
+     <div class="form-group"> 
+      <label class="control-label col-sm-2" for="pais">Pais: </label> 
+      <div class="col-sm-10" style="width:400px">
+       <select class="form-control" id="ddl_pais">
+        <option>Pais...</option>
+       </select>
+      </div>
+     </div>
+       
+      <div class="row form-group">
+       <label class="control-label col-sm-2" for="txt_site">Site Name: </label>
+       <div class="col-sm-10" style="left: 0px; top: 0px; width: 400px">
+        <input type="text" class="form-control" id="txt_site" value="" data-bvStrict="notEmpty" placeholder="Site name" style="width: 100%">
+        <div class="help-block error-message">Required Field</div>
        </div>
       </div>
-    </div>
+      <div class="row form-group">
+       <label class="control-label col-sm-2" for="txt_site_ou">Site OU: </label>
+       <div class="col-sm-10" style="left: 0px; top: 0px; width: 50%">
+        <input type="text" class="form-control" id="txt_site_ou" value="" data-bvStrict="notEmpty" placeholder="Site OU" style="width: 100%">
+        <div class="help-block error-message">Required Field</div>
+       </div>
+      </div>
+ 
+      <div class="row form-group">
+       <label class="control-label col-sm-2" for="txt_site_sap">Site SAP: </label>
+       <div class="col-sm-10" style="left: 0px; top: 0px; width: 50%">
+        <input type="text" class="form-control" id="txt_site_sap" value="" data-bvStrict="notEmpty" placeholder="Site SAP" style="width: 100%">
+        <div class="help-block error-message">Required Field</div>
+       </div>
+      </div>
+        
+       <div class="col-sm-8">
+        <button id="btn-submit" type="button" class="btn btn-success pull-right">Submit</button>
+       </div>
+        
    </form>
+</div>
+
+<div class="container" style="width:90%">
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%;background-color:black">
+    </div>
+  </div>
 </div>
 
 <div id="div-grilla"class="container table-responsive">
   <table id="grid-sites" class="table2excel js-dynamitable table table-bordered table-hover">
     <thead>
       <tr class="success"> <!--Encabezado mas botones de Asc y Desc-->
-        <th id="ID-site" style="text-align:center;width:15%">ID<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-        <th id="txt_site" style="text-align:center;width:30%">Site <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-        <th id="txt_direccion" style="text-align:center">Direccion <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-
+        <th id="ID" style="text-align:center;width:15%">ID<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+        <th id="site" style="text-align:center;width:30%">Site <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+        <th id="site_ou" style="text-align:center">Site OU <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+        <th id="site_sap" style="text-align:center">Site SAP <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>    
       </tr>
     </thead>
     <tbody>
@@ -49,74 +82,38 @@
         <td>1</td>
         <td>Laminar</td>
         <td>Mendoza 123</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>SouthPark</td>
-        <td>san Luis 6325</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>NorthPark</td>
-        <td>Madero 4589</td>
-      </tr>
-        <tr>
-            <td>6</td>
-            <td>Cordoba</td>
-            <td>San juan 5623</td>
-        </tr>
-        <tr>
-            <td>20</td>
-            <td>Brasil</td>
-            <td>xxxx 5566</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Peru</td>
-            <td>Altiplano 5236</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>Uruguay</td>
-            <td>Frontera 4563</td>
-        </tr>
-      <tr>
-        <td>1</td>
-        <td>Rosario</td>
-        <td>Av. Madres Plaza de Mayo 3020</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Tucuman</td>
-        <td>Ni idea 1234</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Bogota</td>
-        <td>xx f f 6666</td>
+        <td>Mendoza 123</td>
       </tr>
     </tbody>
    </table> 
 </div> 
+<div class="container">
+ <button id="btn-export" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-export"></span> Export file .XLS</button>
+ <!-- Funcion de Exportacion -->
+ <script>
+ $("#btn-export").click(function(){
+   $("#grid-sites").table2excel({ filename: "Export Sites"
+   });
+ });
+ </script>
+ <br>
+</div>
 
 <script src="resources/js/JQuery/dynamitable.jquery.min.js"></script>
 <script src="resources/js/JQuery/jquery.bdt.js"></script>
 
+<!--Funcion de busqueda en grilla-->
 <script>
   $(document).ready( function () {
     $('#grid-sites').bdt();
   });
 </script>
-
-<div class="container">
-<button id="btn-export" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-export"></span> Export file .XLS</button>
-<script>
- $("#btn-export").click(function(){
-   $("#grid-sites").table2excel({ filename: "Export Sites"
-   });
+<!--Funcion de validaciones-->
+<script type="text/javascript">
+ $(function(){
+  $('#form-sites').bValidator();
  });
 </script>
-
   <!-- Modal-Submit -->
   <div class="modal fade" id="modal-submit" role="dialog">
     <div class="modal-dialog modal-sm">
@@ -133,8 +130,6 @@
       </div>
     </div>    
   </div>
-
-</div>
 
 </body>
 </html>
