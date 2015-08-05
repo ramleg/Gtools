@@ -4,10 +4,9 @@
 <html>
     <head>
         <title>JSP Page</title>
-        <%@include file="webs/commonHead.html" %>
+        <jsp:include page="webs/commonHead.html" />
     </head>
     <body>
-        <%@include file="webs/mainMenu.html" %>
-        <%@include file="webs/loginForm.html" %>
+        <jsp:include page="webs/mainMenu.html" />
     </body>
 </html>
