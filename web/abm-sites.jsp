@@ -1,3 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.corp.globant.MODEL.ConnectionManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="com.corp.globant.MODEL.PaisDAO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +21,7 @@
 </head>
 <body>
  
-<%@include file="webs/mainMenu.html" %> <!-- Llama  menu-->
+<%@include file="webs/mainMenu.html" %> <!-- Llama al menu-->
     
 <div class="container">
     <form class="form-horizontal" role="form" id="form-sites">
@@ -25,7 +30,14 @@
       <label class="control-label col-sm-2" for="pais">Pais: </label> 
       <div class="col-sm-10" style="width:400px">
        <select class="form-control" id="ddl_pais">
-        <option>Pais...</option>
+           <%
+               Connection conn = ConnectionManager.getConnection();
+               ArrayList ddlPais = PaisDAO.getAll(conn);
+               pageContext.setAttribute("paises", ddlPais);
+           %>
+            <c:forEach items="${paises}" var="current">
+               <option value="<c:out value="${current.id}"/>"><c:out value="${current.desc}"/></option>
+            </c:forEach>
        </select>
       </div>
      </div>
@@ -67,7 +79,7 @@
   </div>
 </div>
 
-<div id="div-grilla"class="container table-responsive">
+<div id="div-grilla" class="container table-responsive">
   <table id="grid-sites" class="table2excel js-dynamitable table table-bordered table-hover">
     <thead>
       <tr class="success"> <!--Encabezado mas botones de Asc y Desc-->
