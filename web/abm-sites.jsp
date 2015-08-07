@@ -92,12 +92,10 @@
       </tr>
     </thead>
     <tbody>
-        
         <%
                ArrayList tableSites = SiteDAO.getAll(conn);
                pageContext.setAttribute("sites", tableSites);
         %>
-        
         <c:forEach items="${sites}" var="current">
             <tr>
             <td><c:out value="${current.id}"/></td>

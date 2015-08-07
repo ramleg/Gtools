@@ -17,8 +17,8 @@ public class PaisDAO {
         ResultSet rs = stmtConsulta.executeQuery(laConsulta);
         
         Pais elPais = new Pais();
-        elPais.setId(rs.getInt("id"));
-        elPais.setDesc(rs.getString("desc"));
+        elPais.setId(rs.getInt("pais_id"));
+        elPais.setDesc(rs.getString("pais_desc"));
         
         stmtConsulta.close();
         
@@ -36,8 +36,8 @@ public class PaisDAO {
         while (rs.next()) {
             Pais elPais = new Pais();
             // Arma el objeto Alumno
-            elPais.setId(rs.getInt("id"));
-            elPais.setDesc(rs.getString("desc"));
+            elPais.setId(rs.getInt("pais_id"));
+            elPais.setDesc(rs.getString("pais_desc"));
             // Agrega el alumno a la coleccion
             paises.add(elPais);
         }
