@@ -13,19 +13,6 @@
     });
   });
 </script>
-<script> //CAMPOS OBLIGATORIOS
-  $(document).ready(function(){
-    
-    $("#txt-position").blur(function(){
-     if ($("#txt-position").val() == "" || $("#txt-position").val() == null) {   
-         $("#modal-alert").modal();
-         $("#txt-position").focus();
-     };
-    });
- 
-  });
-</script>
-
   <style type="text/css">
   .auto-style1 {
 	  position: relative;
@@ -45,10 +32,10 @@
   
 <div class="container">
   <br>
-   <form class="form-horizontal" role="form">
+  <form class=" row form-horizontal" role="form" id="form-positions">
      <div class="form-group"> 
-      <label class="control-label col-sm-2" for="id-uoorg">UO Organization: </label> 
-      <div class="col-sm-10">
+      <label class="control-label col-sm-4" for="id-uoorg">UO Organization: </label> 
+      <div class="col-sm-8" style="width: 40%">
        <select class="form-control" id="id-uoorg">
         <option>Development</option>
         <option>QC</option>
@@ -63,28 +50,27 @@
        </select>
       </div>
      </div>  
-        
      <div class="form-group">
-      <label class="control-label col-sm-2" for="txt-position">New Position: </label>
-      <div class="col-sm-10"> 
-       <input type="text" class="form-control" id="txt-position" placeholder="Position">
-      </div>      
+      <label class="control-label col-sm-4" for="txt-position">New Position: </label>
+      <div class="col-sm-8" style="width: 40%"> 
+       <input type="text" class="form-control" id="txt-position" data-bvStrict="notEmpty" placeholder="Position">
+       <div class="help-block error-message">Required Field</div>
+      </div>
       <div>
        <button id="btn-submit" type="button" class="btn btn-success pull-left">Submit</button>
       </div>
      </div>
-     
    </form>
 </div>
 
 <div class="container">
-  <div class="progress" style="width:60%">
+  <div class="progress" style="width:100%">
     <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%;background-color:black">
     </div>
   </div>
 </div>
 
-<div id="div-grilla" class="container table-responsive" style="width:40%">
+<div id="div-grilla" class="container table-responsive" style="width:60%">
   <table id="grid-user" class="js-dynamitable table table-bordered table-hover">
     <thead>
       <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->
@@ -147,23 +133,13 @@
     $('#grid-user').bdt();
   });
 </script>
-   
- <!-- alertas -->
-  <!-- Modal-Alert obligatorios-->
-  <div class="modal fade" id="modal-alert" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-body">
-            <div class="alert alert-danger">
-              <strong>Este campo es obligatorio</strong> 
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>  
-      </div>
-    </div>    
-  </div>  
+<!--Funcion de validaciones-->
+<script type="text/javascript">
+ $(function(){
+  $('#form-positions').bValidator();
+ });
+</script>
+     
   <!-- Modal-Submit -->
   <div class="modal fade" id="modal-submit" role="dialog">
     <div class="modal-dialog modal-sm">
