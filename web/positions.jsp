@@ -30,100 +30,102 @@
 
 <%@include file="webs/mainMenu.html" %>
   
-<div class="container">gjgjjjgtjgt
-  <br>
-  <form class=" row form-horizontal" role="form" id="form-positions">
-     <div class="form-group"> 
-      <label class="control-label col-sm-4" for="id-uoorg">UO Organization: </label> 
-      <div class="col-sm-8" style="width: 40%">
-       <select class="form-control" id="id-uoorg">
-        <option>Development</option>
-        <option>QC</option>
-        <option>Peoplecare</option>
-        <option>PMO</option>
-        <option>Staffing</option>
-        <option>Business</option>
-        <option>Facilities</option>
-        <option>Infrastructure</option>
-        <option>Reception</option>
-        <option>Others...</option>
-       </select>
-      </div>
-     </div>  
-     <div class="form-group">
-      <label class="control-label col-sm-4" for="txt-position">New Position: </label>
-      <div class="col-sm-8" style="width: 40%"> 
-       <input type="text" class="form-control" id="txt-position" data-bvStrict="notEmpty" placeholder="Position">
-       <div class="help-block error-message">Required Field</div>
-      </div>
-      <div>
-       <button id="btn-submit" type="button" class="btn btn-success pull-left">Submit</button>
-      </div>
-     </div>
-   </form>
-</div>
-
-<div class="container">
-  <div class="progress" style="width:100%">
-    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%;background-color:black">
+<div class="container-fluid" style="width: 90%">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Alta de Posiciones</div>
+    <div class="panel-body">
+      <form class=" row form-horizontal" role="form" id="form-positions">
+         <div class="form-group"> 
+          <label class="control-label col-sm-4" for="id-uoorg">UO Organization: </label> 
+          <div class="col-sm-8" style="width: 40%">
+           <select class="form-control" id="id-uoorg">
+            <option>Development</option>
+            <option>QC</option>
+            <option>Peoplecare</option>
+            <option>PMO</option>
+            <option>Staffing</option>
+            <option>Business</option>
+            <option>Facilities</option>
+            <option>Infrastructure</option>
+            <option>Reception</option>
+            <option>Others...</option>
+           </select>
+          </div>
+         </div>  
+         <div class="form-group">
+          <label class="control-label col-sm-4" for="txt-position">New Position: </label>
+          <div class="col-sm-8" style="width: 40%"> 
+           <input type="text" class="form-control" id="txt-position" data-bvStrict="notEmpty" placeholder="Position">
+           <div class="help-block error-message">Required Field</div>
+          </div>
+          <div>
+           <button id="btn-submit" type="button" class="btn btn-primary pull-left">Submit</button>
+          </div>
+         </div>
+       </form>
     </div>
   </div>
 </div>
 
-<div id="div-grilla" class="container table-responsive" style="width:60%">
-  <table id="grid-user" class="js-dynamitable table table-bordered table-hover">
-    <thead>
-      <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->
-        <th id="txt-uoorg" style="text-align:center">UO Org<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-        <th id="txt-position" style="text-align:center">Position<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>    
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Development</td>
-        <td>Web UO Developer</td>
-      </tr>
-      <tr>
-        <td>Development</td>
-        <td>.Net Developer</td>
-       </tr>
-      <tr>
-        <td>Development</td>
-        <td>PHP Developer</td>
-      </tr>
-      <tr>
-        <td>Staffing</td>
-        <td>Recruiting</td>
-      </tr>
-      <tr>
-        <td>QC</td>
-        <td>Test automation</td>
-       </tr>
-      <tr>
-        <td>QC</td>
-        <td>QC Analyst</td>
-      </tr>
-      <tr>
-        <td>QC</td>
-        <td>QC Lead</td>
-      </tr>
-      <tr>
-        <td>PM</td>
-        <td>Project Manager</td>
-       </tr>
-      <tr>
-        <td>People</td>
-        <td>Peoplecare</td>
-      </tr>
-      <tr>
-        <td>Staffing</td>
-        <td>Receptionist</td>
-      </tr>
-
-
-    </tbody>
-   </table> 
-</div> 
+<div class="container-fluid" style="width: 90%">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Alta de Posiciones</div>
+        <div class="panel-body">
+            <div id="div-grilla" class="container table-responsive" style="width:90%">
+              <table id="grid-user" class="js-dynamitable table table-bordered table-hover">
+                <thead>
+                  <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->
+                    <th id="txt-uoorg" style="text-align:center">UO Org<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                    <th id="txt-position" style="text-align:center">Position<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Development</td>
+                    <td>Web UO Developer</td>
+                  </tr>
+                  <tr>
+                    <td>Development</td>
+                    <td>.Net Developer</td>
+                   </tr>
+                  <tr>
+                    <td>Development</td>
+                    <td>PHP Developer</td>
+                  </tr>
+                  <tr>
+                    <td>Staffing</td>
+                    <td>Recruiting</td>
+                  </tr>
+                  <tr>
+                    <td>QC</td>
+                    <td>Test automation</td>
+                   </tr>
+                  <tr>
+                    <td>QC</td>
+                    <td>QC Analyst</td>
+                  </tr>
+                  <tr>
+                    <td>QC</td>
+                    <td>QC Lead</td>
+                  </tr>
+                  <tr>
+                    <td>PM</td>
+                    <td>Project Manager</td>
+                   </tr>
+                  <tr>
+                    <td>People</td>
+                    <td>Peoplecare</td>
+                  </tr>
+                  <tr>
+                    <td>Staffing</td>
+                    <td>Receptionist</td>
+                  </tr>
+                </tbody>
+               </table> 
+            </div> 
+        </div>
+    </div>
+</div>
 
 <script src="resources/js/JQuery/dynamitable.jquery.min.js"></script>
 <script src="resources/js/JQuery/jquery.bdt.js"></script>
