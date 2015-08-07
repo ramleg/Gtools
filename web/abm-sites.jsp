@@ -1,3 +1,4 @@
+<%@page import="com.corp.globant.MODEL.SiteDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.corp.globant.MODEL.ConnectionManager"%>
 <%@page import="java.sql.Connection"%>
@@ -9,7 +10,9 @@
 <head>
   <title>Proy-NewHires</title>
   <%@include file="webs/commonHead.html" %>
-
+  <%
+      Connection conn = ConnectionManager.getConnection();
+    %>
 <script> //SUBMIT
   $(document).ready(function(){
     $("#btn-submit").click(function(){
@@ -31,7 +34,6 @@
       <div class="col-sm-10" style="width:400px">
        <select class="form-control" id="ddl_pais">
            <%
-               Connection conn = ConnectionManager.getConnection();
                ArrayList ddlPais = PaisDAO.getAll(conn);
                pageContext.setAttribute("paises", ddlPais);
            %>
@@ -85,17 +87,26 @@
       <tr class="success"> <!--Encabezado mas botones de Asc y Desc-->
         <th id="ID" style="text-align:center;width:15%">ID<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
         <th id="site" style="text-align:center;width:30%">Site <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-        <th id="site_ou" style="text-align:center">Site OU <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-        <th id="site_sap" style="text-align:center">Site SAP <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>    
+        <th id="site_ou" style="text-align:center">SAP <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+        <th id="site_sap" style="text-align:center">AD <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>    
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Laminar</td>
-        <td>Mendoza 123</td>
-        <td>Mendoza 123</td>
-      </tr>
+        
+        <%
+               ArrayList tableSites = SiteDAO.getAll(conn);
+               pageContext.setAttribute("sites", tableSites);
+        %>
+        
+        <c:forEach items="${sites}" var="current">
+            <tr>
+            <td><c:out value="${current.id}"/></td>
+            <td><c:out value="${current.desc}"/></td>
+            <td><c:out value="${current.sap_desc}"/></td>
+            <td><c:out value="${current.ad_desc}"/></td>
+            </tr>
+        </c:forEach>
+      
     </tbody>
    </table> 
 </div> 

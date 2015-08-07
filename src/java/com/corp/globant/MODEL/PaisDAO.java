@@ -10,6 +10,20 @@ import java.util.ArrayList;
  */
 public class PaisDAO {
         
+    public static Pais getById (Connection conn, String id)throws Exception{
+        
+        String laConsulta = "SELECT * FROM app.pais WHERE id=" + id + ";";
+        Statement stmtConsulta = conn.createStatement();
+        ResultSet rs = stmtConsulta.executeQuery(laConsulta);
+        
+        Pais elPais = new Pais();
+        elPais.setId(rs.getInt("id"));
+        elPais.setDesc(rs.getString("desc"));
+        
+        stmtConsulta.close();
+        
+        return elPais;
+    }
     public static ArrayList getAll(Connection conn) throws Exception {
         // Construye la coleccion
         ArrayList paises = new ArrayList();
@@ -18,9 +32,10 @@ public class PaisDAO {
         Statement stmtConsulta = conn.createStatement();
         ResultSet rs = stmtConsulta.executeQuery(laConsulta);
         // Obtiene los datos
+        
         while (rs.next()) {
-            // Arma el objeto Alumno
             Pais elPais = new Pais();
+            // Arma el objeto Alumno
             elPais.setId(rs.getInt("id"));
             elPais.setDesc(rs.getString("desc"));
             // Agrega el alumno a la coleccion
