@@ -34,15 +34,15 @@
 <%
   Connection conn = ConnectionManager.getConnection();
 %>
-<div class="container-fluid"> 
+<div class="container"> 
     
     <div class="panel panel-primary">
-        <div class="panel-heading">User import</div>
+        <div class="panel-heading">Add User</div>
         <div class="panel-body">
             
            <form class="form-horizontal" role="form" id="form-user">
                
-             <div class="form-group"> 
+            <div class="form-group"> 
               <label class="control-label col-sm-4" for="id-org">Sub Organization: </label> 
               <div class="col-sm-8">
                <select class="form-control" id="id-org" style="width: 50%">
@@ -54,73 +54,82 @@
                 <option>etc....</option>
                </select>
               </div>
-             </div> 
+            </div> 
                
-             <div class="row form-group">
-              <label class="control-label col-sm-2" for="txt-firstname" style="width:200px">First Name: </label>
-              <div class="col-sm-10" style="width:400px"> 
-               <input type="text" class="form-control" id="txt-firstname" data-bvStrict="notEmpty" placeholder="First Name" style="width: 100%">
+            <div class="row form-group">
+              <label class="control-label col-sm-4" for="txt-firstname">First Name: </label>
+              <div class="col-sm-8"> 
+               <input type="text" class="form-control" id="txt-firstname" data-bvStrict="notEmpty" placeholder="First Name" style="width: 50%">
                <div class="help-block error-message">Required Field</div>
               </div>
-             </div>
+            </div>
                
-             <div class="row form-group">
-              <label class="control-label col-sm-2" for="txt-lastname" style="width:200px">Last Name: </label>
-              <div class="col-sm-10" style="width:400px"> 
-               <input type="text" class="form-control" id="txt-lastname" placeholder="Last Name" data-bvStrict="notEmpty" style="width: 100%">
+            <div class="row form-group">
+              <label class="control-label col-sm-4" for="txt-lastname">Last Name: </label>
+              <div class="col-sm-8"> 
+               <input type="text" class="form-control" id="txt-lastname" placeholder="Last Name" data-bvStrict="notEmpty" style="width: 50%">
                <div class="help-block error-message">Required Field</div>
               </div>
-             </div>
+            </div>
                
-             <div class="row form-group">
-              <label class="control-label col-sm-2" for="txt-dni" style="width:200px">DNI/Passport/etc: </label>
-              <div class="col-sm-10" style="width:400px"> 
-               <input type="text" class="form-control" id="txt-dni" data-bvStrict="notEmpty" placeholder="DNI/Passport/etc.." style="width: 100%">
+            <div class="row form-group">
+              <label class="control-label col-sm-4" for="txt-dni">DNI/Passport/etc: </label>
+              <div class="col-sm-8"> 
+               <input type="text" class="form-control" id="txt-dni" data-bvStrict="notEmpty" placeholder="DNI/Passport/etc.." style="width: 25%">
                <div class="help-block error-message">Required Field</div>
               </div>
-             </div>
+            </div>
                
-             <div class="row form-group">
-              <label class="control-label col-sm-2" for="txt-username" style="width:200px">Domain Name: </label>
-              <div class="col-sm-10" style="width:400px"> 
+            <div class="row form-group">
+              <label class="control-label col-sm-4" for="txt-username">Domain Name: </label>
+              <div class="col-sm-4"> 
                <input type="text" class="form-control" id="txt-username" data-bvStrict="notEmpty" placeholder="User Name" style="width: 100%; background-color:aqua" maxlength="17">
                <div class="help-block error-message">Required Field</div>      
               </div>
-              <div>
-               <button id="btn_check" type="button" class="btn btn-success" data-complete-text="User OK">CheckUser</button>
+              <div class="col-sm-2">
+               <button id="btn_check" type="button" class="btn btn-success pull-left" data-complete-text="User OK">CheckUser</button>
               </div>
-             </div>
-               
-             <div class="row form-group"> 
-              <label class="control-label col-sm-2" for="id-uoorg" style="width:200px">UO Organization: </label> 
-              <div class="col-sm-10" style="width:400px">
-               <select class="form-control" id="id-uoorg">
-                <option>Development</option>
-                <option>Facilities</option>
-                <option>QC</option>
-                <option>PeoppleCare</option>
-                <option>Teception</option>
-                <option>etc....</option>
-               </select>
+            </div>
+
+            <div class="row form-group">
+              <label class="control-label col-sm-4" for="txt-mail">Email: </label>
+              <div class="col-sm-8"> 
+               <input type="text" Disabled class="form-control" id="txt-mail" data-bvStrict="notEmpty" placeholder="mail" style="width: 50%">
+               <div class="help-block error-message">Required Field</div>
               </div>
-             </div>
+            </div>
                
-             <div class="row form-group"> 
+            <div class="row form-group">
+              <label class="control-label col-sm-4" for="txt-position">Position: </label>
+              <div class="col-sm-8"> 
+               <input type="text" class="form-control" id="txt-position" data-bvStrict="notEmpty" placeholder="Position" style="width: 50%">
+               <div class="help-block error-message">Required Field</div>
+              </div>
+            </div>
+               
+            <div class="row form-group"> 
+              <label class="control-label col-sm-4" for="id-uoorg">OU Organization: </label> 
+              <div class="col-sm-8">
+               <input type="text" Disabled class="form-control" id="id-uoorg" data-bvStrict="notEmpty" placeholder="OU Organization" style="width: 50%">
+              </div>
+            </div>
+               
+            <div class="row form-group"> 
               <label class="control-label col-sm-4" for="ddl-site">Site: </label> 
               <div class="col-sm-8">
-           <select class="form-control" id="ddl_site" style="width: 50%">
-               <%
-                   ArrayList ddlSite = SiteDAO.getAll(conn);
-                   pageContext.setAttribute("sites", ddlSite);
-               %>
-                <c:forEach items="${sites}" var="current">
-                   <option value="<c:out value="${current.id}"/>"><c:out value="${current.desc}"/></option>
-                </c:forEach>
-           </select>
+                   <select class="form-control" id="ddl_site" style="width: 50%">
+                       <%
+                           ArrayList ddlSite = SiteDAO.getAll(conn);
+                           pageContext.setAttribute("sites", ddlSite);
+                       %>
+                        <c:forEach items="${sites}" var="current">
+                           <option value="<c:out value="${current.id}"/>"><c:out value="${current.desc}"/></option>
+                        </c:forEach>
+                   </select>
               </div>
-             </div>
+            </div>
                
-             <div class="row form-group"> 
+            <div class="row form-group"> 
               <label class="control-label col-sm-4" for="id-sitemail">site Mail: </label> 
               <div class="col-sm-8">
                <select class="form-control" id="id-mail" style="width: 50%">
@@ -132,33 +141,17 @@
                 <option>etc....</option>
                </select>
               </div>
-             </div>
-               
-             <div class="row form-group">
-              <label class="control-label col-sm-4" for="txt-mail">Email: </label>
-              <div class="col-sm-8"> 
-               <input type="text" class="form-control" id="txt-mail" data-bvStrict="notEmpty" placeholder="mail" style="width: 50%">
-               <div class="help-block error-message">Required Field</div>
-              </div>
-             </div>
-               
-             <div class="row form-group">
-              <label class="control-label col-sm-4" for="txt-position"">Position: </label>
-              <div class="col-sm-8"> 
-               <input type="text" class="form-control" id="txt-position" data-bvStrict="notEmpty" placeholder="Position" style="width: 50%">
-               <div class="help-block error-message">Required Field</div>
-              </div>
-             </div>
-               
-             <div class="row form-group">
+            </div>
+              
+            <div class="row form-group">
               <label class="control-label col-sm-4" for="txt-interno">Nro Interno: </label>
               <div class="col-sm-8"> 
                <input type="text" class="form-control" id="txt-interno" data-bvStrict="notEmpty" placeholder="Nro Interno" style="width:10%">
                <div class="help-block error-message">Required Field</div>
               </div>
-             </div>
+            </div>
                
-             <div class="form-group"> 
+            <div class="form-group"> 
               <label class="control-label col-sm-4" for="ddl_pais">Country: </label> 
               <div class="col-sm-8">
               <select class="form-control" id="ddl_pais"  style="width:50%">
@@ -171,13 +164,17 @@
                  </c:forEach>
               </select>
               </div>
-             </div>
+            </div>
                  
-             <div class="form-group">
-              <button id="btn-submit" type="button" class="btn btn-success">Submit</button>
-              <button id="btn-cancel" type="reset" class="btn btn-danger">Cancel</button>
-             </div>
-                 
+            <div class="row form-group">
+              <div class="col-sm-5">
+                <button id="btn-submit" type="button" class="btn btn-success pull-right">Submit</button> 
+              </div>
+              <div class="col-sm-3">
+                <button id="btn-cancel" type="reset" class="btn btn-danger pull-right">Cancel</button>
+              </div>
+            </div> 
+
            </form>
         </div>
     </div>
