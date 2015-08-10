@@ -108,9 +108,9 @@
             </div>
                
             <div class="row form-group"> 
-              <label class="control-label col-sm-4" for="id-uoorg">UO Organization: </label> 
+              <label class="control-label col-sm-4" for="id-uoorg">OU Organization: </label> 
               <div class="col-sm-8">
-               <input type="text" Disabled class="form-control" id="id-uoorg" data-bvStrict="notEmpty" placeholder="Position" style="width: 50%">
+               <input type="text" Disabled class="form-control" id="id-uoorg" data-bvStrict="notEmpty" placeholder="OU Organization" style="width: 50%">
               </div>
             </div>
                
