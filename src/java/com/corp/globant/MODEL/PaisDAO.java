@@ -35,7 +35,7 @@ public class PaisDAO {
         
         while (rs.next()) {
             Pais elPais = new Pais();
-            // Arma el objeto Alumno
+            // Arma el objeto Pais
             elPais.setId(rs.getInt("pais_id"));
             elPais.setDesc(rs.getString("pais_desc"));
             // Agrega el alumno a la coleccion

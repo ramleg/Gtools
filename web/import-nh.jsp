@@ -38,16 +38,16 @@
           <table id="grid-user" class="js-dynamitable table table-bordered table-hover">
             <thead>
               <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->
-                <th id="txt-nombre" style="text-align:center">First name<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-apellido" style="text-align:center">Last name<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-dni" style="text-align:center">DNI<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-user" style="text-align:center">user name<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-UO" style="text-align:center">OU Org<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-position" style="text-align:center">Position <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-site" style="text-align:center">Site<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-mailgroup" style="text-align:center">Mail group<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>      
-                <th id="txt-interno" style="text-align:center;width:auto">Interno<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-pais" style="text-align:center">Pais<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>      
+                <th id="txt-nombre" style="text-align:center;background-color: #C1D736">First name<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                <th id="txt-apellido" style="text-align:center;background-color: #C1D736">Last name<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                <th id="txt-dni" style="text-align:center;background-color: #C1D736">DNI<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                <th id="txt-user" style="text-align:center;background-color: #C1D736">user name<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                <th id="txt-UO" style="text-align:center;background-color: #C1D736">OU Org<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                <th id="txt-position" style="text-align:center;background-color: #C1D736">Position <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                <th id="txt-site" style="text-align:center;background-color: #C1D736">Site<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                <th id="txt-mailgroup" style="text-align:center;background-color: #C1D736">Mail group<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>      
+                <th id="txt-interno" style="text-align:center;width:auto;background-color: #C1D736">Interno<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                <th id="txt-pais" style="text-align:center;background-color: #C1D736">Pais<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>      
               </tr>
             </thead>
             <tbody>

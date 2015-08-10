@@ -32,7 +32,7 @@
     <div class="panel-body">
         <form class="form-horizontal" role="form" id="form-sites">
          <div class="form-group"> 
-          <label class="control-label col-sm-2" for="pais">Country: </label> 
+          <label class="control-label col-sm-2" for="ddl_pais">Country: </label> 
           <div class="col-sm-10" style="width:40%">
            <select class="form-control" id="ddl_pais">
                <%
@@ -83,9 +83,9 @@
             <thead>
               <tr class="success"> <!--Encabezado mas botones de Asc y Desc-->
                 <th id="ID" class="hidden" style="text-align:center;width:10%">ID<span class="js-sorter-desc glyphicon glyphion-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="site" style="text-align:center;width: auto">Site <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="site_ou" style="text-align:center;width: auto">SAP <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="site_sap" style="text-align:center;width: auto">AD <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>    
+                <th id="site" style="text-align:center;width: auto;background-color: #C1D736">Site <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                <th id="site_ou" style="text-align:center;width: auto;background-color: #C1D736">SAP <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                <th id="site_sap" style="text-align:center;width: auto;background-color: #C1D736">AD <span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>    
               </tr>
             </thead>
             <tbody>
