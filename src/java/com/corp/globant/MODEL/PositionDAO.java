@@ -20,6 +20,7 @@ public class PositionDAO {
         Position pos = new Position();
         pos.setId(rs.getString("positions_id"));
         pos.setDesc(rs.getString("positions_desc"));
+        pos.setAd(rs.getString("positions_ad"));
         
         stmtConsulta.close();
         
@@ -29,7 +30,7 @@ public class PositionDAO {
         // Construye la coleccion
         ArrayList positions = new ArrayList();
         // Arma la consulta y la ejecuta
-        String laConsulta = "SELECT * FROM app.positions;";
+        String laConsulta = "SELECT * FROM app.positions order by positions_desc ASC;";
         Statement stmtConsulta = conn.createStatement();
         ResultSet rs = stmtConsulta.executeQuery(laConsulta);
         // Obtiene los datos
@@ -38,12 +39,13 @@ public class PositionDAO {
             // Arma el objeto Pais
             pos.setId(rs.getString("positions_id"));
             pos.setDesc(rs.getString("positions_desc"));
-            // Agrega el alumno a la coleccion
+            pos.setAd(rs.getString("positions_ad"));
+            // Agrega la psosion a la coleccion
             positions.add(pos);
         }
         // Cierra el Statement y la Connection
         stmtConsulta.close();
-        // Retorna el alumno
+        // Retorna la posision
         return positions;
     }
     

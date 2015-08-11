@@ -3,6 +3,7 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="com.corp.globant.MODEL.PaisDAO"%>
 <%@page import="com.corp.globant.MODEL.SiteDAO"%>
+<%@page import="com.corp.globant.MODEL.PositionDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,6 +28,20 @@
       $("#modal-submit").modal();
     });
   });
+</script>
+<script type="text/javascript"> //Asigna Mail
+    function func_mail(){
+     var user = document.getElementById("txt-username").value;
+     var dominio = "@globant.com";
+     document.getElementById("txt-mail").value= user + dominio;
+    }
+</script>
+<script type="text/javascript"> //Asigna OU Position
+    function func_position_ad(){
+     var e = document.getElementById("opt_position").value;
+     //var position_ad = e.options[e.selectedIndex];
+     document.getElementById("txt-ou-org").value=e;//position_ad;   
+    }
 </script>
 </head>
 <body>
@@ -83,14 +98,14 @@
             <div class="row form-group">
               <label class="control-label col-sm-4" for="txt-username">Domain Name: </label>
               <div class="col-sm-4"> 
-               <input type="text" class="form-control" id="txt-username" data-bvStrict="notEmpty" placeholder="User Name" style="width: 100%; background-color:aqua" maxlength="17">
+                  <input type="text" class="form-control" id="txt-username" data-bvStrict="notEmpty" placeholder="User Name" style="width: 100%; background-color:aqua" maxlength="17" onblur="func_mail()">
                <div class="help-block error-message">Required Field</div>      
               </div>
               <div class="col-sm-2">
-               <button id="btn_check" type="button" class="btn btn-success pull-left" data-complete-text="User OK">CheckUser</button>
+                  <button id="btn_check" type="button" class="btn btn-success pull-left" data-complete-text="User OK">CheckUser</button>
               </div>
             </div>
-
+               
             <div class="row form-group">
               <label class="control-label col-sm-4" for="txt-mail">Email: </label>
               <div class="col-sm-8"> 
@@ -99,18 +114,27 @@
               </div>
             </div>
                
-            <div class="row form-group">
-              <label class="control-label col-sm-4" for="txt-position">Position: </label>
-              <div class="col-sm-8"> 
-               <input type="text" class="form-control" id="txt-position" data-bvStrict="notEmpty" placeholder="Position" style="width: 50%">
-               <div class="help-block error-message">Required Field</div>
+            <div class="form-group"> 
+              <label class="control-label col-sm-4" for="ddl_position">Position: </label> 
+              <div class="col-sm-8">
+              <select class="form-control" id="ddl_position"  style="width:50%" onblur="func_position_ad()">
+                 <%
+                   ArrayList ddlPosition = PositionDAO.getAll(conn);
+                   pageContext.setAttribute("positions", ddlPosition);
+                 %>
+                 <c:forEach items="${positions}" var="current">
+                    <option id="opt_position" value="<c:out value="${current.ad}"/>">
+                        <c:out value="${current.id}"/> - <c:out value="${current.desc}"/>
+                    </option>
+                 </c:forEach>
+              </select>
               </div>
             </div>
                
             <div class="row form-group"> 
-              <label class="control-label col-sm-4" for="id-uoorg">OU Organization: </label> 
+              <label class="control-label col-sm-4" for="txt-ou-org">OU Organization: </label> 
               <div class="col-sm-8">
-               <input type="text" Disabled class="form-control" id="id-uoorg" data-bvStrict="notEmpty" placeholder="OU Organization" style="width: 50%">
+               <input type="text" Disabled class="form-control" id="txt-ou-org" data-bvStrict="notEmpty" placeholder="OU Organization" style="width: 50%">
               </div>
             </div>
                
@@ -146,7 +170,7 @@
             <div class="row form-group">
               <label class="control-label col-sm-4" for="txt-interno">Nro Interno: </label>
               <div class="col-sm-8"> 
-               <input type="text" class="form-control" id="txt-interno" data-bvStrict="notEmpty" placeholder="Nro Interno" style="width:10%">
+               <input type="text" class="form-control" id="txt-interno" data-bvStrict="notEmpty" placeholder="Nro Interno" style="width:14%">
                <div class="help-block error-message">Required Field</div>
               </div>
             </div>
