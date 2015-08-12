@@ -6,7 +6,7 @@ package com.corp.globant.MODEL;
 public class Position {
     private String id;
     private String desc;
-    private String ad;
+    private String ou;
 
     public String getId() {
         return id;
@@ -24,12 +24,12 @@ public class Position {
         this.desc = desc;
     }
 
-    public String getAd() {
-        return ad;
+    public String getOu() {
+        return ou;
     }
 
-    public void setAd(String ad) {
-        this.ad = ad;
+    public void setOu(String ou) {
+        this.ou = ou;
     }
     
     

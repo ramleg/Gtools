@@ -20,7 +20,7 @@ public class PositionDAO {
         Position pos = new Position();
         pos.setId(rs.getString("positions_id"));
         pos.setDesc(rs.getString("positions_desc"));
-        pos.setAd(rs.getString("positions_ad"));
+        pos.setOu(rs.getString("fk_ou_positions_id"));
         
         stmtConsulta.close();
         
@@ -39,7 +39,7 @@ public class PositionDAO {
             // Arma el objeto Pais
             pos.setId(rs.getString("positions_id"));
             pos.setDesc(rs.getString("positions_desc"));
-            pos.setAd(rs.getString("positions_ad"));
+            pos.setOu(rs.getString("fk_ou_positions_id"));
             // Agrega la psosion a la coleccion
             positions.add(pos);
         }

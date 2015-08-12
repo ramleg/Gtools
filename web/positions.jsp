@@ -36,7 +36,7 @@
     <div class="panel-body">
       <form class=" row form-horizontal" role="form" id="form-positions">
          <div class="form-group"> 
-          <label class="control-label col-sm-4" for="id-uoorg">UO Organization: </label> 
+          <label class="control-label col-sm-4" for="id-uoorg">UO Positions: </label> 
           <div class="col-sm-8" style="width: 40%">
            <select class="form-control" id="id-uoorg">
             <option>Development</option>
@@ -75,8 +75,8 @@
               <table id="grid-user" class="js-dynamitable table table-bordered table-hover">
                 <thead>
                   <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->
-                    <th id="txt-uoorg" style="text-align:center;background-color: #C1D736">UO Org<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                    <th id="txt-position" style="text-align:center;background-color: #C1D736">Position<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>    
+                    <th id="txt-uoorg" style="text-align:center;background-color: #C1D736">UO Positions<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                    <th id="txt-position" style="text-align:center;background-color: #C1D736">Positions<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>    
                   </tr>
                 </thead>
                 <tbody>

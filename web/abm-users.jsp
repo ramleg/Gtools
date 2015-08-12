@@ -123,8 +123,7 @@
                    pageContext.setAttribute("positions", ddlPosition);
                  %>
                  <c:forEach items="${positions}" var="current">
-                    <option id="opt_position" value="<c:out value="${current.ad}"/>">
-                        <c:out value="${current.id}"/> - <c:out value="${current.desc}"/>
+                    <option id="opt_position" value="<c:out value="${current.id}"/>"><c:out value="${current.desc}"/> - <c:out value="${current.ou}"/>
                     </option>
                  </c:forEach>
               </select>
