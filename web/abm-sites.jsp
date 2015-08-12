@@ -1,5 +1,5 @@
 <%@page import="com.corp.globant.MODEL.SiteDAO"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.corp.globant.MODEL.ConnectionManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="com.corp.globant.MODEL.PaisDAO"%>
@@ -101,7 +101,6 @@
                     <td><c:out value="${current.ad_desc}"/></td>
                     </tr>
                 </c:forEach>
-
             </tbody>
            </table> 
         </div> 

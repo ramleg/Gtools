@@ -122,9 +122,8 @@
                    ArrayList ddlPosition = PositionDAO.getAll(conn);
                    pageContext.setAttribute("positions", ddlPosition);
                  %>
-                 <c:forEach items="${positions}" var="current">
-                    <option id="opt_position" value="<c:out value="${current.ad}"/>">
-                        <c:out value="${current.id}"/> - <c:out value="${current.desc}"/>
+                 <c:forEach items="${positions}" var="current"> 
+                    <option id="opt_position" value="<c:out value="${current.id}"/>"><c:out value="${current.desc}"/>
                     </option>
                  </c:forEach>
               </select>
