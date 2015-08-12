@@ -1,3 +1,9 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.corp.globant.MODEL.ConnectionManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="com.corp.globant.MODEL.PositionDAO"%>
+<%@page import="com.corp.globant.MODEL.OuPositionsDAO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -5,7 +11,9 @@
   <title>Proy-NewHires</title>
   <meta charset="utf-8">
   <%@include file="webs/commonHead.html" %>
-
+  <%
+      Connection conn = ConnectionManager.getConnection();
+    %>
 <script> //SUBMIT
   $(document).ready(function(){
     $("#btn-submit").click(function(){
@@ -39,16 +47,14 @@
           <label class="control-label col-sm-4" for="id-uoorg">UO Positions: </label> 
           <div class="col-sm-8" style="width: 40%">
            <select class="form-control" id="id-uoorg">
-            <option>Development</option>
-            <option>QC</option>
-            <option>Peoplecare</option>
-            <option>PMO</option>
-            <option>Staffing</option>
-            <option>Business</option>
-            <option>Facilities</option>
-            <option>Infrastructure</option>
-            <option>Reception</option>
-            <option>Others...</option>
+                 <%
+                   ArrayList ddlOuPosition = OuPositionsDAO.getAll(conn);
+                   pageContext.setAttribute("oupositions", ddlOuPosition);
+                 %>
+                 <c:forEach items="${oupositions}" var="current"> 
+                    <option id="opt_ouposition" value="<c:out value="${current.id}"/>"><c:out value="${current.desc}"/> -- [ <c:out value="${current.ou}"/> ]
+                    </option>
+                 </c:forEach>
            </select>
           </div>
          </div>  
@@ -74,52 +80,23 @@
             <div id="div-grilla" class="container table-responsive" style="width:90%">
               <table id="grid-user" class="js-dynamitable table table-bordered table-hover">
                 <thead>
-                  <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->
-                    <th id="txt-uoorg" style="text-align:center;background-color: #C1D736">UO Positions<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                    <th id="txt-position" style="text-align:center;background-color: #C1D736">Positions<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>    
+                  <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->  
+                    <th id="txt-desc-pos" style="text-align:center;background-color: #C1D736">Positions<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                    <th id="txt-ou-pos" style="text-align:center;background-color: #C1D736">OU Positions<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>    
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Development</td>
-                    <td>Web UO Developer</td>
-                  </tr>
-                  <tr>
-                    <td>Development</td>
-                    <td>.Net Developer</td>
-                   </tr>
-                  <tr>
-                    <td>Development</td>
-                    <td>PHP Developer</td>
-                  </tr>
-                  <tr>
-                    <td>Staffing</td>
-                    <td>Recruiting</td>
-                  </tr>
-                  <tr>
-                    <td>QC</td>
-                    <td>Test automation</td>
-                   </tr>
-                  <tr>
-                    <td>QC</td>
-                    <td>QC Analyst</td>
-                  </tr>
-                  <tr>
-                    <td>QC</td>
-                    <td>QC Lead</td>
-                  </tr>
-                  <tr>
-                    <td>PM</td>
-                    <td>Project Manager</td>
-                   </tr>
-                  <tr>
-                    <td>People</td>
-                    <td>Peoplecare</td>
-                  </tr>
-                  <tr>
-                    <td>Staffing</td>
-                    <td>Receptionist</td>
-                  </tr>
+                    <%
+                           ArrayList tablePositions = PositionDAO.getAll(conn);
+                           pageContext.setAttribute("positions", tablePositions);
+                    %>
+                    <c:forEach items="${positions}" var="current">
+                        <tr>
+                        <td class="hidden"><c:out value="${current.id}"/></td>
+                        <td><c:out value="${current.desc}"/></td>
+                        <td><c:out value="${current.ou}"/></td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
                </table> 
             </div> 
