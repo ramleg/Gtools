@@ -11,38 +11,6 @@
 <head>
   <title>Proy-NewHires</title>
   <%@include file="webs/commonHead.html" %>
-
-<script> //CHECK BUTTON
-  $(document).ready(function(){
-    $("#btn_check").click(function(){
-      $(this).button('Cheking').delay(1000).queue(function(){
-        $(this).button('complete');
-        $(this).dequeue();
-      });        
-    });  
-  });
-</script>
-<script> //SUBMIT
-  $(document).ready(function(){
-    $("#btn-submit").click(function(){
-      $("#modal-submit").modal();
-    });
-  });
-</script>
-<script type="text/javascript"> //Asigna Mail
-    function func_mail(){
-     var user = document.getElementById("txt-username").value;
-     var dominio = "@globant.com";
-     document.getElementById("txt-mail").value= user + dominio;
-    }
-</script>
-<script type="text/javascript"> //Asigna OU Position
-    function func_position_ad(){
-     var e = document.getElementById("opt_position").value;
-     //var position_ad = e.options[e.selectedIndex];
-     document.getElementById("txt-ou-org").value=e;//position_ad;   
-    }
-</script>
 </head>
 <body>
 <%@include file="webs/mainMenu.html" %>
@@ -98,7 +66,7 @@
             <div class="row form-group">
               <label class="control-label col-sm-4" for="txt-username">Domain Name: </label>
               <div class="col-sm-4"> 
-                  <input type="text" class="form-control" id="txt-username" data-bvStrict="notEmpty" placeholder="User Name" style="width: 100%; background-color:aqua" maxlength="17" onblur="func_mail()">
+                  <input type="text" class="form-control" id="txt-username" data-bvStrict="notEmpty" placeholder="User Name" style="width: 100%; background-color:aqua" maxlength="17" oninput="func_mail()">
                <div class="help-block error-message">Required Field</div>      
               </div>
               <div class="col-sm-2">
@@ -117,23 +85,23 @@
             <div class="form-group"> 
               <label class="control-label col-sm-4" for="ddl_position">Position: </label> 
               <div class="col-sm-8">
-              <select class="form-control" id="ddl_position"  style="width:50%" onblur="func_position_ad()">
+                  <select class="form-control" id="ddl_position"  style="width:50%" onchange="func_position_ad()">
                  <%
                    ArrayList ddlPosition = PositionDAO.getAll(conn);
                    pageContext.setAttribute("positions", ddlPosition);
                  %>
                  <c:forEach items="${positions}" var="current"> 
-                    <option id="opt_position" value="<c:out value="${current.id}"/>"><c:out value="${current.desc}"/>
+                    <option id="opt_position" value="<c:out value="${current.ou}"/>">
+                        <c:out value="${current.desc}"/>
                     </option>
                  </c:forEach>
               </select>
               </div>
             </div>
-               
             <div class="row form-group"> 
               <label class="control-label col-sm-4" for="txt-ou-org">OU Organization: </label> 
               <div class="col-sm-8">
-               <input type="text" Disabled class="form-control" id="txt-ou-org" data-bvStrict="notEmpty" placeholder="OU Organization" style="width: 50%">
+               <input type="text" id="txt-ou-org" Disabled class="form-control" data-bvStrict="notEmpty" placeholder="OU Organization" style="width: 50%">
               </div>
             </div>
                
@@ -222,11 +190,38 @@
 </div>
 
 <script type="text/javascript">
+    
  $(function(){
   $('#form-user').bValidator();
  });
+//Asigna Mail
+    function func_mail(){
+     $("#txt-mail").val($("#txt-username").val() + "@globant.com");
+    }
+    
+//Asigna OU Position
+    function func_position_ad(){
+     $("#txt-ou-org").val($("#ddl_position option:selected").val());
+    }
+    
+//CHECK BUTTON
+    $(document).ready(function(){
+      $("#btn_check").click(function(){
+        $(this).button('Cheking').delay(1000).queue(function(){
+          $(this).button('complete');
+          $(this).dequeue();
+        });        
+      });  
+    });
+  
+//SUBMIT
+    $(document).ready(function(){
+      $("#btn-submit").click(function(){
+        $("#modal-submit").modal();
+      });
+    });
+  
 </script>
-
 </body>
 
 </html>
