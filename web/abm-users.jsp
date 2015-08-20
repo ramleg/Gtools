@@ -4,6 +4,7 @@
 <%@page import="com.corp.globant.MODEL.PaisDAO"%>
 <%@page import="com.corp.globant.MODEL.SiteDAO"%>
 <%@page import="com.corp.globant.MODEL.PositionDAO"%>
+<%@page import="com.corp.globant.MODEL.Sub_OrgDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,16 +27,19 @@
            <form class="form-horizontal" role="form" id="form-user">
                
             <div class="form-group"> 
-              <label class="control-label col-sm-4" for="id-org">Sub Organization: </label> 
+              <label class="control-label col-sm-4" for="ddl_suborg">Sub Organization: </label> 
               <div class="col-sm-8">
-               <select class="form-control" id="id-org" style="width: 50%">
-                <option>Globant</option>
-                <option>Verizon</option>
-                <option>Contrators</option>
-                <option>Teletech</option>
-                <option>EA Games</option>
-                <option>etc....</option>
-               </select>
+                 <select class="form-control" id="ddl_suborg"  style="width:50%">
+                   <%
+                    ArrayList ddl_suborg = Sub_OrgDAO.getAll(conn);
+                    pageContext.setAttribute("suborg", ddl_suborg);
+                   %>
+                   <c:forEach items="${suborg}" var="current"> 
+                    <option id="opt_suborg" value="<c:out value="${current.dom}"/>">
+                     <c:out value="${current.desc}"/>
+                    </option>
+                 </c:forEach>
+              </select>   
               </div>
             </div> 
                
@@ -98,6 +102,7 @@
               </select>
               </div>
             </div>
+                 
             <div class="row form-group"> 
               <label class="control-label col-sm-4" for="txt-ou-org">OU Organization: </label> 
               <div class="col-sm-8">
@@ -159,7 +164,7 @@
                  
             <div class="row form-group">
               <div class="col-sm-5">
-                <button id="btn-submit" type="button" class="btn btn-success pull-right">Submit</button> 
+                <button id="btn-submit" type="button" class="btn btn-primary pull-right">Submit</button> 
               </div>
               <div class="col-sm-3">
                 <button id="btn-cancel" type="reset" class="btn btn-danger pull-right">Cancel</button>
@@ -196,7 +201,7 @@
  });
 //Asigna Mail
     function func_mail(){
-     $("#txt-mail").val($("#txt-username").val() + "@globant.com");
+     $("#txt-mail").val($("#txt-username").val() + $("#ddl_suborg option:selected").val());//"@globant.com");
     }
     
 //Asigna OU Position
@@ -222,6 +227,9 @@
     });
   
 </script>
+
+
+
 </body>
 
 </html>

@@ -39,7 +39,7 @@
                    ArrayList ddlPais = PaisDAO.getAll(conn);
                    pageContext.setAttribute("paises", ddlPais);
                %>
-                <c:forEach items="${paises}" var="current">
+                <c:forEach items="${paises}" var="current">        
                    <option value="<c:out value="${current.id}"/>"><c:out value="${current.desc}"/></option>
                 </c:forEach>
            </select>
