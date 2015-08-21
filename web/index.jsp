@@ -13,7 +13,7 @@
                 <img src="resources/img/Logo.JPG" alt="GlOBANT">
             </div>
             <ul class="nav navbar-nav navbar-right">
-              <li><a style="color:black;"><span class="glyphicon glyphicon-wrench" style="color:black"></span>  IST Service Desk </a></li>
+              <li><a style="color:black; font-style: inherit; font-size: 18px"><span class="glyphicon glyphicon-wrench" style="color: black; "></span>  IST Service Desk </a></li>
             </ul>
         </div>
     </nav> 
