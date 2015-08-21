@@ -18,7 +18,7 @@
 <%
   Connection conn = ConnectionManager.getConnection();
 %>
-<div class="container"> 
+<div class="container">
     
     <div class="panel panel-primary">
         <div class="panel-heading">Add User</div>
