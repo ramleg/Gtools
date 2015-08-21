@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP Page</title>
+    <title>GTools - IST Service Desk</title>
     <jsp:include page="webs/commonHead.html" />
 </head>
 <body>
@@ -22,7 +22,6 @@
           <!-- Modal content-->
           <div class="modal-content" style="background-color:#C1D736">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
             </div>
             <div class="modal-body"> 
@@ -35,7 +34,7 @@
                 <label for="pwd">Password:</label>
                 <input type="password" class="form-control" id="txt-pwd" placeholder="Password">
                </div>
-               <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+                  <a type="submit" class="btn btn-primary btn-block" href="main.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a>
               </form>     
             </div>
           </div>
