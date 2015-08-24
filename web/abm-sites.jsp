@@ -24,7 +24,7 @@
 </head>
 <body>
  
-<%@include file="webs/mainMenu.html" %> <!-- Llama al menu-->
+<%@include file="webs/mainMenu.html" %> <!-- Llama menu-->
     
 <div class="container-fluid" style="width: 90%">
   <div class="panel panel-primary">

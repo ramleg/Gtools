@@ -17,28 +17,35 @@
             </ul>
         </div>
     </nav> 
-      <div class="container" id="login" role="dialog">
-        <div class="modal-dialog modal-sm">
-          <!-- Modal content-->
-          <div class="modal-content" style="background-color:#C1D736">
-            <div class="modal-header">
-              <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
-            </div>
-            <div class="modal-body"> 
-              <form role="form" action="login" id="frm-modal">
-               <div class="form-group">
-                <label for="email">User:</label>
-                <input type="text" class="form-control" id="txt-usr" placeholder="Username">
-               </div>
-               <div class="form-group">
-                <label for="pwd">Password:</label>
-                <input type="password" class="form-control" id="txt-pwd" placeholder="Password">
-               </div>
-                  <a type="submit" class="btn btn-primary btn-block" href="main.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-              </form>     
-            </div>
-          </div>
+    <div class="container" id="login" role="dialog">
+     <div class="modal-dialog modal-sm">
+      <!-- Modal content-->
+      <div class="modal-content" style="background-color:#C1D736">
+        <div class="modal-header">
+          <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
         </div>
-       </div>
-    </body>
+        <div class="modal-body"> 
+          <form role="form" id="frm-modal">
+           <div class=" row form-group">
+            <label for="email">User:</label>
+            <input type="text" class="form-control" id="txt-usr" data-bvStrict="notEmpty" placeholder="Username">
+            <div class="help-block error-message">Required Field</div>
+           </div>
+           <div class="row form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="txt-pwd" data-bvStrict="notEmpty" placeholder="Password">
+            <div class="help-block error-message">Required Field</div>
+           </div>
+              <a type="submit" class="btn btn-primary btn-block" href="main.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+          </form>     
+        </div>
+      </div>
+     </div>
+    </div>
+    <script type="text/javascript">
+     $(function(){
+      $('#frm-modal').bValidator();
+     });
+    </script>
+</body>
 </html>
