@@ -11,15 +11,15 @@ $(function (){
 
 function login($username, $passwd){
     
-    var userData={id:'0', name: '$username',lastname: '$passwd', userId:'us',rol:'asd'};
+    var userData={userId:'ramiro.acoglanis'};
     
     $.ajax({
         
         type: 'POST',
         url: 'http://localhost:8080/Gtools/Login',
         dataType: 'json',
-        contentType: 'application/json',
-        data: userData,
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(userData) ,
         //timeout : 30000,
         success: function(data){
             console.log(data);
