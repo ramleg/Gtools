@@ -1,10 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="com.corp.globant.MODEL.ConnectionManager"%>
+<%@page import="com.corp.globant.MODEL.dao.*"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="com.corp.globant.MODEL.PaisDAO"%>
-<%@page import="com.corp.globant.MODEL.SiteDAO"%>
-<%@page import="com.corp.globant.MODEL.PositionDAO"%>
-<%@page import="com.corp.globant.MODEL.Sub_OrgDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,15 +11,13 @@
 </head>
 <body>
 <%@include file="webs/mainMenu.html" %>
-<%
-  Connection conn = ConnectionManager.getConnection();
-%>
+<%  Connection conn = ConnectionManager.getConnection(); %>
 <div class="container">
     
     <div class="panel panel-primary">
         <div class="panel-heading">Add User</div>
         <div class="panel-body">
-            
+
            <form class="form-horizontal" role="form" id="form-user">
                
             <div class="form-group"> 

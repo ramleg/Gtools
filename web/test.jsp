@@ -13,27 +13,35 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <script src="resources/js/JQuery/jquery-2.1.4.min.js"></script>
+        <%@include file="webs/commonHead.html" %>
     </head>
     <body>
         <h1>Ajax Test</h1>
-        
+        <button id="button">Ver Mensaje</button>
         <div id="salida">
             
         </div>
         
         <script>
             $(function(){
+                $("#button").click(function(){
+                    ajaxRequest();
+                }); 
+            });
+            
+            function ajaxRequest(){
                 var $salida = $('#salida');
                 $.ajax({
                   type: 'GET',
                   url: 'http://localhost:8080/Gtools/Ajax',
                   success: function(data) {
-                    console.log("bla bla: ", data.nombre); //returns friend id#1
-                    $salida.append('El Nombre es: ' + data.nombre);
+                    $salida.append('El Nombre es: ' + data.apellido);
+                  },
+                  error:function() {
+                    alert('Error!!');
                   }
                 });
-            });
+            }
         </script>
         
     </body>

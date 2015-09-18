@@ -1,8 +1,6 @@
-<%@page import="com.corp.globant.MODEL.SiteDAO"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="com.corp.globant.MODEL.ConnectionManager"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="com.corp.globant.MODEL.PaisDAO"%>
+<%@page import="com.corp.globant.MODEL.dao.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

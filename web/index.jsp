@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="com.corp.globant.GLBAPI.*" %>
+<%@page import="com.corp.globant.MODEL.dao.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,13 +29,13 @@
               <form role="form" action="login" id="frm-modal">
                <div class="form-group">
                 <label for="email">User:</label>
-                <input type="text" class="form-control" id="txt-usr" placeholder="Username">
+                <input type="text" id="username" class="form-control" id="txt-usr" placeholder="Username">
                </div>
                <div class="form-group">
                 <label for="pwd">Password:</label>
-                <input type="password" class="form-control" id="txt-pwd" placeholder="Password">
+                <input type="text" id="passwd" class="form-control" id="txt-pwd" placeholder="Password">
                </div>
-               <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+               <button type="button" id="loginBtn" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-log-in"></span> Login</button>
               </form>     
             </div>
           </div>

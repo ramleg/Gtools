@@ -14,7 +14,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading">User List</div>
         <div class="panel-body">
-            <div id="div-grilla"class="container-fluid table-responsive" style="width:95%">
+            <div id="div-grilla" class="container-fluid table-responsive" style="width:95%">
               <table id="grid-user" class="js-dynamitable table table-bordered table-hover">
                 <thead>
                   <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->
