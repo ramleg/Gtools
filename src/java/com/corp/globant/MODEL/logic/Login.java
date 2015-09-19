@@ -31,8 +31,8 @@ public class Login extends HttpServlet {
         
         try {
             if(validateUser(user)){
+                LdapDAO.validateUser(user, passwd);
                 System.out.println("usuario validado");
-                LdapDAO.getContext(user, passwd);
                 response.sendRedirect("home.jsp");
             }else{
                 System.out.println("usuario incorrecto");
