@@ -5,15 +5,15 @@
         <servlet-class>com.corp.globant.VIEW.AjaxResponse</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.corp.globant.VIEW.LoginServlet</servlet-class>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>com.corp.globant.MODEL.logic.Login</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Ajax</servlet-name>
         <url-pattern>/Ajax</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
+        <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
     <session-config>

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.BufferedReader;
 
-public class LoginServlet extends HttpServlet
+public class GsonTest extends HttpServlet
 {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

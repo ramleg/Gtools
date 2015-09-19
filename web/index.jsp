@@ -26,17 +26,17 @@
               <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
             </div>
             <div class="modal-body"> 
-              <form role="form" action="login" id="frm-modal">
-               <div class="form-group">
-                <label for="email">User:</label>
-                <input type="text" id="username" class="form-control" id="txt-usr" placeholder="Username">
-               </div>
-               <div class="form-group">
-                <label for="pwd">Password:</label>
-                <input type="text" id="passwd" class="form-control" id="txt-pwd" placeholder="Password">
-               </div>
-               <button type="button" id="loginBtn" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-log-in"></span> Login</button>
-              </form>     
+                <form role="form" method="POST" action="Login" id="frm-modal">
+                    <div class="form-group">
+                     <label for="email">User:</label>
+                     <input type="text" name="txt-username" id="txt-username" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                     <label for="pwd">Password:</label>
+                     <input type="password" name="txt-passwd" id="txt-passwd" class="form-control" placeholder="Password">
+                    </div>
+                       <button type="submit" id="btn-login" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+                </form>
             </div>
           </div>
         </div>
