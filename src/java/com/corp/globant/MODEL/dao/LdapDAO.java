@@ -75,7 +75,6 @@ public class LdapDAO {
                 data.add(result.getAttributes().get(atributo).get().toString());
                 System.out.println(result.getAttributes().get(atributo).get().toString());
             }
-            
         }
         LdapDAO.close(ctx);
         return data;

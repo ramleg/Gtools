@@ -1,4 +1,4 @@
-package com.corp.globant.model.dao;
+package com.corp.globant.MODEL.dao;
 
 import com.corp.globant.MODEL.beans.*;
 import java.sql.*;
@@ -10,18 +10,19 @@ import java.util.ArrayList;
  */
 public class UserDAOpsql {
         
-    public static User getByUserId (Connection conn, String userId)throws Exception{
+    public static User getByUserDomain (Connection conn, String userId) throws SQLException{
         
-        String laConsulta = "SELECT * FROM app.users WHERE user_domain=" + userId + ";";
+        String laConsulta = "SELECT * FROM app.users WHERE user_domain='" + userId + "';";
         Statement stmtConsulta = conn.createStatement();
         ResultSet rs = stmtConsulta.executeQuery(laConsulta);
-        
         User user = new User();
-        user.setId(rs.getString("user_id"));
-        user.setName(rs.getString("user_name"));
-        user.setLastname(rs.getString("user_lastname"));
-        user.setUserId(rs.getString("user_domain"));
-        user.setRol(rs.getString("user_status"));
+        if(rs.next()){
+            user.setId(rs.getString("user_id"));
+            user.setName(rs.getString("user_name"));
+            user.setLastname(rs.getString("user_lastname"));
+            user.setUserId(rs.getString("user_domain"));
+            user.setRol(rs.getString("user_status"));
+        }
         
         stmtConsulta.close();
         

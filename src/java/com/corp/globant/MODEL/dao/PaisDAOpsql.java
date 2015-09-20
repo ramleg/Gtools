@@ -1,6 +1,6 @@
 package com.corp.globant.MODEL.dao;
 
-import com.corp.globant.MODEL.beans.Pais;
+import com.corp.globant.MODEL.beans.*;
 import java.sql.*;
 import java.util.ArrayList;
 /**

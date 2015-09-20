@@ -1,6 +1,6 @@
 package com.corp.globant.MODEL.dao;
 
-import com.corp.globant.MODEL.beans.Position;
+import com.corp.globant.MODEL.beans.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;

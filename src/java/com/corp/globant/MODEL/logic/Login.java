@@ -1,7 +1,7 @@
 package com.corp.globant.MODEL.logic;
 
-import com.corp.globant.MODEL.dao.ConnectionManager;
-import com.corp.globant.MODEL.dao.LdapDAO;
+import com.corp.globant.MODEL.beans.*;
+import com.corp.globant.MODEL.dao.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,41 +27,34 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String user = request.getParameter("txt-username");
-        String passwd = request.getParameter("txt-passwd");
-        
         try {
-            if(validateUser(user)){
-                LdapDAO.validateUser(user, passwd);
+                Connection conn = ConnectionManager.getConnection();
+                User user = UserDAOpsql.getByUserDomain(conn, request.getParameter("txt-username"));
+                
+                LdapDAO.validateUser(user.getUserId(), request.getParameter("txt-passwd"));
                 System.out.println("usuario validado");
+                
+                HttpSession session = request.getSession();
+                session.setAttribute("UserLogged", user);
                 response.sendRedirect("home.jsp");
-            }else{
-                System.out.println("usuario incorrecto");
-                response.sendRedirect("http://localhost:8080/Gtools");
             }
-        } catch(NamingException ex) {
+        catch(SQLException ex){
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Invalid User");
+            response.sendRedirect("index.jsp");
+        }
+        catch(NamingException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Invalid Password");
-            response.sendRedirect("http://localhost:8080/Gtools");
-        } catch(Exception ex){
-            System.out.println("General Exception");
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("index.jsp");
         }
-    }
-    
-    public boolean validateUser (String user) throws Exception{
-        
-        Connection conn = ConnectionManager.getConnection();
-        Statement stmt = conn.createStatement();
-        String query = "SELECT user_domain FROM app.users WHERE user_domain='" + user + "'";
-        ResultSet rs = stmt.executeQuery(query);
-        
-        if (rs.next()){
-            stmt.close();
-            return true;
-        }else{
-            stmt.close();
-            return false;
+        catch (Exception ex){
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Database connection error");
+            response.sendRedirect("index.jsp");
+        }
+        finally{
+            
         }
     }
     
