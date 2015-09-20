@@ -1,3 +1,6 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.corp.globant.MODEL.beans.*"%>
+<%   User userLogged = (User) session.getAttribute("UserLogged");  %>
 <nav class="navbar navbar-inverse" style="background-color:#C1D736">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -43,8 +46,8 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a style="color:black"><span class="glyphicon glyphicon-user" style="color:black"></span>  Nombre del usuario </a></li>
-        <li><a href="#" data-toggle="modal" data-target="#myModal" style="color:black"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          <li><a style="color:black"><span class="glyphicon glyphicon-user" style="color:black"></span><%= userLogged.getUserId() %></a></li>
+        <li><a href="Login" style="color:black"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
     </div> 
     <!-- Modal -->

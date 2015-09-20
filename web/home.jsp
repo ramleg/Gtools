@@ -13,6 +13,6 @@
         <jsp:include page="webs/commonHead.html" />
     </head>
     <body>
-        <%@include file="webs/mainMenu.html" %>
+        <%@include file="webs/mainMenu.jsp" %>
     </body>
 </html>
