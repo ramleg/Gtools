@@ -9,13 +9,39 @@
         <servlet-class>com.corp.globant.MODEL.logic.Login</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Ajax</servlet-name>
-        <url-pattern>/Ajax</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <jsp-file>/home.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
+        <servlet>
+        <servlet-name>NewHires</servlet-name>
+        <jsp-file>/abm-users.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewHires</servlet-name>
+        <url-pattern>/NH</url-pattern>
+    </servlet-mapping>
+    <filter>
+    <filter-name>SessionCheckFilter</filter-name>
+    <filter-class>com.corp.globant.MODEL.logic.SessionCheckFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SessionCheckFilter</filter-name>
+        <url-pattern>/abm-sites</url-pattern> <!-- url from where you implement the filtering -->
+        <url-pattern>/abm-users.jsp</url-pattern>
+        <url-pattern>/import-nh.jsp</url-pattern>
+        <url-pattern>/internos.jsp</url-pattern>
+        <url-pattern>/positions.jsp</url-pattern>
+        <url-pattern>/search-users.jsp</url-pattern>
+        <url-pattern>/home.jsp</url-pattern>
+    </filter-mapping>
     <session-config>
         <session-timeout>
             30

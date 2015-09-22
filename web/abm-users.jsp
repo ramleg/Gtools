@@ -10,7 +10,7 @@
   <%@include file="webs/commonHead.html" %>
 </head>
 <body>
-<%@include file="webs/mainMenu.html" %>
+<%@include file="webs/mainMenu.jsp" %>
 <%  Connection conn = ConnectionManager.getConnection(); %>
 <div class="container">
     
@@ -25,7 +25,7 @@
               <div class="col-sm-8">
                  <select class="form-control" id="ddl_suborg"  style="width:50%">
                    <%
-                    ArrayList ddl_suborg = Sub_OrgDAO.getAll(conn);
+                    ArrayList ddl_suborg = Sub_OrgDAOpsql.getAll(conn);
                     pageContext.setAttribute("suborg", ddl_suborg);
                    %>
                    <c:forEach items="${suborg}" var="current"> 
@@ -85,7 +85,7 @@
               <div class="col-sm-8">
                   <select class="form-control" id="ddl_position"  style="width:50%" onchange="func_position_ad()">
                  <%
-                   ArrayList ddlPosition = PositionDAO.getAll(conn);
+                   ArrayList ddlPosition = PositionDAOpsql.getAll(conn);
                    pageContext.setAttribute("positions", ddlPosition);
                  %>
                  <c:forEach items="${positions}" var="current"> 
@@ -109,7 +109,7 @@
               <div class="col-sm-8">
                    <select class="form-control" id="ddl_site" style="width: 50%">
                        <%
-                           ArrayList ddlSite = SiteDAO.getAll(conn);
+                           ArrayList ddlSite = SiteDAOpsql.getAll(conn);
                            pageContext.setAttribute("sites", ddlSite);
                        %>
                         <c:forEach items="${sites}" var="current">
@@ -146,7 +146,7 @@
               <div class="col-sm-8">
               <select class="form-control" id="ddl_pais"  style="width:50%">
                  <%
-                   ArrayList ddlPais = PaisDAO.getAll(conn);
+                   ArrayList ddlPais = PaisDAOpsql.getAll(conn);
                    pageContext.setAttribute("paises", ddlPais);
                  %>
                  <c:forEach items="${paises}" var="current">

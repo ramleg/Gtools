@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<%@include file="webs/mainMenu.html" %>
+<%@include file="webs/mainMenu.jsp" %>
   
 <div class="container-fluid">
     <div class="panel panel-primary">

@@ -13,7 +13,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-          <li class="dropdown"><a href="index.jsp" style="color:black">Home</a></li>
+          <li class="dropdown"><a href="home.jsp" style="color:black">Home</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Users<span class="caret"></span></a>
           <ul class="dropdown-menu" style="background-color:#C1D736">
@@ -42,7 +42,7 @@
           </ul>
         </li>
         <li class="dropdown">
-            <a href="Test-grillas/grilla-test.jsp" style="background-color:#C1D736;color:black">Test Grillas</a>
+            <a href="" style="background-color:#C1D736;color:black">Test Grillas</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

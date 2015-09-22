@@ -67,8 +67,7 @@ public class LdapDAO {
         DirContext ctx = LdapDAO.getContext();
         //Realiza la consulta, aplicando el filtro y trayendo los atributos especificados
         NamingEnumeration resultSet = ctx.search(search, filter, ctls);
-
-            
+        
         while(resultSet.hasMore()){
             SearchResult result = (SearchResult) resultSet.next();
             for(String atributo : atr){

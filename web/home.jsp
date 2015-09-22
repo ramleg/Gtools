@@ -5,6 +5,14 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.corp.globant.MODEL.dao.*" %>
+<%
+session = request.getSession(false);
+if (session == null) {
+    RequestDispatcher requestDispatcher; 
+    requestDispatcher = request.getRequestDispatcher("index.jsp");
+    requestDispatcher.forward(request, response);
+}
+    %>
 <!DOCTYPE html>
 <html>
     <head>

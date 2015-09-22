@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,9 +27,19 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        session = request.getSession(false);
+        RequestDispatcher requestDispatcher; 
+        requestDispatcher = request.getRequestDispatcher("index.jsp");
+        
+        if (session != null) {
+            User user = (User) session.getAttribute("UserLogged");
+            System.out.println("Closing session: " + user.getUserId());
             session.invalidate();
-            response.sendRedirect("index.jsp");
-            return;
+            requestDispatcher.forward(request, response);
+        }else{
+            requestDispatcher.forward(request, response);
+        }
     }
 
     @Override
@@ -41,9 +52,9 @@ public class Login extends HttpServlet {
                 LdapDAO.validateUser(user.getUserId(), request.getParameter("txt-passwd"));
                 System.out.println("usuario validado");
                 
-                HttpSession session = request.getSession();
+                HttpSession session = request.getSession(false);
                 session.setAttribute("UserLogged", user);
-                response.sendRedirect("home.jsp");
+                response.sendRedirect("Home");
             }
         catch(SQLException ex){
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);

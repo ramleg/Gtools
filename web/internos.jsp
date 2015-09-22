@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<%@include file="webs/mainMenu.html" %>
+<%@include file="webs/mainMenu.jsp" %>
          
 <div class="container-fluid" style="width: 90%">
   <div class="panel panel-primary">

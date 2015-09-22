@@ -34,7 +34,7 @@
 </head>
 <body>
 
-<%@include file="webs/mainMenu.html" %>
+<%@include file="webs/mainMenu.jsp" %>
   
 <div class="container-fluid" style="width: 90%">
   <div class="panel panel-primary">
@@ -45,14 +45,7 @@
           <label class="control-label col-sm-4" for="id-uoorg">UO Positions: </label> 
           <div class="col-sm-8" style="width: 40%">
            <select class="form-control" id="id-uoorg">
-                 <%
-                   ArrayList ddlOuPosition = OuPositionsDAO.getAll(conn);
-                   pageContext.setAttribute("oupositions", ddlOuPosition);
-                 %>
-                 <c:forEach items="${oupositions}" var="current"> 
-                    <option id="opt_ouposition" value="<c:out value="${current.id}"/>"><c:out value="${current.desc}"/> -- [ <c:out value="${current.ou}"/> ]
-                    </option>
-                 </c:forEach>
+
            </select>
           </div>
          </div>  
@@ -85,7 +78,7 @@
                 </thead>
                 <tbody>
                     <%
-                           ArrayList tablePositions = PositionDAO.getAll(conn);
+                           ArrayList tablePositions = PositionDAOpsql.getAll(conn);
                            pageContext.setAttribute("positions", tablePositions);
                     %>
                     <c:forEach items="${positions}" var="current">
