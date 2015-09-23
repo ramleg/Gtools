@@ -7,19 +7,19 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                
+        <span class="icon-bar"></span>
       </button>
-        <img src="resources/img/Logo.JPG" alt="GlOBANT">
+        <img src="resources/img/gtools-logo2.png" alt="Gtools">
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
           <li class="dropdown"><a href="home.jsp" style="color:black">Home</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Users<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Hires<span class="caret"></span></a>
           <ul class="dropdown-menu" style="background-color:#C1D736">
-              <li><a href="abm-users.jsp">Alta Usuarios</a></li>
-            <li><a href="import-nh.jsp">Import Users</a></li>
-            <li><a href="search-users.jsp">Search users</a></li>
+              <li><a href="AddNH">Single New Hires</a></li>
+              <li><a href="UpdateNH">Update & Delete</a></li>
+            <li><a href="">Process Overview</a></li>
           </ul>
         </li>
         <li class="dropdown">

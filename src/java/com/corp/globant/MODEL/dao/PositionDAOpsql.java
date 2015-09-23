@@ -20,7 +20,7 @@ public class PositionDAOpsql {
         Position pos = new Position();
         pos.setId(rs.getString("positions_id"));
         pos.setDesc(rs.getString("positions_desc"));
-        pos.setOu(rs.getString("fk_ou_positions_id"));
+        pos.setOu(rs.getString("positions_area_ou_fk"));
         
         stmtConsulta.close();
         
@@ -33,12 +33,14 @@ public class PositionDAOpsql {
         String laConsulta = "SELECT \n" +
                             "  positions.positions_id, \n" +
                             "  positions.positions_desc, \n" +
-                            "  ou_positions.ou_ad\n" +
+                            "  area_ou.ou_id, \n" +
+                            "  area_ou.ou_desc, \n" +
+                            "  area_ou.ou_ad\n" +
                             "FROM \n" +
                             "  app.positions, \n" +
-                            "  app.ou_positions\n" +
+                            "  app.area_ou\n" +
                             "WHERE \n" +
-                            "  positions.fk_ou_positions_id = ou_positions.ou_id;";
+                            "  positions.positions_area_ou_fk = area_ou.ou_id;";
         Statement stmtConsulta = conn.createStatement();
         ResultSet rs = stmtConsulta.executeQuery(laConsulta);
         // Obtiene los datos

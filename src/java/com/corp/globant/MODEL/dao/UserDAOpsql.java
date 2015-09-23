@@ -21,7 +21,7 @@ public class UserDAOpsql {
             user.setName(rs.getString("user_name"));
             user.setLastname(rs.getString("user_lastname"));
             user.setUserId(rs.getString("user_domain"));
-            user.setRol(rs.getString("user_status"));
+            user.setRol(rs.getString("user_access"));
         }
         
         stmtConsulta.close();

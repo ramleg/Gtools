@@ -10,7 +10,7 @@
     <nav class="navbar navbar-inverse" style="background-color:#C1D736">
         <div class="container-fluid">
             <div class="navbar-header">
-                <img src="resources/img/Logo.JPG" alt="GlOBANT">
+                <img src="resources/img/globant-logo.JPG" alt="GlOBANT">
             </div>
             <ul class="nav navbar-nav navbar-right">
               <li><a style="color:black;"><span class="glyphicon glyphicon-wrench" style="color:black"></span>  IST Service Desk </a></li>

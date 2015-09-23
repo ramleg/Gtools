@@ -20,13 +20,21 @@
         <servlet-name>Home</servlet-name>
         <url-pattern>/Home</url-pattern>
     </servlet-mapping>
-        <servlet>
-        <servlet-name>NewHires</servlet-name>
-        <jsp-file>/abm-users.jsp</jsp-file>
+    <servlet>
+        <servlet-name>AddNewHire</servlet-name>
+        <jsp-file>/hires-add.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>NewHires</servlet-name>
-        <url-pattern>/NH</url-pattern>
+        <servlet-name>AddNewHire</servlet-name>
+        <url-pattern>/AddNH</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateHire</servlet-name>
+        <jsp-file>/hires-update.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateHire</servlet-name>
+        <url-pattern>/UpdateNH</url-pattern>
     </servlet-mapping>
     <filter>
     <filter-name>SessionCheckFilter</filter-name>
@@ -40,6 +48,7 @@
         <url-pattern>/internos.jsp</url-pattern>
         <url-pattern>/positions.jsp</url-pattern>
         <url-pattern>/search-users.jsp</url-pattern>
+        <url-pattern>/hire-add.jsp</url-pattern>
         <url-pattern>/home.jsp</url-pattern>
     </filter-mapping>
     <session-config>

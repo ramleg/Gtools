@@ -18,22 +18,22 @@
         <div class="panel-heading">Add User</div>
         <div class="panel-body">
 
-           <form class="form-horizontal" role="form" id="form-user">
+            <form class="form-horizontal" role="form" id="frm-useradd" name="FrmUserAdd">
                
-            <div class="form-group"> 
-              <label class="control-label col-sm-4" for="ddl_suborg">Sub Organization: </label> 
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="ddl-suborg">Sub Organization: </label> 
               <div class="col-sm-8">
-                 <select class="form-control" id="ddl_suborg"  style="width:50%">
+                 <select class="form-control" id="ddl-suborg"  style="width:50%">
                    <%
                     ArrayList ddl_suborg = Sub_OrgDAOpsql.getAll(conn);
                     pageContext.setAttribute("suborg", ddl_suborg);
                    %>
                    <c:forEach items="${suborg}" var="current"> 
-                    <option id="opt_suborg" value="<c:out value="${current.dom}"/>">
+                    <option id="ddl-opt-suborg" value="<c:out value="${current.dom}"/>">
                      <c:out value="${current.desc}"/>
                     </option>
                  </c:forEach>
-              </select>   
+              </select>
               </div>
             </div> 
                
@@ -54,7 +54,7 @@
             </div>
                
             <div class="row form-group">
-              <label class="control-label col-sm-4" for="txt-dni">DNI/Passport/etc: </label>
+              <label class="control-label col-sm-4" for="txt-dni">Identification Number: </label>
               <div class="col-sm-8"> 
                <input type="text" class="form-control" id="txt-dni" data-bvStrict="notEmpty" placeholder="DNI/Passport/etc.." style="width: 25%">
                <div class="help-block error-message">Required Field</div>
@@ -187,43 +187,6 @@
   </div> 
  
 </div>
-
-<script type="text/javascript">
-    
- $(function(){
-  $('#form-user').bValidator();
- });
-//Asigna Mail
-    function func_mail(){
-     $("#txt-mail").val($("#txt-username").val() + $("#ddl_suborg option:selected").val());//"@globant.com");
-    }
-    
-//Asigna OU Position
-    function func_position_ad(){
-     $("#txt-ou-org").val($("#ddl_position option:selected").val());
-    }
-    
-//CHECK BUTTON
-    $(document).ready(function(){
-      $("#btn_check").click(function(){
-        $(this).button('Cheking').delay(1000).queue(function(){
-          $(this).button('complete');
-          $(this).dequeue();
-        });        
-      });  
-    });
-  
-//SUBMIT
-    $(document).ready(function(){
-      $("#btn-submit").click(function(){
-        $("#modal-submit").modal();
-      });
-    });
-  
-</script>
-
-
-
 </body>
 
 </html>
