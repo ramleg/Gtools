@@ -7,7 +7,7 @@ public class User {
     private String id;
     private String name;
     private String lastname;
-    private String userId;
+    private String domainUser;
     private String rol;
 
     public String getId() {
@@ -34,12 +34,12 @@ public class User {
         this.lastname = lastname;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getDomainUser() {
+        return domainUser;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setDomainUser(String userId) {
+        this.domainUser = userId;
     }
 
     public String getRol() {

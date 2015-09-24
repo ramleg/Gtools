@@ -1,22 +1,35 @@
 package com.corp.globant.VIEW.beans;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  *
  * @author ramiro.acoglanis
  */
 public class FrmUserAdd {
-    
+    @SerializedName("subOrganization")
     private String subOrganization;
+    @SerializedName("firstName")
     private String firstName;
+    @SerializedName("lastName")
     private String lastName;
+    @SerializedName("identificationNumber")
     private String identificationNumber;
+    @SerializedName("domainName")
     private String domainName;
+    @SerializedName("email")
     private String email;
+    @SerializedName("position")
     private String position;
+    @SerializedName("areaOU")
     private String areaOU;
+    @SerializedName("location")
     private String location;
+    @SerializedName("emailGroup")
     private String emailGroup;
+    @SerializedName("phoneNumber")
     private String phoneNumber;
+    @SerializedName("country")
     private String country;
 
     public FrmUserAdd() {

@@ -8,6 +8,14 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>com.corp.globant.MODEL.logic.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserAddServlet</servlet-name>
+        <servlet-class>com.corp.globant.VIEW.UserAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserAddServlet</servlet-name>
+        <url-pattern>/UserAdd</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -37,12 +45,13 @@
         <url-pattern>/UpdateNH</url-pattern>
     </servlet-mapping>
     <filter>
-    <filter-name>SessionCheckFilter</filter-name>
-    <filter-class>com.corp.globant.MODEL.logic.SessionCheckFilter</filter-class>
+        <filter-name>SessionCheckFilter</filter-name>
+        <filter-class>com.corp.globant.MODEL.logic.SessionCheckFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>SessionCheckFilter</filter-name>
-        <url-pattern>/abm-sites</url-pattern> <!-- url from where you implement the filtering -->
+        <url-pattern>/abm-sites</url-pattern>
+        <!-- url from where you implement the filtering -->
         <url-pattern>/abm-users.jsp</url-pattern>
         <url-pattern>/import-nh.jsp</url-pattern>
         <url-pattern>/internos.jsp</url-pattern>
@@ -51,6 +60,7 @@
         <url-pattern>/hire-add.jsp</url-pattern>
         <url-pattern>/home.jsp</url-pattern>
     </filter-mapping>
+    
     <session-config>
         <session-timeout>
             30

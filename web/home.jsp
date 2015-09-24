@@ -14,5 +14,6 @@
     </head>
     <body>
         <%@include file="webs/mainMenu.jsp" %>
+        <object data="webs/loginForm.html"></object>
     </body>
 </html>

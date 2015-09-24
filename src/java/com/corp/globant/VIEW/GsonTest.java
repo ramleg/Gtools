@@ -23,7 +23,7 @@ public class GsonTest extends HttpServlet
         System.out.println(user.getId());
         System.out.println(user.getName());
         System.out.println(user.getLastname());
-        System.out.println(user.getUserId());
+        System.out.println(user.getDomainUser());
         System.out.println(user.getRol());
         
 //        resp.setContentType("application/json");

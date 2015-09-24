@@ -8,6 +8,7 @@
 <head>
   <title>Proy-NewHires</title>
   <%@include file="webs/commonHead.html" %>
+  <script src="resources/js/hires-add.js"></script>
 </head>
 <body>
 <%@include file="webs/mainMenu.jsp" %>
@@ -23,17 +24,17 @@
             <div class="form-group">
                 <label class="control-label col-sm-4" for="ddl-suborg">Sub Organization: </label> 
               <div class="col-sm-8">
-                 <select class="form-control" id="ddl-suborg"  style="width:50%">
+                <select class="form-control" id="ddl-suborg"  style="width:50%">
                    <%
-                    ArrayList ddl_suborg = Sub_OrgDAOpsql.getAll(conn);
+                    ArrayList ddl_suborg = SubOrgDAOpsql.getAll(conn);
                     pageContext.setAttribute("suborg", ddl_suborg);
                    %>
-                   <c:forEach items="${suborg}" var="current"> 
-                    <option id="ddl-opt-suborg" value="<c:out value="${current.dom}"/>">
-                     <c:out value="${current.desc}"/>
-                    </option>
-                 </c:forEach>
-              </select>
+                    <c:forEach items="${suborg}" var="current"> 
+                        <option id="ddl-opt-suborg" value="<c:out value="${current.dom}"/>">
+                         <c:out value="${current.desc}"/>
+                        </option>
+                    </c:forEach>
+                </select>
               </div>
             </div> 
                
@@ -85,7 +86,7 @@
               <div class="col-sm-8">
                   <select class="form-control" id="ddl_position"  style="width:50%" onchange="func_position_ad()">
                  <%
-                   ArrayList ddlPosition = PositionDAOpsql.getAll(conn);
+                   ArrayList<Position> ddlPosition = PositionDAOpsql.getAll(conn);
                    pageContext.setAttribute("positions", ddlPosition);
                  %>
                  <c:forEach items="${positions}" var="current"> 
@@ -109,10 +110,10 @@
               <div class="col-sm-8">
                    <select class="form-control" id="ddl_site" style="width: 50%">
                        <%
-                           ArrayList ddlSite = SiteDAOpsql.getAll(conn);
-                           pageContext.setAttribute("sites", ddlSite);
+                           ArrayList ddlSite = LocationDAOpsql.getAll(conn);
+                           pageContext.setAttribute("locations", ddlSite);
                        %>
-                        <c:forEach items="${sites}" var="current">
+                        <c:forEach items="${locations}" var="current">
                            <option value="<c:out value="${current.id}"/>"><c:out value="${current.desc}"/></option>
                         </c:forEach>
                    </select>
@@ -146,7 +147,7 @@
               <div class="col-sm-8">
               <select class="form-control" id="ddl_pais"  style="width:50%">
                  <%
-                   ArrayList ddlPais = PaisDAOpsql.getAll(conn);
+                   ArrayList ddlPais = CountryDAOpsql.getAll(conn);
                    pageContext.setAttribute("paises", ddlPais);
                  %>
                  <c:forEach items="${paises}" var="current">
@@ -169,10 +170,9 @@
         </div>
     </div>
     
-  <!-- Modal-Submit -->
+  <!-- Modal-Submit 
   <div class="modal fade" id="modal-submit" role="dialog">
     <div class="modal-dialog modal-sm">
-      <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-body">
             <div class="alert alert-success">
@@ -185,7 +185,7 @@
       </div>
     </div>    
   </div> 
- 
+ -->
 </div>
 </body>
 

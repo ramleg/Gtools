@@ -10,18 +10,18 @@ import java.util.ArrayList;
  */
 public class UserDAOpsql {
         
-    public static User getByUserDomain (Connection conn, String userId) throws SQLException{
+    public static User getByUserDomain (Connection conn, String domainUser) throws SQLException{
         
-        String laConsulta = "SELECT * FROM app.users WHERE user_domain='" + userId + "';";
+        String laConsulta = "SELECT * FROM app.users WHERE users_domain_user='" + domainUser + "';";
         Statement stmtConsulta = conn.createStatement();
         ResultSet rs = stmtConsulta.executeQuery(laConsulta);
         User user = new User();
         if(rs.next()){
-            user.setId(rs.getString("user_id"));
-            user.setName(rs.getString("user_name"));
-            user.setLastname(rs.getString("user_lastname"));
-            user.setUserId(rs.getString("user_domain"));
-            user.setRol(rs.getString("user_access"));
+            user.setId(rs.getString("users_id"));
+            user.setName(rs.getString("users_name"));
+            user.setLastname(rs.getString("users_lastname"));
+            user.setDomainUser(rs.getString("users_domain_user"));
+            user.setRol(rs.getString("users_rol"));
         }
         
         stmtConsulta.close();
@@ -39,13 +39,11 @@ public class UserDAOpsql {
         
         while (rs.next()) {
             User user = new User();
-            // Arma el objeto Pais
-            user.setId(rs.getString("user_id"));
-            user.setName(rs.getString("user_name"));
-            user.setLastname(rs.getString("user_lastname"));
-            user.setUserId(rs.getString("user_domain"));
-            user.setRol(rs.getString("user_status"));
-            // Agrega el alumno a la coleccion
+            user.setId(rs.getString("users_id"));
+            user.setName(rs.getString("users_name"));
+            user.setLastname(rs.getString("users_lastname"));
+            user.setDomainUser(rs.getString("users_domain_user"));
+            user.setRol(rs.getString("users_rol"));
             users.add(user);
         }
         // Cierra el Statement y la Connection

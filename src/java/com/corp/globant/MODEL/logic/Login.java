@@ -34,7 +34,7 @@ public class Login extends HttpServlet {
         
         if (session != null) {
             User user = (User) session.getAttribute("UserLogged");
-            System.out.println("Closing session: " + user.getUserId());
+            System.out.println("Closing session: " + user.getDomainUser());
             session.invalidate();
             requestDispatcher.forward(request, response);
         }else{
@@ -49,7 +49,7 @@ public class Login extends HttpServlet {
                 Connection conn = ConnectionManager.getConnection();
                 User user = UserDAOpsql.getByUserDomain(conn, request.getParameter("txt-username"));
                 
-                LdapDAO.validateUser(user.getUserId(), request.getParameter("txt-passwd"));
+                LdapDAO.validateUser(user.getDomainUser(), request.getParameter("txt-passwd"));
                 System.out.println("usuario validado");
                 
                 HttpSession session = request.getSession(false);

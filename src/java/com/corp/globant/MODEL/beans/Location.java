@@ -1,17 +1,17 @@
 package com.corp.globant.MODEL.beans;
 
-import com.corp.globant.MODEL.beans.Pais;
+import com.corp.globant.MODEL.beans.Country;
 
 /**
  *
  * @author ramiro.acoglanis
  */
-public class Site {
+public class Location {
     private String id;
     private String desc;
     private String sap_desc;
     private String ad_desc;
-    private Pais pais;
+    private Country pais;
 
     public String getId() {
         return id;
@@ -45,11 +45,11 @@ public class Site {
         this.ad_desc = ad_desc;
     }
 
-    public Pais getPais() {
+    public Country getPais() {
         return pais;
     }
 
-    public void setPais(Pais pais) {
+    public void setPais(Country pais) {
         this.pais = pais;
     }
 }

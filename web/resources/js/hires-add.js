@@ -1,40 +1,35 @@
-$(function (){
-      
+$(function (){//'DocumentReady' Block
+    //Envia los datos del formulario
    $("#btn-submit").click(function(){
-                    //llamar a la funcion de envio
-                    frmSubmit();
-                });
+        frmSubmit();
+    });
                 
 });//Close the 'DocumentReady' Block
 
 
 function frmSubmit(){
-    
-    
+
     var $JsonData = {
-        subOrganization:$("#"),
-        firstName:'',
-        lastName:'',
-        identificationNumber:'',
-        domainName:'',
-        email:'',
-        position:'',
-        areaOU:'',
-        location:'',
-        emailGroup:'',
-        phoneNumber:'',
-        country:''
+        subOrganization:'fafafa',
+        firstName:'fafafa',
+        lastName:'fafafa',
+        identificationNumber:'fafafa',
+        domainName:'ramiro.acoglanis',
+        email:'fafafa',
+        position:'fafafa',
+        areaOU:'fafafa',
+        location:'fafafa',
+        emailGroup:'fafafa',
+        phoneNumber:'fafafa',
+        country:'fafafa'
     };
     
-    
     $.ajax({
-        
         type: 'POST',
-        url: 'http://localhost:8080/Gtools/Login',
+        url: 'UserAdd',
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify($JsonData) ,
-        //timeout : 30000,
         success: function(data){
             console.log(data);
         }
@@ -44,7 +39,7 @@ function frmSubmit(){
 
     
  $(function(){
-  $('#form-user').bValidator();
+  $('#frm-useradd').bValidator();
  });
 //Asigna Mail
     function func_mail(){

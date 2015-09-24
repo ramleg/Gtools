@@ -20,7 +20,7 @@ public class PositionDAOpsql {
         Position pos = new Position();
         pos.setId(rs.getString("positions_id"));
         pos.setDesc(rs.getString("positions_desc"));
-        pos.setOu(rs.getString("positions_area_ou_fk"));
+        pos.setOu(rs.getString("positions_ou"));
         
         stmtConsulta.close();
         
@@ -30,27 +30,16 @@ public class PositionDAOpsql {
         // Construye la coleccion
         ArrayList positions = new ArrayList();
         // Arma la consulta y la ejecuta
-        String laConsulta = "SELECT \n" +
-                            "  positions.positions_id, \n" +
-                            "  positions.positions_desc, \n" +
-                            "  area_ou.ou_id, \n" +
-                            "  area_ou.ou_desc, \n" +
-                            "  area_ou.ou_ad\n" +
-                            "FROM \n" +
-                            "  app.positions, \n" +
-                            "  app.area_ou\n" +
-                            "WHERE \n" +
-                            "  positions.positions_area_ou_fk = area_ou.ou_id;";
+        String laConsulta = "SELECT * FROM app.positions";
         Statement stmtConsulta = conn.createStatement();
         ResultSet rs = stmtConsulta.executeQuery(laConsulta);
         // Obtiene los datos
         while (rs.next()) {
             Position pos = new Position();
-            // Arma el objeto Pais
             pos.setId(rs.getString("positions_id"));
             pos.setDesc(rs.getString("positions_desc"));
-            pos.setOu(rs.getString("ou_ad"));
-            // Agrega la psosion a la coleccion
+            pos.setOu(rs.getString("positions_ou"));
+            // Agrega la position a la coleccion
             positions.add(pos);
         }
         // Cierra el Statement y la Connection
