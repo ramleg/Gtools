@@ -4,27 +4,34 @@ package com.corp.globant.MODEL.beans;
  * @author r.sanchez
  */
 public class SubOrg {
-   private Integer id;
+   private String id;
    private String desc;
-   private String dom;
+   private String domainEmail;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-    public void setDom(String dom) {
-        this.dom = dom;
-    }
-    public Integer getId() {
+    public String getId() {
         return id;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getDesc() {
         return desc;
     }
-    public String getDom() {
-        return dom;
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
+
+    public String getDomainEmail() {
+        return domainEmail;
+    }
+
+    public void setDomainEmail(String domainEmail) {
+        this.domainEmail = domainEmail;
+    }
+
+
 
 }

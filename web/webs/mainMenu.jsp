@@ -46,8 +46,8 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <li><a style="color:black"><span class="glyphicon glyphicon-user" style="color:black"></span><%= userLogged.getDomainUser()%></a></li>
-        <li><a href="Login" style="color:black"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          <li><a style="color:black"><span class="glyphicon glyphicon-user" style="color:black"></span> <%= userLogged.getDomainUser()%></a></li>
+        <li><a href="Logout" style="color:black"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
     </div> 
     <!-- Modal -->

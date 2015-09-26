@@ -18,9 +18,9 @@ public class SubOrgDAOpsql {
         ResultSet rs = stmtConsulta.executeQuery(laConsulta);
         
         SubOrg sub_org = new SubOrg();
-        sub_org.setId(rs.getInt("suborg_id"));
+        sub_org.setId(rs.getString("suborg_id"));
         sub_org.setDesc(rs.getString("suborg_desc"));
-        sub_org.setDom(rs.getString("suborg_email"));
+        sub_org.setDomainEmail(rs.getString("suborg_email"));
         
         stmtConsulta.close();
         
@@ -38,9 +38,9 @@ public class SubOrgDAOpsql {
         while (rs.next()) {
             SubOrg sub_org = new SubOrg();
             // Arma el objeto Organization
-            sub_org.setId(rs.getInt("suborg_id"));
+            sub_org.setId(rs.getString("suborg_id"));
             sub_org.setDesc(rs.getString("suborg_desc"));
-            sub_org.setDom(rs.getString("suborg_email"));
+            sub_org.setDomainEmail(rs.getString("suborg_email"));
             // Agrega la coleccion
             suborg.add(sub_org);
         }

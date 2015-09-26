@@ -2,81 +2,80 @@ package com.corp.globant.MODEL.logic;
 
 import com.corp.globant.MODEL.beans.*;
 import com.corp.globant.MODEL.dao.*;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.*;
+import java.sql.*;
+import java.util.logging.*;
 import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.*;
+import javax.servlet.annotation.*;
+import javax.servlet.http.*;
 
 /**
  *
  * @author Ram
  */
-public class Login extends HttpServlet {
+@WebServlet (name="LoginServlet", urlPatterns={"/Login", "/Logout"})
+public class SessionManager extends HttpServlet {
+    
     private HttpSession session;
+    private String contextPath;
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        // LOG OUT **************************************************************
         session = request.getSession(false);
         RequestDispatcher requestDispatcher; 
-        requestDispatcher = request.getRequestDispatcher("index.jsp");
-        
+
         if (session != null) {
             User user = (User) session.getAttribute("UserLogged");
-            System.out.println("Closing session: " + user.getDomainUser());
+            System.out.println("Closing session for: " + user.getDomainUser());
             session.invalidate();
-            requestDispatcher.forward(request, response);
+            response.sendRedirect("LoginPage");
         }else{
-            requestDispatcher.forward(request, response);
+            response.sendRedirect("LoginPage");
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //LOG IN ****************************************************************
+        contextPath = getServletContext().getContextPath();
+
         try {
                 Connection conn = ConnectionManager.getConnection();
+                // Valida el usuario contra la Base de Datos interna
                 User user = UserDAOpsql.getByUserDomain(conn, request.getParameter("txt-username"));
-                
+                // Valida usuario y contraseña contra el Dominio AD
                 LdapDAO.validateUser(user.getDomainUser(), request.getParameter("txt-passwd"));
-                System.out.println("usuario validado");
-                
+
                 HttpSession session = request.getSession(false);
                 session.setAttribute("UserLogged", user);
+                System.out.println("Login Session for: " + user.getDomainUser());
                 response.sendRedirect("Home");
+                //request.getRequestDispatcher("Home").forward(request, response);
             }
         catch(SQLException ex){
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Invalid User");
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("LoginPage");
         }
         catch(NamingException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Invalid Password");
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("LoginPage");
         }
         catch (Exception ex){
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Database connection error");
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("LoginPage");
         }
         finally{
             
         }
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";

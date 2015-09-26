@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>Ajax</servlet-name>
-        <servlet-class>com.corp.globant.VIEW.AjaxResponse</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>com.corp.globant.MODEL.logic.Login</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UserAddServlet</servlet-name>
-        <servlet-class>com.corp.globant.VIEW.UserAddServlet</servlet-class>
+        <servlet-name>LoginPage</servlet-name>
+        <jsp-file>/login-page.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>UserAddServlet</servlet-name>
-        <url-pattern>/UserAdd</url-pattern>
+        <servlet-name>LoginPage</servlet-name>
+        <url-pattern>/LoginPage</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/Login</url-pattern>
-    </servlet-mapping>
+    
     <servlet>
         <servlet-name>Home</servlet-name>
         <jsp-file>/home.jsp</jsp-file>
@@ -28,6 +17,7 @@
         <servlet-name>Home</servlet-name>
         <url-pattern>/Home</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>AddNewHire</servlet-name>
         <jsp-file>/hires-add.jsp</jsp-file>
@@ -36,6 +26,7 @@
         <servlet-name>AddNewHire</servlet-name>
         <url-pattern>/AddNH</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>UpdateHire</servlet-name>
         <jsp-file>/hires-update.jsp</jsp-file>
@@ -44,6 +35,10 @@
         <servlet-name>UpdateHire</servlet-name>
         <url-pattern>/UpdateNH</url-pattern>
     </servlet-mapping>
+    
+    
+    
+    <!-- FILTER =================================================  -->
     <filter>
         <filter-name>SessionCheckFilter</filter-name>
         <filter-class>com.corp.globant.MODEL.logic.SessionCheckFilter</filter-class>
@@ -51,19 +46,22 @@
     <filter-mapping>
         <filter-name>SessionCheckFilter</filter-name>
         <url-pattern>/abm-sites</url-pattern>
-        <!-- url from where you implement the filtering -->
         <url-pattern>/abm-users.jsp</url-pattern>
         <url-pattern>/import-nh.jsp</url-pattern>
         <url-pattern>/internos.jsp</url-pattern>
-        <url-pattern>/positions.jsp</url-pattern>
-        <url-pattern>/search-users.jsp</url-pattern>
-        <url-pattern>/hire-add.jsp</url-pattern>
-        <url-pattern>/home.jsp</url-pattern>
+        <url-pattern>/UserAdd</url-pattern>
+        <url-pattern>/UpdateNH</url-pattern>
+        <url-pattern>/AddNH</url-pattern>
+        <url-pattern>/Home</url-pattern>
     </filter-mapping>
+    
+    
     
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
+    
 </web-app>

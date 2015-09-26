@@ -29,12 +29,12 @@ public class SessionCheckFilter implements Filter {
     HttpServletResponse res = (HttpServletResponse) response;  
 
     if (req.getSession().getAttribute("UserLogged") == null) { //checks if there's a LOGIN_USER set in session...
-        res.sendRedirect(contextPath + "index.jsp"); //or page where you want to redirect
+        res.sendRedirect("LoginPage"); //or page where you want to redirect
     } else {
       User user = (User) req.getSession().getAttribute("UserLogged");
       String userRol = user.getRol();
       if (!userRol.equals("ADMIN")){ //check if user type is not admin
-        res.sendRedirect(contextPath + "index.jsp"); //or page where you want to  
+        res.sendRedirect("LoginPage"); //or page where you want to  
       }
       fc.doFilter(request, response);
     }

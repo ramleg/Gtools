@@ -1,5 +1,6 @@
 $(function (){//'DocumentReady' Block
-    //Envia los datos del formulario
+
+    frmPopulate();
    $("#btn-submit").click(function(){
         frmSubmit();
     });
@@ -7,31 +8,70 @@ $(function (){//'DocumentReady' Block
 });//Close the 'DocumentReady' Block
 
 
+function frmPopulate(){
+
+    $.ajax({
+        type: 'GET',
+        url: 'HireAdd',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        success: function(data){
+            setDDL(data[0],$('#ddl-suborg'),'desc');
+            setDDL(data[1],$('#ddl_position'),'desc');
+            setDDL(data[2],$('#ddl-location'),'desc');
+            setDDL(data[3],$('#ddl-country'),'desc');
+        },
+        error: function(){
+            alert('error');
+        }
+    });
+}
+
+function setDDL(bigJson, control, prop){
+
+    var htmlData = '';
+    
+    for(var key in bigJson){
+        var dataBuffer = '';
+        for(var props in bigJson[key]){
+            if(prop !== props){
+                dataBuffer = dataBuffer + 'data-gtools-' + props + '="' + bigJson[key][props] + '" ';
+            }else{
+                var value = bigJson[key][props];
+            }
+        }
+        htmlData = htmlData + '<option ' + dataBuffer + '>' + value + '</option>';
+    }
+    control.append(htmlData);
+}
+
+
+
 function frmSubmit(){
 
     var $JsonData = {
-        subOrganization:'fafafa',
-        firstName:'fafafa',
-        lastName:'fafafa',
-        identificationNumber:'fafafa',
-        domainName:'ramiro.acoglanis',
-        email:'fafafa',
-        position:'fafafa',
-        areaOU:'fafafa',
-        location:'fafafa',
-        emailGroup:'fafafa',
-        phoneNumber:'fafafa',
-        country:'fafafa'
+        subOrganization:'Globant',
+        firstName:'Peter',
+        lastName:'Capusotto',
+        identificationNumber:'123456789',
+        domainName:'peter.capusotto',
+        email:'peter.capusotto@globant.com',
+        position:'Java Dev',
+        areaOU:'OU=Developer, DC=Globant, DC=Com',
+        location:'AR/Ros/Museion',
+        emailGroup:'rosario@globant.com',
+        phoneNumber:'14600',
+        country:'Argentina'
     };
     
     $.ajax({
         type: 'POST',
-        url: 'UserAdd',
+        url: 'HireAdd',
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify($JsonData) ,
         success: function(data){
-            console.log(data);
+           alert(data);
         }
     });
     
@@ -67,4 +107,3 @@ function frmSubmit(){
         $("#modal-submit").modal();
       });
     });
-  
