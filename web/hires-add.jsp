@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Proy-NewHires</title>
+  <title>New Hires Add</title>
   <%@include file="webs/commonHead.html" %>
   <script src="resources/js/hires-add.js"></script>
 </head>

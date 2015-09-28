@@ -35,7 +35,7 @@ function setDDL(bigJson, control, prop){
         var dataBuffer = '';
         for(var props in bigJson[key]){
             if(prop !== props){
-                dataBuffer = dataBuffer + 'data-gtools-' + props + '="' + bigJson[key][props] + '" ';
+                dataBuffer = dataBuffer + 'data-gtools-' + props + '=' + JSON.stringify(bigJson[key][props]);
             }else{
                 var value = bigJson[key][props];
             }

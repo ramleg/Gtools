@@ -11,7 +11,7 @@ public class Location {
     private String desc;
     private String sap_desc;
     private String ad_desc;
-    private Country pais;
+    private Country country;
 
     public String getId() {
         return id;
@@ -45,11 +45,11 @@ public class Location {
         this.ad_desc = ad_desc;
     }
 
-    public Country getPais() {
-        return pais;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setPais(Country pais) {
-        this.pais = pais;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }
