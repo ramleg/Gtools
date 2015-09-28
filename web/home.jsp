@@ -1,8 +1,3 @@
-<%-- 
-    Document   : home
-    Created on : Sep 19, 2015, 12:12:06 PM
-    Author     : Ramiro Acoglanis
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.corp.globant.MODEL.dao.*" %>
 <!DOCTYPE html>
@@ -14,6 +9,6 @@
     </head>
     <body>
         <%@include file="webs/mainMenu.jsp" %>
-        <object data="webs/loginForm.html"></object>
+        <!--<object data="webs/loginForm.html"></object>-->
     </body>
 </html>

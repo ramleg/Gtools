@@ -17,9 +17,9 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#C1D736;color:black">Hires<span class="caret"></span></a>
           <ul class="dropdown-menu" style="background-color:#C1D736">
-              <li><a href="AddNH">Single New Hires</a></li>
-              <li><a href="UpdateNH">Update & Delete</a></li>
-            <li><a href="">Process Overview</a></li>
+              <li><a href="hires-add.jsp">Single New Hires</a></li>
+              <li><a href="hires-update.jsp">Update & Delete</a></li>
+              <li><a href="import-nh.jsp">Process Overview</a></li>
           </ul>
         </li>
         <li class="dropdown">
