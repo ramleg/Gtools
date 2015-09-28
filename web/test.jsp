@@ -1,8 +1,3 @@
-<%-- 
-    Document   : test
-    Created on : Aug 21, 2015, 1:13:15 PM
-    Author     : ramiro.acoglanis
---%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.sql.Connection"%>
 <%@page import="com.corp.globant.MODEL.dao.*"%>
