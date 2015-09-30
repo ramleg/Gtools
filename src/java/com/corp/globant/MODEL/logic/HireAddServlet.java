@@ -50,7 +50,9 @@ public class HireAddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FrmUserAdd frmUserAdd = new Gson().fromJson(request.getReader(), FrmUserAdd.class);
-        System.out.println("estoy aca");
+        
+        
+        
         response.setContentType("application/json; charset=utf8");
         System.out.println(new Gson().toJson(frmUserAdd));
         response.getWriter().print(new Gson().toJson(frmUserAdd));

@@ -20,6 +20,9 @@ function frmPopulate(){
             setDDL(data[1],$('#ddl_position'),'desc');
             setDDL(data[2],$('#ddl-location'),'desc');
             setDDL(data[3],$('#ddl-country'),'desc');
+
+            var dd = $('#xx').getAttribute('data-gtools-ddl-suborg');
+            alert(dd);
         },
         error: function(){
             alert('error');
@@ -32,17 +35,20 @@ function setDDL(bigJson, control, prop){
     var htmlData = '';
     
     for(var key in bigJson){
-        var dataBuffer = '';
+        var dataBuffer = {};
         for(var props in bigJson[key]){
             if(prop !== props){
-                dataBuffer = dataBuffer + 'data-gtools-' + props + '=' + JSON.stringify(bigJson[key][props]);
+                dataBuffer[props]=bigJson[key][props];
             }else{
+                //dataBuffer[props]=bigJson[key][props];
                 var value = bigJson[key][props];
             }
         }
-        htmlData = htmlData + '<option ' + dataBuffer + '>' + value + '</option>';
+        htmlData = htmlData + '<option data-gtools-' + control.attr('id') + '=' + JSON.stringify(dataBuffer) + ' >' + value + '</option>';
     }
     control.append(htmlData);
+    
+    
 }
 
 
