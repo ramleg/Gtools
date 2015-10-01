@@ -8,6 +8,28 @@ $(function (){//'DocumentReady' Block
 });//Close the 'DocumentReady' Block
 
 
+function setDDlist($dataType, $ddl){
+    
+    var data = {dataType:$dataType};
+    
+    $.ajax({
+        type: 'GET',
+        url: 'GetList',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(data),
+        success: function(data){
+            alert(data);
+        },
+        error: function(){
+            alert('error');
+        }
+    });
+    
+    
+}
+
+
 function frmPopulate(){
 
     $.ajax({
@@ -20,9 +42,6 @@ function frmPopulate(){
             setDDL(data[1],$('#ddl_position'),'desc');
             setDDL(data[2],$('#ddl-location'),'desc');
             setDDL(data[3],$('#ddl-country'),'desc');
-
-            var dd = $('#xx').getAttribute('data-gtools-ddl-suborg');
-            alert(dd);
         },
         error: function(){
             alert('error');

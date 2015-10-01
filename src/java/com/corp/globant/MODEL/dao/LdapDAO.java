@@ -20,7 +20,7 @@ public class LdapDAO {
         env.put(Context.PROVIDER_URL, "ldap://susexx.globant.com:389");
         env.put(Context.SECURITY_AUTHENTICATION,"simple");
         env.put(Context.SECURITY_PRINCIPAL, "CN=Ramiro Acoglanis,OU=Rosario,OU=Users,OU=Service_Desk,OU=OU_Infrastructure,OU=People,DC=globant,DC=com");
-        env.put(Context.SECURITY_CREDENTIALS,"Batamanta1");
+        env.put(Context.SECURITY_CREDENTIALS,"Batamanta2");
         //Conseguimos contexto de conexion
         DirContext ctx = new InitialDirContext(env);
         return ctx;
