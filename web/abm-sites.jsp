@@ -34,7 +34,7 @@
           <div class="col-sm-10" style="width:40%">
            <select class="form-control" id="ddl_pais">
                <%
-                   ArrayList ddlPais = PaisDAO.getAll(conn);
+                   ArrayList ddlPais = CountryDAOpsql.getAll(conn);
                    pageContext.setAttribute("paises", ddlPais);
                %>
                 <c:forEach items="${paises}" var="current">        
@@ -88,7 +88,7 @@
             </thead>
             <tbody>
                 <%
-                       ArrayList tableSites = SiteDAO.getAll(conn);
+                       ArrayList tableSites = LocationDAOpsql.getAll(conn);
                        pageContext.setAttribute("sites", tableSites);
                 %>
                 <c:forEach items="${sites}" var="current">
