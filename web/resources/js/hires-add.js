@@ -1,6 +1,8 @@
 $(function (){//'DocumentReady' Block
 
-    frmPopulate();
+    //frmPopulate();
+    setList('suborg',$('#ddl-suborg'));
+    
    $("#btn-submit").click(function(){
         frmSubmit();
     });
@@ -8,9 +10,9 @@ $(function (){//'DocumentReady' Block
 });//Close the 'DocumentReady' Block
 
 
-function setDDlist($dataType, $ddl){
+function setList($getData, $ddl){
     
-    var data = {dataType:$dataType};
+    var data = {getData:$getData};
     
     $.ajax({
         type: 'GET',
