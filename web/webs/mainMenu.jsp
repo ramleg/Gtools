@@ -19,7 +19,7 @@
           <ul class="dropdown-menu" style="background-color:#C1D736">
               <li><a href="AddNH">Single New Hires</a></li>
               <li><a href="UpdateNH">Update & Delete</a></li>
-            <li><a href="">Process Overview</a></li>
+              <li><a href="import-nh.jsp">Process Overview</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -40,9 +40,6 @@
           <ul class="dropdown-menu" style="background-color:#C1D736">
               <li><a href="internos.jsp">Import Internos</a></li>
           </ul>
-        </li>
-        <li class="dropdown">
-            <a href="" style="background-color:#C1D736;color:black">Test Grillas</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

@@ -14,6 +14,17 @@
     </head>
     <body>
         <%@include file="webs/mainMenu.jsp" %>
-        <object data="webs/loginForm.html"></object>
+        <!--<object data="webs/loginForm.html"></object>-->
+        
+    <div class="container">
+     <div class="panel panel-danger">
+      <div class="panel-heading">Active Directory Alerts</div>
+      <div class="panel-body">Alerts list</div>
+     </div>
+     <div class="panel panel-danger">
+      <div class="panel-heading">Database Alerts</div>
+      <div class="panel-body">Alerts list</div>
+     </div>
+    </div>
     </body>
 </html>
