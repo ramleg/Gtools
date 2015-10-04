@@ -1,8 +1,3 @@
-/*
- * ConnectionManager.java
- *
- *
- */
 package com.corp.globant.MODEL.dao;
 
 import java.sql.Connection;
@@ -10,32 +5,27 @@ import java.sql.DriverManager;
 
 /**
  *
- * @author Sebastian S. Sanga
+ * @author Ramiro Acoglanis
  */
 public abstract class ConnectionManager {
     /**
      * Creates a new instance of ConnectionManager
+     * @return Connection
+     * @throws java.lang.Exception
      */
-    public ConnectionManager() {
-    }
-
     public static Connection getConnection() throws Exception {
 
-        // Establece el nombre del driver a utilizar
+        // set the driver
         String dbDriver = "org.postgresql.Driver";
-        // Establece la conexion a utilizar contra la base de datos
+        // set the connection string
         String dbConnString = "jdbc:postgresql://10.80.10.181:5432/db_gtools";
-        
-        // Establece el usuario de la base de datos
+        // set the db user
         String dbUser = "postgres";
-        
-        // Establece la contraseña de la base de datos
+        // ser the password
         String dbPassword = "postgres";
-        
-        // Establece el driver de conexion
+        // loads the driver
         Class.forName(dbDriver).newInstance();
-
-        // Retorna la conexion
+        // establishes and return the connection 
         return DriverManager.getConnection(dbConnString, dbUser, dbPassword);
     }
 

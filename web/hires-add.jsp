@@ -69,7 +69,7 @@
             <div class="form-group"> 
               <label class="control-label col-sm-4" for="ddl_position">Position: </label> 
               <div class="col-sm-8">
-                  <select class="form-control" id="ddl_position"  style="width:50%" onchange="func_position_ad()"></select>
+                  <select class="form-control" id="ddl-position"  style="width:50%" onchange="func_position_ad()"></select>
               </div>
             </div>
                  
@@ -88,16 +88,9 @@
             </div>
                
             <div class="row form-group"> 
-              <label class="control-label col-sm-4" for="id-sitemail">site Mail: </label> 
+              <label class="control-label col-sm-4" for="id-sitemail">Email Group: </label> 
               <div class="col-sm-8">
-               <select class="form-control" id="id-mail" style="width: 50%">
-                <option>Cordoba mail</option>
-                <option>Laminar Mail</option>
-                <option>Bogota mail</option>
-                <option>Rosario Mail</option>
-                <option>Pune Mail</option>
-                <option>etc....</option>
-               </select>
+               <select class="form-control" id="ddl-emailgroup" style="width: 50%"></select>
               </div>
             </div>
               

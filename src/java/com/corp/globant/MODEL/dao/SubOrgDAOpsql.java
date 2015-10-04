@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 /**
  *
- * @author r.sanchez
+ * @author Ramiro Acoglanis
  */
 public class SubOrgDAOpsql {
         
@@ -23,7 +23,7 @@ public class SubOrgDAOpsql {
         sub_org.setDomainEmail(rs.getString("suborg_email"));
         
         stmtConsulta.close();
-        
+        conn.close();
         return sub_org;
     }
     public static ArrayList getAll(Connection conn) throws Exception {
@@ -46,6 +46,7 @@ public class SubOrgDAOpsql {
         }
         // Cierra el Statement y la Connection
         stmtConsulta.close();
+        conn.close();
         // Retorna el alumno
         return suborg;
     }

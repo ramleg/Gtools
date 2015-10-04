@@ -1,75 +1,36 @@
 $(function (){//'DocumentReady' Block
-
-    //frmPopulate();
-    setList('suborg',$('#ddl-suborg'));
+    //$('.selectpicker').selectpicker();
     
-   $("#btn-submit").click(function(){
-        frmSubmit();
-    });
+    getList('GetSuborgList',$('#ddl-suborg'));
+    getList('GetPositionList',$('#ddl-position'));
+    getList('GetLocationList',$('#ddl-location'));
+    getList('GetEmailGroupList',$('#ddl-emailgroup'));
+    getList('GetCountryList',$('#ddl-country'));
+    
+   $("#btn-submit").click(function(){frmSubmit();});
                 
 });//Close the 'DocumentReady' Block
 
-
-function setList($getData, $ddl){
-    
-    var data = {getData:$getData};
+function getList($url, $ddl){
     
     $.ajax({
         type: 'GET',
-        url: 'GetList',
-        dataType: 'json',
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(data),
-        success: function(data){
-            alert(data);
-        },
-        error: function(){
-            alert('error');
-        }
-    });
-    
-    
-}
-
-
-function frmPopulate(){
-
-    $.ajax({
-        type: 'GET',
-        url: 'HireAdd',
+        url: $url,
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function(data){
-            setDDL(data[0],$('#ddl-suborg'),'desc');
-            setDDL(data[1],$('#ddl_position'),'desc');
-            setDDL(data[2],$('#ddl-location'),'desc');
-            setDDL(data[3],$('#ddl-country'),'desc');
+            setDDL(data, $ddl);
         },
         error: function(){
-            alert('error');
+            setDDL(data, $ddl);
         }
     });
 }
-
-function setDDL(bigJson, control, prop){
-
+function setDDL(json, control){
     var htmlData = '';
-    
-    for(var key in bigJson){
-        var dataBuffer = {};
-        for(var props in bigJson[key]){
-            if(prop !== props){
-                dataBuffer[props]=bigJson[key][props];
-            }else{
-                //dataBuffer[props]=bigJson[key][props];
-                var value = bigJson[key][props];
-            }
-        }
-        htmlData = htmlData + '<option data-gtools-' + control.attr('id') + '=' + JSON.stringify(dataBuffer) + ' >' + value + '</option>';
-    }
+    for(var key in json[0])
+        htmlData = htmlData + '<option value=' + json[0][key].id + ' >' + json[0][key].desc + '</option>';
     control.append(htmlData);
-    
-    
 }
 
 
