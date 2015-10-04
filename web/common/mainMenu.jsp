@@ -2,6 +2,7 @@
 <%@page import="com.corp.globant.MODEL.beans.*"%>
 <%   User userLogged = (User) session.getAttribute("UserLogged");  %>
 <nav class="navbar navbar-inverse">
+    
     <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -9,9 +10,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+        <img src="resources/img/gtools1.png" alt=""/>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
+          
           <li class="dropdown"><a href="home.jsp">Home</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" >Hires<span class="caret"></span></a>

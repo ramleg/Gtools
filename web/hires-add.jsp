@@ -3,18 +3,20 @@
 <html lang="en">
 <head>
   <title>New Hires Add</title>
-  <%@include file="webs/commonHead.html" %>
+  <%@include file="common/commonHead.html" %>
+  <link href="resources/css/forms.css" rel="stylesheet" type="text/css"/>
   <script src="resources/js/hires-add.js"></script>
+  
 </head>
 <body>
-<%@include file="webs/mainMenu.jsp" %>
+<%@include file="common/mainMenu.jsp" %>
 <div class="container">
     
     <div class="panel panel-primary">
         <div class="panel-heading">Add User</div>
         <div class="panel-body">
 
-            <form class="form-horizontal" role="form" id="frm-useradd" name="FrmUserAdd">
+            <form class="form-horizontal" role="form" id="frm-hireadd" name="FrmUserAdd">
                
             <div class="form-group">
                 <label class="control-label col-sm-4" for="ddl-suborg">Sub Organization: </label> 
@@ -42,7 +44,7 @@
             <div class="row form-group">
               <label class="control-label col-sm-4" for="txt-dni">Identification Number: </label>
               <div class="col-sm-8"> 
-               <input type="text" class="form-control" id="txt-dni" data-bvStrict="notEmpty" placeholder="DNI/Passport/etc.." style="width: 25%">
+               <input type="text" class="form-control" id="txt-dni" data-bvStrict="notEmpty" placeholder="DNI/Passport/etc.." style="width: 25%" >
                <div class="help-block error-message">Required Field</div>
               </div>
             </div>
@@ -50,7 +52,7 @@
             <div class="row form-group">
               <label class="control-label col-sm-4" for="txt-username">Domain Name: </label>
               <div class="col-sm-4"> 
-                  <input type="text" class="form-control" id="txt-username" data-bvStrict="notEmpty" placeholder="User Name" style="width: 100%; background-color:aqua" maxlength="17" oninput="func_mail()">
+                  <input type="text" class="form-control verdex" id="txt-username" data-bvStrict="notEmpty" placeholder="User Name" maxlength="17" oninput="func_mail()">
                <div class="help-block error-message">Required Field</div>      
               </div>
               <div class="col-sm-2">

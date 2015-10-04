@@ -4,11 +4,13 @@
 <html>
 <head>
     <title>JSP Page</title>
-    <jsp:include page="webs/commonHead.html" />
+    <jsp:include page="common/commonHead.html" />
 </head>
 <body>
+    
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
+            <img src="resources/img/gtools1.png" alt=""/>
             <div class="navbar-header">
             </div>
             <ul class="nav navbar-nav navbar-right">
