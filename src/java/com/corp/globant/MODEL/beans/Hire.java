@@ -11,7 +11,7 @@ public class Hire {
     private String idNumber;
     private String domainUser;
     private String email;
-    private String emailGroup;
+    private EmailGroup emailGroup;
     private Position position;
     private Location location;
     private String phoneNumber;
@@ -65,11 +65,11 @@ public class Hire {
         this.email = email;
     }
 
-    public String getEmailGroup() {
+    public EmailGroup getEmailGroup() {
         return emailGroup;
     }
 
-    public void setEmailGroup(String emailGroup) {
+    public void setEmailGroup(EmailGroup emailGroup) {
         this.emailGroup = emailGroup;
     }
 

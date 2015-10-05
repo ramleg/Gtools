@@ -5,6 +5,7 @@ import com.corp.globant.MODEL.beans.*;
 import com.corp.globant.VIEW.beans.*;
 import com.google.gson.*;
 import java.io.*;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.util.*;
 import java.util.logging.Level;
@@ -51,11 +52,9 @@ public class HireAddServlet extends HttpServlet {
             throws ServletException, IOException {
         
         FrmUserAdd frmUserAdd = new Gson().fromJson(request.getReader(), FrmUserAdd.class);
+        response.setContentType("application/json; charset=utf-8");
+        response.getWriter().print("OK");
         
         
-        
-        response.setContentType("application/json; charset=utf8");
-        System.out.println(new Gson().toJson(frmUserAdd));
-        response.getWriter().print(new Gson().toJson(frmUserAdd));
     }
 }

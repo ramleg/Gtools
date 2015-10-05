@@ -59,7 +59,7 @@ function frmSubmit(){
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify($JsonData) ,
         success: function(data){
-           alert(data);
+           alert('Nice');
         }
     });
     

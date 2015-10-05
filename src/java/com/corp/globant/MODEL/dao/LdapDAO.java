@@ -1,4 +1,5 @@
 package com.corp.globant.MODEL.dao;
+import com.corp.globant.MODEL.beans.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -78,6 +79,16 @@ public class LdapDAO {
         LdapDAO.close(ctx);
         return data;
     }
+    
+    public static void createDomainUser(Hire hire, String passwd, String ou){
+        
+        
+        
+        
+        
+    }
+    
+    
     public static void close(DirContext ctx) {
         try {
             ctx.close();
