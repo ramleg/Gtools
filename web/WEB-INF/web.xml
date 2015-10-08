@@ -35,9 +35,7 @@
         <servlet-name>UpdateHire</servlet-name>
         <url-pattern>/UpdateNH</url-pattern>
     </servlet-mapping>
-    
-    
-    
+
     <!-- FILTER =================================================  -->
     <filter>
         <filter-name>SessionCheckFilter</filter-name>
@@ -54,9 +52,7 @@
         <url-pattern>/AddNH</url-pattern>
         <url-pattern>/Home</url-pattern>
     </filter-mapping>
-    
-    
-    
+
     <session-config>
         <session-timeout>
             30

@@ -20,32 +20,6 @@ import javax.servlet.http.*;
 @WebServlet (name="HireAddServlet", urlPatterns={"/HireAdd"})
 public class HireAddServlet extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        Gson gson = new Gson();
-        ArrayList responseList = new ArrayList();
-        
-        try {
-            Connection conn = ConnectionManager.getConnection();
-            
-            responseList.add(SubOrgDAOpsql.getAll(conn));
-            responseList.add(PositionDAOpsql.getAll(conn));
-            responseList.add(LocationDAOpsql.getAll(conn));
-            responseList.add(CountryDAOpsql.getAll(conn));
-            
-            response.setContentType("application/json; charset=utf-8");
-            PrintWriter out = response.getWriter();
-            out.print(gson.toJson(responseList));
-            out.flush();
-            
-        } catch (Exception ex) {
-            Logger.getLogger(HireAddServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            
-        }
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -53,6 +27,7 @@ public class HireAddServlet extends HttpServlet {
         
         FrmUserAdd frmUserAdd = new Gson().fromJson(request.getReader(), FrmUserAdd.class);
         response.setContentType("application/json; charset=utf-8");
+        System.out.println(frmUserAdd.getDomainName());
         response.getWriter().print("OK");
         
         

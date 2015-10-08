@@ -1,6 +1,5 @@
 package com.corp.globant.MODEL.beans;
 /**
- *
  * @author ramiro.acoglanis
  */
 public class Hire {
@@ -16,7 +15,7 @@ public class Hire {
     private Location location;
     private String phoneNumber;
     private Country country;
-
+    
     public String getId() {
         return id;
     }

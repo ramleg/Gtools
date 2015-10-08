@@ -18,7 +18,7 @@ public class LdapDAO {
     public static DirContext getContext() throws NamingException{
         Hashtable<String, String> env = new Hashtable<>();
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-        env.put(Context.PROVIDER_URL, "ldap://susexx.globant.com:389");
+        env.put(Context.PROVIDER_URL, "ldap://lenoxx.globant.com:389");
         env.put(Context.SECURITY_AUTHENTICATION,"simple");
         env.put(Context.SECURITY_PRINCIPAL, "CN=Ramiro Acoglanis,OU=Rosario,OU=Users,OU=Service_Desk,OU=OU_Infrastructure,OU=People,DC=globant,DC=com");
         env.put(Context.SECURITY_CREDENTIALS,"Batamanta2");
@@ -30,7 +30,7 @@ public class LdapDAO {
 
         Hashtable<String, String> env = new Hashtable<>();
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-        env.put(Context.PROVIDER_URL, "ldap://susexx.globant.com:389");
+        env.put(Context.PROVIDER_URL, "ldap://lenoxx.globant.com:389");
         env.put(Context.SECURITY_AUTHENTICATION,"simple");
         env.put(Context.SECURITY_PRINCIPAL, LdapDAO.getCN(user));
         env.put(Context.SECURITY_CREDENTIALS,passwd);

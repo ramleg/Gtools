@@ -45,7 +45,6 @@ function frmSubmit(){
         domainName:'peter.capusotto',
         email:'peter.capusotto@globant.com',
         position:'Java Dev',
-        areaOU:'OU=Developer, DC=Globant, DC=Com',
         location:'AR/Ros/Museion',
         emailGroup:'rosario@globant.com',
         phoneNumber:'14600',

@@ -1,5 +1,6 @@
 package com.corp.globant.MODEL.dao;
 
+import com.sun.org.apache.xerces.internal.parsers.XML11Configuration;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -14,7 +15,9 @@ public abstract class ConnectionManager {
      * @throws java.lang.Exception
      */
     public static Connection getConnection() throws Exception {
-
+        
+        
+        
         // set the driver
         String dbDriver = "org.postgresql.Driver";
         // set the connection string
