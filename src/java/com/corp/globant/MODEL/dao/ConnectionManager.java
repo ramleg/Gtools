@@ -1,6 +1,5 @@
 package com.corp.globant.MODEL.dao;
 
-import com.sun.org.apache.xerces.internal.parsers.XML11Configuration;
 import static com.corp.globant.config.Init.config;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,9 +15,6 @@ public abstract class ConnectionManager {
      * @throws java.lang.Exception
      */
     public static Connection getConnection() throws Exception {
-        
-        
-        
         // set the driver
         String dbDriver = config.getDbDriver();
         // set the connection string

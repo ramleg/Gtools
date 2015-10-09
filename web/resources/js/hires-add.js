@@ -38,17 +38,16 @@ function setDDL(json, control){
 function frmSubmit(){
 
     var $JsonData = {
-        subOrganization:'Globant',
-        firstName:'Peter',
-        lastName:'Capusotto',
-        identificationNumber:'123456789',
-        domainName:'peter.capusotto',
-        email:'peter.capusotto@globant.com',
-        position:'Java Dev',
-        location:'AR/Ros/Museion',
-        emailGroup:'rosario@globant.com',
-        phoneNumber:'14600',
-        country:'Argentina'
+        subOrganization:$('#ddl-suborg').val(),
+        firstName:$('#txt-firstname').val(),
+        lastName:$('#txt-lastname').val(),
+        identificationNumber:$('#txt-idnumber').val(),
+        domainName:$('#txt-username').val(),
+        position:$('#ddl-position').val(),
+        location:$('#ddl-location').val(),
+        emailGroup:$('#ddl-emailgroup').val(),
+        phoneNumber:$('#txt-phonenumber').val(),
+        country:$('#ddl-country').val()
     };
     
     $.ajax({
@@ -66,7 +65,7 @@ function frmSubmit(){
 
     
  $(function(){
-  $('#frm-useradd').bValidator();
+  $('#frm-hireadd').bValidator();
  });
 //Asigna Mail
     function func_mail(){
