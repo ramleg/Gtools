@@ -8,7 +8,6 @@
         <servlet-name>LoginPage</servlet-name>
         <url-pattern>/LoginPage</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>Home</servlet-name>
         <jsp-file>/home.jsp</jsp-file>
@@ -17,7 +16,6 @@
         <servlet-name>Home</servlet-name>
         <url-pattern>/Home</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>AddNewHire</servlet-name>
         <jsp-file>/hires-add.jsp</jsp-file>
@@ -26,7 +24,6 @@
         <servlet-name>AddNewHire</servlet-name>
         <url-pattern>/AddNH</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>UpdateHire</servlet-name>
         <jsp-file>/hires-update.jsp</jsp-file>
@@ -35,7 +32,6 @@
         <servlet-name>UpdateHire</servlet-name>
         <url-pattern>/UpdateNH</url-pattern>
     </servlet-mapping>
-
     <!-- FILTER =================================================  -->
     <filter>
         <filter-name>SessionCheckFilter</filter-name>
@@ -52,12 +48,12 @@
         <url-pattern>/AddNH</url-pattern>
         <url-pattern>/Home</url-pattern>
     </filter-mapping>
-
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
-    
+    <listener>
+        <listener-class>com.corp.globant.config.Init</listener-class>
+    </listener>
 </web-app>

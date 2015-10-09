@@ -27,7 +27,8 @@ public class HireAddServlet extends HttpServlet {
         
         FrmUserAdd frmUserAdd = new Gson().fromJson(request.getReader(), FrmUserAdd.class);
         response.setContentType("application/json; charset=utf-8");
-        System.out.println(frmUserAdd.getDomainName());
+
+        
         response.getWriter().print("OK");
         
         

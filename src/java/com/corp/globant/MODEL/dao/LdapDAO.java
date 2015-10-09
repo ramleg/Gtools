@@ -1,5 +1,6 @@
 package com.corp.globant.MODEL.dao;
 import com.corp.globant.MODEL.beans.*;
+import static com.corp.globant.config.Init.config;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -18,25 +19,24 @@ public class LdapDAO {
     public static DirContext getContext() throws NamingException{
         Hashtable<String, String> env = new Hashtable<>();
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-        env.put(Context.PROVIDER_URL, "ldap://lenoxx.globant.com:389");
+        env.put(Context.PROVIDER_URL, config.getLdapserverDefault());
         env.put(Context.SECURITY_AUTHENTICATION,"simple");
-        env.put(Context.SECURITY_PRINCIPAL, "CN=Ramiro Acoglanis,OU=Rosario,OU=Users,OU=Service_Desk,OU=OU_Infrastructure,OU=People,DC=globant,DC=com");
-        env.put(Context.SECURITY_CREDENTIALS,"Batamanta2");
+        env.put(Context.SECURITY_PRINCIPAL, config.getLdapuser());
+        env.put(Context.SECURITY_CREDENTIALS,config.getLdappasswd());
         //Conseguimos contexto de conexion
         DirContext ctx = new InitialDirContext(env);
         return ctx;
     }
-    public static DirContext validateUser(String user,String passwd ) throws NamingException{
+    public static void validateUser(String user,String passwd ) throws NamingException{
 
         Hashtable<String, String> env = new Hashtable<>();
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-        env.put(Context.PROVIDER_URL, "ldap://lenoxx.globant.com:389");
+        env.put(Context.PROVIDER_URL, config.getLdapserverDefault());
         env.put(Context.SECURITY_AUTHENTICATION,"simple");
         env.put(Context.SECURITY_PRINCIPAL, LdapDAO.getCN(user));
         env.put(Context.SECURITY_CREDENTIALS,passwd);
         //Conseguimos contexto de conexion
-        DirContext ctx = new InitialDirContext(env);
-        return ctx;
+        new InitialDirContext(env);
     }
     
     public static String getCN (String user) throws NamingException{

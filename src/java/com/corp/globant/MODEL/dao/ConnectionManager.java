@@ -1,6 +1,7 @@
 package com.corp.globant.MODEL.dao;
 
 import com.sun.org.apache.xerces.internal.parsers.XML11Configuration;
+import static com.corp.globant.config.Init.config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -19,13 +20,13 @@ public abstract class ConnectionManager {
         
         
         // set the driver
-        String dbDriver = "org.postgresql.Driver";
+        String dbDriver = config.getDbDriver();
         // set the connection string
-        String dbConnString = "jdbc:postgresql://10.80.10.181:5432/db_gtools";
+        String dbConnString = config.getDbConnection();
         // set the db user
-        String dbUser = "postgres";
+        String dbUser = config.getDbUser();
         // ser the password
-        String dbPassword = "postgres";
+        String dbPassword = config.getDbPasswd();
         // loads the driver
         Class.forName(dbDriver).newInstance();
         // establishes and return the connection 
