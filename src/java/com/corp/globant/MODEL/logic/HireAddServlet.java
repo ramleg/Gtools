@@ -2,6 +2,7 @@ package com.corp.globant.MODEL.logic;
 
 import com.corp.globant.MODEL.dao.*;
 import com.corp.globant.MODEL.beans.*;
+import com.corp.globant.MODEL.logic.*;
 import com.corp.globant.VIEW.beans.*;
 import com.google.gson.*;
 import java.io.*;
@@ -27,10 +28,19 @@ public class HireAddServlet extends HttpServlet {
         
         FrmUserAdd frmUserAdd = new Gson().fromJson(request.getReader(), FrmUserAdd.class);
         response.setContentType("application/json; charset=utf-8");
-
         
-        response.getWriter().print("OK");
+        
+        
+        
+        System.out.println(new ValidateHire().validate(null));
         
         
     }
+    
+    private Hire buildHire(FrmUserAdd frm){
+        
+        
+        return new Hire();
+    }
+    
 }

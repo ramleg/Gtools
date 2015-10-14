@@ -21,23 +21,6 @@ public class SessionManager extends HttpServlet {
     private String contextPath;
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // LOG OUT **************************************************************
-        session = request.getSession(false);
-        RequestDispatcher requestDispatcher; 
-
-        if (session != null) {
-            User user = (User) session.getAttribute("UserLogged");
-            System.out.println("Closing session for: " + user.getDomainUser());
-            session.invalidate();
-            response.sendRedirect("LoginPage");
-        }else{
-            response.sendRedirect("LoginPage");
-        }
-    }
-
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //LOG IN ****************************************************************
@@ -75,7 +58,24 @@ public class SessionManager extends HttpServlet {
             
         }
     }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // LOG OUT **************************************************************
+        session = request.getSession(false);
+        RequestDispatcher requestDispatcher; 
 
+        if (session != null) {
+            User user = (User) session.getAttribute("UserLogged");
+            System.out.println("Closing session for: " + user.getDomainUser());
+            session.invalidate();
+            response.sendRedirect("LoginPage");
+        }else{
+            response.sendRedirect("LoginPage");
+        }
+    }
+    
     @Override
     public String getServletInfo() {
         return "Short description";

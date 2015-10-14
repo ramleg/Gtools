@@ -10,13 +10,13 @@ public class FrmUserAdd {
     @SerializedName("subOrganization")
     private String subOrganization;
     @SerializedName("firstName")
-    private String firstName;
+    private String name;
     @SerializedName("lastName")
     private String lastName;
     @SerializedName("identificationNumber")
     private String identificationNumber;
     @SerializedName("domainName")
-    private String domainName;
+    private String domainUser;
     @SerializedName("email")
     private String email;
     @SerializedName("position")
@@ -39,10 +39,10 @@ public class FrmUserAdd {
             String identificationNumber, String domainName, String email, String position,
             String areaOU, String location, String emailGroup, String phoneNumber, String country) {
         this.subOrganization = subOrganization;
-        this.firstName = firstName;
+        this.name = firstName;
         this.lastName = lastName;
         this.identificationNumber = identificationNumber;
-        this.domainName = domainName;
+        this.domainUser = domainName;
         this.email = email;
         this.position = position;
         this.areaOU = areaOU;
@@ -61,12 +61,12 @@ public class FrmUserAdd {
         this.subOrganization = subOrganization;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastName() {
@@ -85,12 +85,12 @@ public class FrmUserAdd {
         this.identificationNumber = identificationNumber;
     }
 
-    public String getDomainName() {
-        return domainName;
+    public String getDomainUser() {
+        return domainUser;
     }
 
-    public void setDomainName(String domainName) {
-        this.domainName = domainName;
+    public void setDomainUser(String domainUser) {
+        this.domainUser = domainUser;
     }
 
     public String getEmail() {

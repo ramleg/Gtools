@@ -1,6 +1,7 @@
 package com.corp.globant.MODEL.dao;
 
 import com.corp.globant.MODEL.beans.*;
+import com.corp.globant.VIEW.beans.FrmUserAdd;
 import java.sql.*;
 
 /**
@@ -41,8 +42,27 @@ public class HiresDAOpsql {
                 + ")";
         Statement stmt = conn.createStatement();
         stmt.executeQuery(query);
+        stmt.close();
         
+    }
+    
+    public static Hire buildHire(Connection conn, FrmUserAdd frm) throws SQLException{
+                
+        Hire hire = new Hire();
+        Statement stmt = conn.createStatement();
+        ResultSet rs;
+        //Set Name
+        hire.setName(frm.getName());
+        //Set LastName
+        hire.setLastname(frm.getLastName());
+        //Set DomainUser
+        hire.setDomainUser(frm.getDomainUser());
+        //Set Email
+        String query = "SELECT * FROM app.suborg WHERE suborg_id=" + frm.getSubOrganization() + ";";
+        rs = stmt.executeQuery(query);
+        hire.setEmail(frm.getDomainUser() + rs.getString("suborg_email"));
         
+        return new Hire();
     }
     
 }
