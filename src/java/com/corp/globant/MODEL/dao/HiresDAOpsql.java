@@ -27,7 +27,8 @@ public class HiresDAOpsql {
     
     public static void create(Connection conn, Hire hire) throws SQLException{
         
-        String query = "INSERT INTO hires "
+        String query = "INSERT INTO hires"
+                + "() "
                 + "("
                 + hire.getName() + ", "
                 + hire.getLastname() + ", "
@@ -44,25 +45,6 @@ public class HiresDAOpsql {
         stmt.executeQuery(query);
         stmt.close();
         
-    }
-    
-    public static Hire buildHire(Connection conn, FrmUserAdd frm) throws SQLException{
-                
-        Hire hire = new Hire();
-        Statement stmt = conn.createStatement();
-        ResultSet rs;
-        //Set Name
-        hire.setName(frm.getName());
-        //Set LastName
-        hire.setLastname(frm.getLastName());
-        //Set DomainUser
-        hire.setDomainUser(frm.getDomainUser());
-        //Set Email
-        String query = "SELECT * FROM app.suborg WHERE suborg_id=" + frm.getSubOrganization() + ";";
-        rs = stmt.executeQuery(query);
-        hire.setEmail(frm.getDomainUser() + rs.getString("suborg_email"));
-        
-        return new Hire();
     }
     
 }

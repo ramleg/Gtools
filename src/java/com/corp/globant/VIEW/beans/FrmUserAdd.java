@@ -32,27 +32,6 @@ public class FrmUserAdd {
     @SerializedName("country")
     private String country;
 
-    public FrmUserAdd() {
-    }
-
-    public FrmUserAdd(String subOrganization, String firstName, String lastName,
-            String identificationNumber, String domainName, String email, String position,
-            String areaOU, String location, String emailGroup, String phoneNumber, String country) {
-        this.subOrganization = subOrganization;
-        this.name = firstName;
-        this.lastName = lastName;
-        this.identificationNumber = identificationNumber;
-        this.domainUser = domainName;
-        this.email = email;
-        this.position = position;
-        this.areaOU = areaOU;
-        this.location = location;
-        this.emailGroup = emailGroup;
-        this.phoneNumber = phoneNumber;
-        this.country = country;
-    }
-    
-
     public String getSubOrganization() {
         return subOrganization;
     }
