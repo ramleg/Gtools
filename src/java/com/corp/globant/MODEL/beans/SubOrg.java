@@ -8,6 +8,12 @@ public class SubOrg {
    private String desc;
    private String domainEmail;
 
+    public SubOrg() {}
+
+    public SubOrg(String id) {
+        this.id = id;
+    }
+    
     public String getId() {
         return id;
     }

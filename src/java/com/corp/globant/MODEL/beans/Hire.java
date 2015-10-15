@@ -9,12 +9,12 @@ public class Hire {
     private String lastname;
     private String idNumber;
     private String domainUser;
-    private String email;
     private EmailGroup emailGroup;
     private Position position;
     private Location location;
     private String phoneNumber;
     private Country country;
+    private SubOrg suborg;
     
     public String getId() {
         return id;
@@ -56,14 +56,6 @@ public class Hire {
         this.domainUser = domainUser;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public EmailGroup getEmailGroup() {
         return emailGroup;
     }
@@ -102,6 +94,14 @@ public class Hire {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public SubOrg getSuborg() {
+        return suborg;
+    }
+
+    public void setSuborg(SubOrg suborg) {
+        this.suborg = suborg;
     }
     
     

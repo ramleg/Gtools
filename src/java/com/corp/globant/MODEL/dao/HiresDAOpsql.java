@@ -28,19 +28,32 @@ public class HiresDAOpsql {
     public static void create(Connection conn, Hire hire) throws SQLException{
         
         String query = "INSERT INTO hires"
-                + "() "
+                + "("
+                + "hires_name, "
+                + "hires_lastname, "
+                + "hires_id_number, "
+                + "hires_domain_user, "
+                + "hires_position_fk, "
+                + "hires_location_fk, "
+                + "hires_email_group_fk, "
+                + "hires_phone_number_fk, "
+                + "hires_country_fk, "
+                + "hires_suborg_fk"
+                + ") "
+                + "VALUES"
                 + "("
                 + hire.getName() + ", "
                 + hire.getLastname() + ", "
                 + hire.getIdNumber() + ", "
                 + hire.getDomainUser() + ", "
-                + hire.getEmail() + ", "
                 + hire.getPosition().getId() + ", "
                 + hire.getLocation().getId() + ", "
                 + hire.getEmailGroup().getId() + ", "
                 + hire.getPhoneNumber() + ", "
-                + hire.getCountry().getId()
+                + hire.getCountry().getId() + ", "
+                + hire.getSuborg().getId()
                 + ")";
+        
         Statement stmt = conn.createStatement();
         stmt.executeQuery(query);
         stmt.close();

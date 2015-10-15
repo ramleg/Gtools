@@ -8,6 +8,12 @@ public class Position {
     private String desc;
     private String ou;
 
+    public Position() {}
+
+    public Position(String id) {
+        this.id = id;
+    }
+    
     public String getId() {
         return id;
     }

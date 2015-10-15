@@ -13,6 +13,12 @@ public class Location {
     private String ad_desc;
     private Country country;
 
+    public Location() {}
+
+    public Location(String id) {
+        this.id = id;
+    }
+    
     public String getId() {
         return id;
     }

@@ -39,7 +39,7 @@ public class LocationDAOpsql {
             location.setSap_desc(rs.getString("locations_sap_desc"));
             location.setAd_desc(rs.getString("locations_ad_ou"));
             //cargo el pais en su bean
-            country.setId(rs.getInt("countries_id"));
+            country.setId(rs.getString("countries_id"));
             country.setDesc(rs.getString("countries_desc"));
             //cargo el bean de pais en el bean del Location
             location.setCountry(country);

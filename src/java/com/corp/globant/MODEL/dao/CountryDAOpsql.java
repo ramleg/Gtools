@@ -16,7 +16,7 @@ public class CountryDAOpsql {
         ResultSet rs = stmt.executeQuery(query);
         
         Country country = new Country();
-        country.setId(rs.getInt("countries_id"));
+        country.setId(rs.getString("countries_id"));
         country.setDesc(rs.getString("countries_desc"));
         
         stmt.close();
@@ -34,7 +34,7 @@ public class CountryDAOpsql {
         while (rs.next()) {
             Country country = new Country();
             // Arma el objeto Country
-            country.setId(rs.getInt("countries_id"));
+            country.setId(rs.getString("countries_id"));
             country.setDesc(rs.getString("countries_desc"));
             countries.add(country);
         }

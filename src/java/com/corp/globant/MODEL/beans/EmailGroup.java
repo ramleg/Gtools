@@ -11,6 +11,12 @@ public class EmailGroup {
     private String domainGroup;
     private Location location;
 
+    public EmailGroup() {}
+    
+    public EmailGroup(String id) {
+        this.id = id;
+    }
+    
     public String getId() {
         return id;
     }

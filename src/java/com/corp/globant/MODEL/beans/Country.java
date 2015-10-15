@@ -4,10 +4,16 @@ package com.corp.globant.MODEL.beans;
  * @author ramiro.acoglanis
  */
 public class Country {
-   private Integer id;
+   private String id;
    private String desc;
 
-    public void setId(Integer id) {
+    public Country() {}
+
+    public Country(String id) {
+        this.id = id;
+    }
+    
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -15,7 +21,7 @@ public class Country {
         this.desc = desc;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 

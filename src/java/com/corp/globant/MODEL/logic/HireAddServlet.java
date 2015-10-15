@@ -32,27 +32,48 @@ public class HireAddServlet extends HttpServlet {
         FrmUserAdd frmUserAdd = new Gson().fromJson(request.getReader(), FrmUserAdd.class);
         response.setContentType("application/json; charset=utf-8");
         
+        Hire hire = buildHire(frmUserAdd);
         
-        
-        
-        System.out.println(new ValidateHire().validate(null));
-        
+        try {
+            
+            new ValidateHire().validate(hire);
+            HiresDAOpsql.create(ConnectionManager.getConnection(), hire);
+            
+        } catch (ValidateException ex) {
+            System.out.println(ex.getMessage());
+            Logger.getLogger(HireAddServlet.class.getName()).log(Level.SEVERE, null, ex.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(HireAddServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+         
         
     }
     
     
-    public static Hire buildHire(Connection conn, FrmUserAdd frm) throws SQLException{
+    public static Hire buildHire(FrmUserAdd frm){
                 
         Hire hire = new Hire();
-        Statement stmt = conn.createStatement();
-        ResultSet rs;
         //Set Name
         hire.setName(frm.getName());
         //Set LastName
         hire.setLastname(frm.getLastName());
+        //Set ID Number
+        hire.setIdNumber(frm.getIdentificationNumber());
         //Set DomainUser
         hire.setDomainUser(frm.getDomainUser());
-        //Set Email
+        //Set EmailGroup
+        hire.setEmailGroup(new EmailGroup(frm.getEmailGroup()));
+        //Set Position
+        hire.setPosition(new Position(frm.getPosition()));
+        //Set Location
+        hire.setLocation(new Location(frm.getLocation()));
+        //Set Phone Number
+        hire.setPhoneNumber(frm.getPhoneNumber());
+        //Set Country
+        hire.setCountry(new Country(frm.getCountry()));
+        //Set SubOrg
+        hire.setSuborg(new SubOrg(frm.getSubOrganization()));
         
         return new Hire();
     }
