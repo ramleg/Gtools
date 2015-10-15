@@ -29,15 +29,15 @@ public class HireAddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        FrmUserAdd frmUserAdd = new Gson().fromJson(request.getReader(), FrmUserAdd.class);
         response.setContentType("application/json; charset=utf-8");
+        FrmUserAdd frmUserAdd = new Gson().fromJson(request.getReader(), FrmUserAdd.class);
         
         Hire hire = buildHire(frmUserAdd);
         
         try {
             
             new ValidateHire().validate(hire);
-            HiresDAOpsql.create(ConnectionManager.getConnection(), hire);
+            //HiresDAOpsql.create(ConnectionManager.getConnection(), hire);
             
         } catch (ValidateException ex) {
             System.out.println(ex.getMessage());
@@ -52,7 +52,6 @@ public class HireAddServlet extends HttpServlet {
     
     
     public static Hire buildHire(FrmUserAdd frm){
-                
         Hire hire = new Hire();
         //Set Name
         hire.setName(frm.getName());
@@ -75,7 +74,7 @@ public class HireAddServlet extends HttpServlet {
         //Set SubOrg
         hire.setSuborg(new SubOrg(frm.getSubOrganization()));
         
-        return new Hire();
+        return hire;
     }
     
 }

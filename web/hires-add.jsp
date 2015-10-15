@@ -23,9 +23,9 @@
             </div> 
                 
             <div class="row form-group">
-              <label class="control-label col-sm-4" for="txt-firstname">First Name: </label>
+              <label class="control-label col-sm-4" for="txt-name">First Name: </label>
               <div class="col-sm-8"> 
-               <input type="text" class="form-control" id="txt-firstname" data-bvStrict="notEmpty" placeholder="First Name" style="width: 50%">
+               <input type="text" class="form-control" id="txt-name" data-bvStrict="notEmpty" placeholder="First Name" style="width: 50%">
                <div class="help-block error-message">Required Field</div>
               </div>
             </div>

@@ -11,7 +11,14 @@ public class ValidateHire {
     Validator v = new Validator();
     public boolean validate(Hire hire) throws ValidateException{
         
-        return v.forbiddenCaracters(hire.getName(), "[^a-z ñ'áéíóú]");
+        //Validate Name
+        if(v.forbiddenCaracters(hire.getName().toLowerCase(), "[^a-z ñ'áéíóú]"))
+            throw new ValidateException("Forbidden Caracters");
+        
+        hire.setName(v.spaceCorrect(hire.getName()));
+        
+        
+        return true;
     }
     
 }

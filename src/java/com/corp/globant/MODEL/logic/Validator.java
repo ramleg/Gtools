@@ -40,21 +40,27 @@ public class Validator {
     }
     
     public String spaceCorrect (String str){
-        String[] parts = str.trim().split(Pattern.quote(" "));
+        
         int space = 0;
+        String chr = " ";
         String response = "";
-        for(String s : parts){
+        
+        if(str!=null){
+            String[] parts = str.trim().split(Pattern.quote(chr));
             
-            if(!s.equals("")){
-                space = 0;
-                response = response + s;
-            }
-            if(s.equals("") && space < 1){
-                space++;
-                response = response + s;
-            }
-            if(s.equals("") && space > 1){
-                space++;
+            for(String s : parts){
+
+                if(!s.equals("")){
+                    space = 0;
+                    response = response + s;
+                }
+                if(s.equals("") && space < 1){
+                    space++;
+                    response = response + chr;
+                }
+                if(s.equals("") && space > 1){
+                    space++;
+                }
             }
         }
         return response;

@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 public class FrmUserAdd {
     @SerializedName("subOrganization")
     private String subOrganization;
-    @SerializedName("firstName")
+    @SerializedName("name")
     private String name;
     @SerializedName("lastName")
     private String lastName;

@@ -39,7 +39,7 @@ function frmSubmit(){
 
     var $JsonData = {
         subOrganization:$('#ddl-suborg').val(),
-        firstName:$('#txt-firstname').val(),
+        name:$('#txt-name').val(),
         lastName:$('#txt-lastname').val(),
         identificationNumber:$('#txt-idnumber').val(),
         domainName:$('#txt-username').val(),
