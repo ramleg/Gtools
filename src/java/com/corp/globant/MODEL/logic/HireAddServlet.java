@@ -41,13 +41,9 @@ public class HireAddServlet extends HttpServlet {
             
         } catch (ValidateException ex) {
             System.out.println(ex.getMessage());
-            Logger.getLogger(HireAddServlet.class.getName()).log(Level.SEVERE, null, ex.getMessage());
         } catch (Exception ex) {
             Logger.getLogger(HireAddServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-         
-        
     }
     
     

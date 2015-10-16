@@ -35,30 +35,22 @@ public class Validator {
         return true;
     }
     
-    public void dotCorrect (String str){
-        
-    }
-    
     public String spaceCorrect (String str){
         
         int space = 0;
-        String chr = " ";
         String response = "";
-        
         if(str!=null){
-            String[] parts = str.trim().split(Pattern.quote(chr));
-            
+            String[] parts = str.trim().split("((?<= )|(?= ))");
             for(String s : parts){
-
-                if(!s.equals("")){
+                if(!s.equals(" ")){
                     space = 0;
                     response = response + s;
                 }
-                if(s.equals("") && space < 1){
+                if(s.equals(" ") && space < 1){
                     space++;
-                    response = response + chr;
+                    response = response + " ";
                 }
-                if(s.equals("") && space > 1){
+                if(s.equals(" ") && space > 1){
                     space++;
                 }
             }
