@@ -1,5 +1,6 @@
 package com.corp.globant.MODEL.logic;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
@@ -19,15 +20,15 @@ public class Validator {
     public boolean forbiddenCaracters(String str, String regex){
         Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(str);
-        return m.find();
+        return !m.find();
     }
     
     public boolean dotCheck (String str){
         
-        String[] parts = str.split(Pattern.quote(""));
+        String[] parts = str.split("((?<=.)|(?=.))");
         if(parts[0].equals("."))
             return false;
-        if(parts[parts.length-1].equals("."))
+        if(parts[parts.length - 1].equals("."))
             return false;
         parts = str.split(Pattern.quote("."));
         if(parts.length != 2)
