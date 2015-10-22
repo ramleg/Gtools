@@ -57,7 +57,7 @@ function frmSubmit(){
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify($JsonData) ,
         success: function(data){
-            if (typeof data.error === "undefined") {
+            if (typeof data.error === "undefined"){
                 alert("No Errors Here");
             }else{
                 alert(data.error);
