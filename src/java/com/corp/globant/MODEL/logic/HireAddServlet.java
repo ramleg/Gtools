@@ -23,8 +23,7 @@ import javax.servlet.http.*;
  */
 @WebServlet (name="HireAddServlet", urlPatterns={"/HireAdd"})
 public class HireAddServlet extends HttpServlet {
-
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,16 +32,21 @@ public class HireAddServlet extends HttpServlet {
         FrmUserAdd frmUserAdd = new Gson().fromJson(request.getReader(), FrmUserAdd.class);
         
         Hire hire = buildHire(frmUserAdd);
+        JsonParser parser = new JsonParser();
+        JsonObject comeBack = (JsonObject)parser.parse("{\"data\": \"HireAddServlet\"}");
         
         try {
-            
-            new ValidateHire().validate(hire);
+            hire = new ValidateHire().validate(hire);
             //HiresDAOpsql.create(ConnectionManager.getConnection(), hire);
-            
+            comeBack = (JsonObject)parser.parse(new Gson().toJson(hire));
         } catch (ValidateException ex) {
-            System.out.println(ex.getMessage());
+            comeBack.addProperty("error",ex.getMessage());
         } catch (Exception ex) {
-            Logger.getLogger(HireAddServlet.class.getName()).log(Level.SEVERE, null, ex);
+            comeBack.addProperty("error",ex.getMessage());
+            //Logger.getLogger(HireAddServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            response.getWriter().print(comeBack);
+            out.flush();
         }
     }
     
