@@ -6,8 +6,11 @@ $(function (){//'DocumentReady' Block
     getList('GetLocationList',$('#ddl-location'));
     getList('GetEmailGroupList',$('#ddl-emailgroup'));
     getList('GetCountryList',$('#ddl-country'));
-    
-   $("#btn-submit").click(function(){frmSubmit();});
+    //validator
+    $('#frm-hireadd').bValidator();
+    //submit
+    $("#btn-submit").click(function(){frmSubmit();});
+
                 
 });//Close the 'DocumentReady' Block
 
@@ -32,9 +35,6 @@ function setDDL(json, control){
         htmlData = htmlData + '<option value=' + json[0][key].id + ' >' + json[0][key].desc + '</option>';
     control.append(htmlData);
 }
-
-
-
 function frmSubmit(){
 
     var $JsonData = {
@@ -43,6 +43,7 @@ function frmSubmit(){
         lastName:$('#txt-lastname').val(),
         identificationNumber:$('#txt-idnumber').val(),
         domainName:$('#txt-username').val(),
+        email:$('#txt-email').val(),
         position:$('#ddl-position').val(),
         location:$('#ddl-location').val(),
         emailGroup:$('#ddl-emailgroup').val(),
@@ -58,42 +59,20 @@ function frmSubmit(){
         data: JSON.stringify($JsonData) ,
         success: function(data){
             if (typeof data.error === "undefined"){
-                alert("No Errors Here");
+                alert('Success: ' + data.name);
             }else{
-                alert(data.error);
+                alert('Error: ' + data.error);
             }
         }
     });
     
 }// Close login function
 
-    
- $(function(){
-  $('#frm-hireadd').bValidator();
- });
 //Asigna Mail
-    function func_mail(){
-     $("#txt-mail").val($("#txt-username").val() + $("#ddl_suborg option:selected").val());//"@globant.com");
-    }
-    
+function func_mail(){
+ $("#txt-email").val($("#txt-username").val() + $("#ddl-suborg option:selected").val());//"@globant.com");
+}
 //Asigna OU Position
-    function func_position_ad(){
-     $("#txt-ou-org").val($("#ddl_position option:selected").val());
-    }
-    
-//CHECK BUTTON
-    $(document).ready(function(){
-      $("#btn_check").click(function(){
-        $(this).button('Cheking').delay(1000).queue(function(){
-          $(this).button('complete');
-          $(this).dequeue();
-        });        
-      });  
-    });
-  
-//SUBMIT
-    $(document).ready(function(){
-      $("#btn-submit").click(function(){
-        $("#modal-submit").modal();
-      });
-    });
+function func_position_ad(){
+ $("#txt-ouorg").val($("#ddl-position option:selected").text());
+}

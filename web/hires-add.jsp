@@ -16,17 +16,26 @@
             <form class="form-horizontal" role="form" id="frm-hireadd" name="FrmUserAdd">
                 
             <div class="form-group">
-                <label class="control-label col-sm-4" for="ddl-suborg">Sub Organization: </label> 
+                <label class="control-label col-sm-4" for="ddl-suborg">Domain / SubOrg: </label> 
               <div class="col-sm-8">
-                <select class="form-control" id="ddl-suborg"  style="width:50%"></select>                
+                <select class="form-control" id="ddl-suborg"  style="width:20%"></select>
               </div>
             </div> 
                 
+            <div class="form-group"> 
+              <label class="control-label col-sm-4" for="ddl-country">Country: </label> 
+              <div class="col-sm-8">
+                  <select class="form-control" id="ddl-country"  style="width:20%">
+                      <option value=""> - - - </option>
+                  </select>
+              </div>
+            </div>
+                 
             <div class="row form-group">
               <label class="control-label col-sm-4" for="txt-name">First Name: </label>
               <div class="col-sm-8"> 
                <input type="text" class="form-control" id="txt-name" data-bvStrict="notEmpty" placeholder="First Name" style="width: 50%">
-               <div class="help-block error-message">Required Field</div>
+               <span class="help-block error-message">Required Field</span>
               </div>
             </div>
                 
@@ -58,9 +67,9 @@
             </div>
                
             <div class="row form-group">
-              <label class="control-label col-sm-4" for="txt-mail">Email: </label>
+              <label class="control-label col-sm-4" for="txt-email">Email: </label>
               <div class="col-sm-8"> 
-               <input type="text" Disabled class="form-control" id="txt-mail" data-bvStrict="notEmpty" placeholder="mail" style="width: 50%">
+               <input type="text" Disabled class="form-control" id="txt-email" data-bvStrict="notEmpty" placeholder="mail" style="width: 50%">
                <div class="help-block error-message">Required Field</div>
               </div>
             </div>
@@ -101,13 +110,6 @@
               </div>
             </div>
                
-            <div class="form-group"> 
-              <label class="control-label col-sm-4" for="ddl-country">Country: </label> 
-              <div class="col-sm-8">
-              <select class="form-control" id="ddl-country"  style="width:50%"></select>
-              </div>
-            </div>
-                 
             <div class="row form-group">
               <div class="col-sm-5">
                 <button id="btn-submit" type="button" class="btn btn-primary pull-right">Submit</button> 

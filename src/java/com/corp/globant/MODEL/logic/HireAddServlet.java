@@ -37,13 +37,12 @@ public class HireAddServlet extends HttpServlet {
         
         try {
             hire = new ValidateHire().validate(hire);
-            //HiresDAOpsql.create(ConnectionManager.getConnection(), hire);
+            HiresDAOpsql.create(ConnectionManager.getConnection(), hire);
             comeBack = (JsonObject)parser.parse(new Gson().toJson(hire));
         } catch (ValidateException ex) {
             comeBack.addProperty("error",ex.getMessage());
         } catch (Exception ex) {
             comeBack.addProperty("error",ex.getMessage());
-            //Logger.getLogger(HireAddServlet.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             response.getWriter().print(comeBack);
             out.flush();

@@ -27,7 +27,8 @@ public class HiresDAOpsql {
     
     public static void create(Connection conn, Hire hire) throws SQLException{
         
-        String query = "INSERT INTO hires"
+        String query = "BEGIN;"
+                + "INSERT INTO app.hires"
                 + "("
                 + "hires_name, "
                 + "hires_lastname, "
@@ -35,27 +36,30 @@ public class HiresDAOpsql {
                 + "hires_domain_user, "
                 + "hires_position_fk, "
                 + "hires_location_fk, "
+                + "hires_email, "
                 + "hires_email_group_fk, "
                 + "hires_phone_number_fk, "
                 + "hires_country_fk, "
                 + "hires_suborg_fk"
                 + ") "
-                + "VALUES"
+                + "VALUES "
                 + "("
-                + hire.getName() + ", "
-                + hire.getLastname() + ", "
-                + hire.getIdNumber() + ", "
-                + hire.getDomainUser() + ", "
+                + "'" + hire.getName() + "', "
+                + "'" + hire.getLastname() + "', "
+                + "'" + hire.getIdNumber() + "', "
+                + "'" + hire.getDomainUser() + "', "
                 + hire.getPosition().getId() + ", "
                 + hire.getLocation().getId() + ", "
+                + "'" + hire.getEmail() + "', "
                 + hire.getEmailGroup().getId() + ", "
                 + hire.getPhoneNumber() + ", "
                 + hire.getCountry().getId() + ", "
                 + hire.getSuborg().getId()
-                + ")";
+                + ");"
+                + "COMMIT;";
         
         Statement stmt = conn.createStatement();
-        stmt.executeQuery(query);
+        stmt.executeUpdate(query);
         stmt.close();
         
     }
