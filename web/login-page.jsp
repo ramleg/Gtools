@@ -10,14 +10,16 @@
     
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
-            <img src="resources/img/gtools1.png" alt=""/>
+            
             <div class="navbar-header">
+                <img src="resources/img/gtools1.png" alt=""/>
             </div>
             <ul class="nav navbar-nav navbar-right">
-              <li><a><span class="glyphicon glyphicon-wrench"></span>  IST Service Desk </a></li>
+              <li><a><span class="glyphicon glyphicon-wrench"> </span>  IST Service Desk </a></li>
             </ul>
         </div>
-    </nav> 
+    </nav>
+    
       <div class="container" id="login" role="dialog">
         <div class="modal-dialog modal-sm">
           <!-- Modal content-->

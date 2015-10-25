@@ -18,7 +18,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>AddNewHire</servlet-name>
-        <jsp-file>/hires-add.jsp</jsp-file>
+        <jsp-file>/hires-add-new.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddNewHire</servlet-name>
