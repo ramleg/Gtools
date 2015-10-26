@@ -36,7 +36,7 @@
             <div class="row form-group">
               <label class="control-label col-sm-4" for="txt-name">First Name: </label>
               <div class="col-sm-8"> 
-               <input type="text" class="form-control" id="txt-name" data-bvStrict="notEmpty" placeholder="First Name" style="width: 50%">
+               <input type="text" class="form-control text-capitalize" id="txt-name" data-bvStrict="notEmpty" placeholder="First Name" style="width: 50%">
                <span class="help-block error-message">Required Field</span>
               </div>
             </div>
@@ -44,7 +44,7 @@
             <div class="row form-group">
               <label class="control-label col-sm-4" for="txt-lastname">Last Name: </label>
               <div class="col-sm-8"> 
-               <input type="text" class="form-control" id="txt-lastname" placeholder="Last Name" data-bvStrict="notEmpty" style="width: 50%">
+               <input type="text" class="form-control text-capitalize" id="txt-lastname" placeholder="Last Name" data-bvStrict="notEmpty" style="width: 50%">
                <div class="help-block error-message">Required Field</div>
               </div>
             </div>
@@ -52,13 +52,13 @@
             <div class="row form-group">
               <label class="control-label col-sm-4" for="txt-idnumber">Identification Number: </label>
               <div class="col-sm-8"> 
-               <input type="text" class="form-control" id="txt-idnumber" data-bvStrict="notEmpty" placeholder="DNI/Passport/etc.." style="width: 50%" >
+               <input type="text" class="form-control text-uppercase" id="txt-idnumber" data-bvStrict="notEmpty" placeholder="DNI/Passport/etc.." style="width: 50%" >
                <div class="help-block error-message">Required Field</div>
               </div>
             </div>
                
             <div class="row form-group">
-              <label class="control-label col-sm-2" for="txt-username">Domain Name: </label>
+              <label class="control-label col-sm-2 text-lowercase" for="txt-username">Domain Name: </label>
               <div class="col-sm-6"> 
                   <input type="text" class="form-control verdex" id="txt-username" data-bvStrict="notEmpty" placeholder="User Name" maxlength="17" oninput="func_mail()" style="width: 100%">
                <div class="help-block error-message">Required Field</div>      
