@@ -16,6 +16,7 @@ public class Hire {
     private String phoneNumber;
     private Country country;
     private SubOrg suborg;
+    private String desc;
     
     public String getId() {
         return id;
@@ -111,6 +112,14 @@ public class Hire {
 
     public void setSuborg(SubOrg suborg) {
         this.suborg = suborg;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
     
     

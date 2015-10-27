@@ -37,7 +37,17 @@ public class HireAddServlet extends HttpServlet {
         
         try {
             hire = new ValidateHire().validate(hire);
+            System.out.println(hire.getName());
+            System.out.println(hire.getLastname());
+            System.out.println(hire.getDomainUser());
+            System.out.println(hire.getEmail());
+            System.out.println(hire.getCountry());
+            System.out.println(hire.getIdNumber());
+            System.out.println(hire.getPosition());
+            
+            
             HiresDAOpsql.create(ConnectionManager.getConnection(), hire);
+            
             comeBack = (JsonObject)parser.parse(new Gson().toJson(hire));
         } catch (ValidateException ex) {
             comeBack.addProperty("error",ex.getMessage());
@@ -60,6 +70,8 @@ public class HireAddServlet extends HttpServlet {
         hire.setIdNumber(frm.getIdentificationNumber());
         //Set DomainUser
         hire.setDomainUser(frm.getDomainUser());
+        //Set eMail
+        hire.setEmail(frm.getEmail());
         //Set EmailGroup
         hire.setEmailGroup(new EmailGroup(frm.getEmailGroup()));
         //Set Position

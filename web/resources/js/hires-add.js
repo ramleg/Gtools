@@ -38,19 +38,20 @@ function setDDL(json, control){
 function frmSubmit(){
 
     var $JsonData = {
-        subOrganization:$('#ddl-suborg').val(),
+        subOrganization:$("#ddl-suborg option:selected").val(),
         name:$('#txt-name').val(),
         lastName:$('#txt-lastname').val(),
         identificationNumber:$('#txt-idnumber').val(),
         domainName:$('#txt-username').val(),
-        email:$('#txt-email').val(),
+        email:$('#txt-username').val() + '@' + $('#ddl-emaildomain option:selected').text() ,
         position:$('#ddl-position').val(),
         location:$('#ddl-location').val(),
         emailGroup:$('#ddl-emailgroup').val(),
         phoneNumber:$('#txt-phonenumber').val(),
-        country:$('#ddl-country').val()
+        country:$('#ddl-country').val(),
+        description:$('#txtarea-desc').val()
     };
-    
+    alert(JSON.stringify($JsonData));
     $.ajax({
         type: 'POST',
         url: 'HireAdd',
@@ -59,7 +60,7 @@ function frmSubmit(){
         data: JSON.stringify($JsonData) ,
         success: function(data){
             if (typeof data.error === "undefined"){
-                alert('Success: ' + data.name);
+                alert('Success: ' + data.email);
             }else{
                 alert('Error: ' + data.error);
             }

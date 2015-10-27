@@ -40,8 +40,9 @@ public class HiresDAOpsql {
                 + "hires_email_group_fk, "
                 + "hires_phone_number_fk, "
                 + "hires_country_fk, "
-                + "hires_suborg_fk"
-                + ") "
+                + "hires_suborg_fk,"
+                + "hires_desc"
+                + ") " 
                 + "VALUES "
                 + "("
                 + "'" + hire.getName() + "', "
@@ -54,8 +55,10 @@ public class HiresDAOpsql {
                 + hire.getEmailGroup().getId() + ", "
                 + hire.getPhoneNumber() + ", "
                 + hire.getCountry().getId() + ", "
-                + hire.getSuborg().getId()
+                + hire.getSuborg().getId()+ ", "
+                + "'" + hire.getDesc() + "'"
                 + ");"
+                
                 + "COMMIT;";
         
         Statement stmt = conn.createStatement();
