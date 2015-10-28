@@ -23,7 +23,7 @@
                     
                     <form class="form-inline">
                         
-                        <div class="row has-success">
+                        <div class="row">
                             <div class="input-group col-sm-12 col-md-10">
                                 <div class="input-group-addon">
                                     <div class="radio col-md-3">
@@ -33,8 +33,8 @@
                                         <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" disabled> Contractor / External</label>
                                     </div>
                                 </div>
-                                <select class="form-control" id="ddl-suborg">
-                                    <option>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </option>
+                                <select class="form-control" id="ddl-suborg" onclick="chekOnBlur(this.id)">
+                                    <option value="">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </option>
                                 </select>
                             </div>
                         </div>
@@ -44,11 +44,13 @@
                         <div class="row">
                                 <div class="input-group col-sm-12 col-md-5">
                                     <div class="input-group-addon">></div>
-                                    <input class="form-control text-capitalize" id="txt-name" type="text" placeholder="Name">
+                                    <input class="form-control text-capitalize" id="txt-name" type="text" maxlength="40" placeholder="Name"
+                                           onkeyup="chekOnKeyUp(this.id)" onblur="chekOnBlur(this.id)">
                                 </div>
                                 <div class="input-group col-sm-12 col-md-5">
                                     <div class="input-group-addon">></div>
-                                    <input class="form-control text-capitalize" id="txt-lastname" type="text" placeholder="Lastname">
+                                    <input class="form-control text-capitalize" id="txt-lastname" type="text" maxlength="40" placeholder="Lastname"
+                                           onkeyup="chekOnKeyUp(this.id)" onblur="chekOnBlur(this.id)">
                                 </div>
                                 
                         </div>
@@ -58,7 +60,8 @@
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon"><b>></b></div>
-                                <input class="form-control text-lowercase" id="txt-username" placeholder="User">
+                                <input class="form-control text-lowercase" id="txt-username" maxlength="21" placeholder="User"
+                                       onkeyup="chekOnKeyUp(this.id)" onblur="chekOnBlur(this.id)">
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">@</div>
@@ -74,11 +77,12 @@
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">Country</div>
-                                <select class="form-control" id="ddl-country"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
+                                <select class="form-control" id="ddl-country" onclick="chekOnBlur(this.id)"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">></div>
-                                <input class="form-control text-uppercase" id="txt-idnumber" type="text" placeholder="ID Number">
+                                <input class="form-control text-uppercase" id="txt-idnumber" type="text" placeholder="ID Number"
+                                       onkeyup="chekOnKeyUp(this.id)" onblur="chekOnBlur(this.id)">
                             </div>
                         </div>
                         
@@ -87,11 +91,11 @@
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">Position</div>
-                                <select class="form-control" id="ddl-position"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
+                                <select class="form-control" id="ddl-position" onclick="chekOnBlur(this.id)"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">Location</div>
-                                <select class="form-control" id="ddl-location"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
+                                <select class="form-control" id="ddl-location" onclick="chekOnBlur(this.id)"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
                         </div>
                         
@@ -100,11 +104,12 @@
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">eMailGroup</div>
-                                <select class="form-control" id="ddl-emailgroup"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
+                                <select class="form-control" id="ddl-emailgroup" onclick="chekOnBlur(this.id)"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
                             <div class="input-group-addon">Phone</div>
-                            <input class="form-control" id="txt-phonenumber" type="text" placeholder="Phone">
+                            <input class="form-control" id="txt-phonenumber" maxlength="5" type="text" placeholder="Phone"
+                                   onkeyup="chekOnKeyUp(this.id)" onblur="chekOnBlur(this.id)">
                                 <div class="input-group-addon">++</div>
                             </div>
                         </div>
@@ -114,7 +119,7 @@
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-10">
                                 <div class="input-group-addon">></div>
-                                <textarea id="txtarea-desc" class="form-control" placeholder="Description"></textarea>
+                                <textarea id="txtarea-desc" class="form-control" maxlength="200" placeholder="Description"></textarea>
                             </div>
                         </div>
                         

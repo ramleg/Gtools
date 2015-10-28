@@ -3,7 +3,6 @@ package com.corp.globant.MODEL.dao;
 import com.corp.globant.MODEL.beans.*;
 import com.corp.globant.VIEW.beans.FrmUserAdd;
 import java.sql.*;
-
 /**
  *
  * @author ramiro.acoglanis
@@ -17,7 +16,6 @@ public class HiresDAOpsql {
         Hire hire = new Hire();
         if(rs.next()){
             hire.setId(rs.getString("hires_id"));
-            
         }
         
         stmt.close();
@@ -64,7 +62,5 @@ public class HiresDAOpsql {
         Statement stmt = conn.createStatement();
         stmt.executeUpdate(query);
         stmt.close();
-        
     }
-    
 }
