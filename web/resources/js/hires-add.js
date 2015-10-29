@@ -1,41 +1,52 @@
 $(function (){//'DocumentReady' Block
-    //$('.selectpicker').selectpicker();
     
-    getList('GetSuborgList',$('#ddl-suborg'),1);
-    getList('GetPositionList',$('#ddl-position'));
-    getList('GetLocationList',$('#ddl-location'));
-    getList('GetEmailGroupList',$('#ddl-emailgroup'));
-    getList('GetCountryList',$('#ddl-country'));
-    //submit
-    $("#btn-submit").click(function(){frmSubmit();});
-    //validation
-    $('#txtarea-desc').on('keypress',function(e){
+    var optGlobant = $('#opt-globant');
+    var optExternals = $('#opt-externals');
+    var ddlSubDomain = ('#ddl-subdomain');
+    var txtName = $('#txt-name');
+    var txtLastname = $('#txt-lastname');
+    var txtUsername = $('#txt-username');
+    var ddlEmailDomain = $('#ddl-emaildomain');
+    var btnBuildUser = $('#btn-builduser');
+    var btnCheckUser = $('#btn-checkuser');
+    var ddlCountry = $('#ddl-country');
+    var txtIdNumber = $('#txt-idnumber');
+    var ddlPosition = $('#ddl-position');
+    var ddlLocation = $('#ddl-location');
+    var ddlEmailGroup = $('#ddl-emailgroup');
+    var txtPhone = $('txt-phonenumber');
+    var btnGetPhoneNumber = $('#btn-getphonenumber');
+    var txtDescription = $('#txt-desc');
+    var btnSubmit = $('#btn-submit');
+    var btnCancel= $("#btn-cancel");
+    
+    //********************************//
+    // Fill the Form Controls --->>>  //
+    //********************************//
+    getList('GetSuborgList',ddlSubDomain,1);
+    getList('GetCountryList',ddlCountry);
+    getList('GetPositionList',ddlPosition);
+    getList('GetLocationList',ddlLocation);
+    getList('GetEmailGroupList',ddlEmailGroup);
+    
+    //********************************//
+    //Events Listeners --->>>         //
+    //********************************//
+    btnSubmit.on('click',frmSubmit);
+    txtPhone.on('keypress',keyPressControl);
+    txtName.on('blur',chekOnBlur(txtName));
+    txtDescription.on('keypress',function(e){
         console.log(e.keyCode);
     });
-    $('#txt-phonenumber').on('keypress',keyPressControl);
-                
-});//Close the 'DocumentReady' Block
 
-function keyPressControl(e){
-    if(!(e.keyCode >=48 && e.keyCode <=57))
-        e.preventDefault();
-    
-}
 
-function chekOnBlur(id){
-    if($('#'+ id).val()==""){
-        $('#'+ id).closest('.input-group').addClass('has-error');
-    }else{
-        $('#'+ id).closest('.input-group').removeClass('has-error');
-    }
-}
 
-function chekOnKeyUp(id){
-    $('#'+ id).closest('.input-group').removeClass('has-error');
-}
 
+
+//********************************//
+// a bunch of functions --->>>    //
+//********************************//
 function getList($url, $ddl, $i){
-    
     $.ajax({
         type: 'GET',
         url: $url,
@@ -56,6 +67,7 @@ function setDDL(json, control){
         htmlData = htmlData + '<option value=' + json[0][key].id + ' >' + json[0][key].desc + '</option>';
     control.append(htmlData);
 }
+// Submit DATA ----->>>
 function frmSubmit(){
 
     var $JsonData = {
@@ -88,7 +100,22 @@ function frmSubmit(){
         }
     });
     
-}// Close login function
+}
+function keyPressControl(e){
+    if(!(e.keyCode >=48 && e.keyCode <=57))
+        e.preventDefault();
+}
+function chekOnBlur(control){
+    if(control.val()==""){
+        control.closest('.input-group').addClass('has-error');
+    }else{
+        control.closest('.input-group').removeClass('has-error');
+    }
+}
+function chekOnKeyUp(id){
+    $('#'+ id).closest('.input-group').removeClass('has-error');
+}
+
 
 
 function allowJustNumbers(e){
@@ -110,6 +137,8 @@ function allowJustNumbers(e){
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
         }
-        
 }
+
+});//Close the 'DocumentReady' Block
+
 

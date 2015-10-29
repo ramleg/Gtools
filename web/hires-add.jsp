@@ -27,13 +27,13 @@
                             <div class="input-group col-sm-12 col-md-10">
                                 <div class="input-group-addon">
                                     <div class="radio col-md-3">
-                                    <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Globant</label>
+                                    <label><input type="radio" name="optionsRadios" id="opt-globant" value="globant" checked> Globant</label>
                                     </div>
                                     <div class="radio col-md-2 disabled" >
-                                        <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" disabled> Contractor / External</label>
+                                        <label><input type="radio" name="optionsRadios" id="opt-external" value="external" disabled> Contractor / External</label>
                                     </div>
                                 </div>
-                                <select class="form-control" id="ddl-suborg" onclick="chekOnBlur(this.id)">
+                                <select class="form-control" id="ddl-subdomain">
                                     <option value="">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </option>
                                 </select>
                             </div>
@@ -44,13 +44,11 @@
                         <div class="row">
                                 <div class="input-group col-sm-12 col-md-5">
                                     <div class="input-group-addon">></div>
-                                    <input class="form-control text-capitalize" id="txt-name" type="text" maxlength="40" placeholder="Name"
-                                           onkeyup="chekOnKeyUp(this.id)" onblur="chekOnBlur(this.id)">
+                                    <input class="form-control text-capitalize" id="txt-name" type="text" maxlength="40" placeholder="Name">
                                 </div>
                                 <div class="input-group col-sm-12 col-md-5">
                                     <div class="input-group-addon">></div>
-                                    <input class="form-control text-capitalize" id="txt-lastname" type="text" maxlength="40" placeholder="Lastname"
-                                           onkeyup="chekOnKeyUp(this.id)" onblur="chekOnBlur(this.id)">
+                                    <input class="form-control text-capitalize" id="txt-lastname" type="text" maxlength="40" placeholder="Lastname">
                                 </div>
                                 
                         </div>
@@ -59,16 +57,15 @@
                         
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
-                                <div class="input-group-addon"><b>></b></div>
-                                <input class="form-control text-lowercase" id="txt-username" maxlength="21" placeholder="User"
-                                       onkeyup="chekOnKeyUp(this.id)" onblur="chekOnBlur(this.id)">
+                                <div id="btn-builduser" class="input-group-addon"><b>></b></div>
+                                <input class="form-control text-lowercase" id="txt-username" maxlength="21" placeholder="User">
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">@</div>
                                 <select class="form-control" id="ddl-emaildomain">
                                     <option>globant.com</option>
                                 </select>
-                                <div class="input-group-addon">Check</div>
+                                <div id="btn-checkuser" class="input-group-addon">Check</div>
                             </div>
                         </div>
                         
@@ -77,12 +74,11 @@
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">Country</div>
-                                <select class="form-control" id="ddl-country" onclick="chekOnBlur(this.id)"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
+                                <select class="form-control" id="ddl-country"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">></div>
-                                <input class="form-control text-uppercase" id="txt-idnumber" type="text" placeholder="ID Number"
-                                       onkeyup="chekOnKeyUp(this.id)" onblur="chekOnBlur(this.id)">
+                                <input class="form-control text-uppercase" id="txt-idnumber" type="text" placeholder="ID Number">
                             </div>
                         </div>
                         
@@ -91,11 +87,11 @@
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">Position</div>
-                                <select class="form-control" id="ddl-position" onclick="chekOnBlur(this.id)"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
+                                <select class="form-control" id="ddl-position"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">Location</div>
-                                <select class="form-control" id="ddl-location" onclick="chekOnBlur(this.id)"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
+                                <select class="form-control" id="ddl-location"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
                         </div>
                         
@@ -104,13 +100,12 @@
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">eMailGroup</div>
-                                <select class="form-control" id="ddl-emailgroup" onclick="chekOnBlur(this.id)"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
+                                <select class="form-control" id="ddl-emailgroup"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
                             <div class="input-group-addon">Phone</div>
-                            <input class="form-control" id="txt-phonenumber" maxlength="5" type="text" placeholder="Phone"
-                                   onkeyup="chekOnKeyUp(this.id)" onblur="chekOnBlur(this.id)">
-                                <div class="input-group-addon">++</div>
+                            <input class="form-control" id="txt-phonenumber" maxlength="5" type="text" placeholder="Phone">
+                            <div id="btn-getphonenumber" class="input-group-addon">++</div>
                             </div>
                         </div>
                         
@@ -119,7 +114,7 @@
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-10">
                                 <div class="input-group-addon">></div>
-                                <textarea id="txtarea-desc" class="form-control" maxlength="200" placeholder="Description"></textarea>
+                                <textarea id="txt-desc" class="form-control" maxlength="200" placeholder="Description"></textarea>
                             </div>
                         </div>
                         
