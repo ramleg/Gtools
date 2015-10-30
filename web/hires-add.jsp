@@ -15,7 +15,7 @@
     
     <div class="main row">
         <!-- PANEL 1 -->
-        <div class="col-xs-12 col-sm-12 col-md-8">
+        <div class="col-xs-12 col-sm-12 col-md-7">
             <div class="panel panel-primary">
             <div class="panel-heading">User Data</div>
             <div class="panel-body">
@@ -25,12 +25,12 @@
                         
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-10">
-                                <div class="input-group-addon">
+                                <div id="option-group" class="input-group-addon">
                                     <div class="radio col-md-3">
-                                    <label><input type="radio" name="optionsRadios" id="opt-globant" value="globant" checked> Globant</label>
+                                    <label><input type="radio" name="optionsRadios" id="opt-glb"> Globant </label>
                                     </div>
-                                    <div class="radio col-md-2 disabled" >
-                                        <label><input type="radio" name="optionsRadios" id="opt-external" value="external" disabled> Contractor / External</label>
+                                    <div class="radio col-md-2" >
+                                        <label><input type="radio" name="optionsRadios" id="opt-ext"> Contractor / External</label>
                                     </div>
                                 </div>
                                 <select class="form-control" id="ddl-subdomain">
@@ -59,13 +59,14 @@
                             <div class="input-group col-sm-12 col-md-5">
                                 <div id="btn-builduser" class="input-group-addon"><b>></b></div>
                                 <input class="form-control text-lowercase" id="txt-username" maxlength="21" placeholder="User">
+                                <div id="btn-checkuser" class="input-group-addon">Check</div>
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon">@</div>
                                 <select class="form-control" id="ddl-emaildomain">
+                                    <option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option>
                                     <option>globant.com</option>
                                 </select>
-                                <div id="btn-checkuser" class="input-group-addon">Check</div>
                             </div>
                         </div>
                         
@@ -137,7 +138,7 @@
         
         
         <!-- PANEL 2 -->
-        <div class="col-xs-12 col-sm-12 col-md-4">
+        <div class="col-xs-12 col-sm-12 col-md-5">
             <div class="panel panel-primary">
             <div class="panel-heading">Logs</div>
             <div class="panel-body">

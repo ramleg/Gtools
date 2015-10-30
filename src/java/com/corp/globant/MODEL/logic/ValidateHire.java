@@ -14,18 +14,20 @@ public class ValidateHire {
     public Hire validate(Hire hire) throws ValidateException{
         //Validate Name
         if(!this.validateName(hire))
-            throw new ValidateException("Wrong Data [Name]");
+            throw new ValidateException("name");
         //Validate LastName
         if(!this.validateLastName(hire))
-            throw new ValidateException("Wrong Data [LastName]");
+            throw new ValidateException("lastname");
         //Validate ID Number
         if(!this.validateIdNumber(hire))
-            throw new ValidateException("Wrong Data [ID Number]");
+            throw new ValidateException("idnumber");
         //Validate DomainUser
         if(!this.validateDomainUser(hire))
-            throw new ValidateException("Wrong Data [DomainUser]");
+            throw new ValidateException("user");
         
-        System.out.println("Validation: OK");
+        //Validate SubDomain
+        
+        
         return hire;
     }
     

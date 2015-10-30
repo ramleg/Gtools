@@ -37,15 +37,6 @@ public class HireAddServlet extends HttpServlet {
         
         try {
             hire = new ValidateHire().validate(hire);
-            System.out.println(hire.getName());
-            System.out.println(hire.getLastname());
-            System.out.println(hire.getDomainUser());
-            System.out.println(hire.getEmail());
-            System.out.println(hire.getCountry());
-            System.out.println(hire.getIdNumber());
-            System.out.println(hire.getPosition());
-            
-            
             HiresDAOpsql.create(ConnectionManager.getConnection(), hire);
             
             comeBack = (JsonObject)parser.parse(new Gson().toJson(hire));
@@ -82,8 +73,8 @@ public class HireAddServlet extends HttpServlet {
         hire.setPhoneNumber(frm.getPhoneNumber());
         //Set Country
         hire.setCountry(new Country(frm.getCountry()));
-        //Set SubOrg
-        hire.setSuborg(new SubOrg(frm.getSubOrganization()));
+        //Set SubDomain
+        hire.setSuborg(new SubDomain(frm.getSubOrganization()));
         
         return hire;
     }

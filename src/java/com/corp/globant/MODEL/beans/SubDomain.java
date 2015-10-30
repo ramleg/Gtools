@@ -3,14 +3,14 @@ package com.corp.globant.MODEL.beans;
  *
  * @author r.sanchez
  */
-public class SubOrg {
+public class SubDomain {
    private String id;
    private String desc;
    private String domainEmail;
 
-    public SubOrg() {}
+    public SubDomain() {}
 
-    public SubOrg(String id) {
+    public SubDomain(String id) {
         this.id = id;
     }
     

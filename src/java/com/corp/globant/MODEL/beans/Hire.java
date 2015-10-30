@@ -15,7 +15,7 @@ public class Hire {
     private Location location;
     private String phoneNumber;
     private Country country;
-    private SubOrg suborg;
+    private SubDomain suborg;
     private String desc;
     
     public String getId() {
@@ -106,11 +106,11 @@ public class Hire {
         this.country = country;
     }
 
-    public SubOrg getSuborg() {
+    public SubDomain getSuborg() {
         return suborg;
     }
 
-    public void setSuborg(SubOrg suborg) {
+    public void setSuborg(SubDomain suborg) {
         this.suborg = suborg;
     }
 

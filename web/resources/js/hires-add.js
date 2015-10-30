@@ -1,8 +1,9 @@
 $(function (){//'DocumentReady' Block
     
-    var optGlobant = $('#opt-globant');
-    var optExternals = $('#opt-externals');
-    var ddlSubDomain = ('#ddl-subdomain');
+    var optGroup = $('#option-group');
+    var optGlobant = $('#opt-glb');
+    var optExternals = $('#opt-ext');
+    var ddlSubDomain = $('#ddl-subdomain');
     var txtName = $('#txt-name');
     var txtLastname = $('#txt-lastname');
     var txtUsername = $('#txt-username');
@@ -19,47 +20,57 @@ $(function (){//'DocumentReady' Block
     var txtDescription = $('#txt-desc');
     var btnSubmit = $('#btn-submit');
     var btnCancel= $("#btn-cancel");
-    
     //********************************//
     // Fill the Form Controls --->>>  //
     //********************************//
-    getList('GetSuborgList',ddlSubDomain,1);
-    getList('GetCountryList',ddlCountry);
-    getList('GetPositionList',ddlPosition);
-    getList('GetLocationList',ddlLocation);
-    getList('GetEmailGroupList',ddlEmailGroup);
+    getList('GetSubDomainList',ddlSubDomain);
+//    getList('GetCountryList',ddlCountry);
+//    getList('GetPositionList',ddlPosition);
+//    getList('GetLocationList',ddlLocation);
+//    getList('GetEmailGroupList',ddlEmailGroup);
     
     //********************************//
     //Events Listeners --->>>         //
     //********************************//
-    btnSubmit.on('click',frmSubmit);
+//    optGlobant.on('click', getList('GetSubDomainList',ddlSubDomain, 'GLB'));
+//    optExternals.on('click', getList('GetSubDomainList',ddlSubDomain, 'EXT'));
+    
+    txtName.on('blur', chekEmpty);
+    txtName.on('keyup', chekEmpty);
+    
+    txtLastname.on('blur', chekEmpty);
+    txtLastname.on('keyup', chekEmpty);
+    
+    txtUsername.on('blur', chekEmpty);
+    txtUsername.on('keyup', chekEmpty);
+    
     txtPhone.on('keypress',keyPressControl);
-    txtName.on('blur',chekOnBlur(txtName));
-    txtDescription.on('keypress',function(e){
-        console.log(e.keyCode);
-    });
-
-
-
-
+    btnSubmit.on('click',frmSubmit);
 
 //********************************//
 // a bunch of functions --->>>    //
 //********************************//
-function getList($url, $ddl, $i){
+function getList($url, $ddl, $flag){
+    
+    if (typeof $flag == "undefined")
+        $flag='';
+    var $json = {flag:'GET'};
     $.ajax({
         type: 'GET',
         url: $url,
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify($json),
         success: function(data){
+                alert(JSON.stringify(data));
             setDDL(data, $ddl);
-            $ddl.val($i).change();
+            //$ddl.val($i).change();
         },
-        error: function(){
+        error: function(data){
             setDDL(data, $ddl);
         }
     });
+    
 }
 function setDDL(json, control){
     var htmlData = '';
@@ -84,7 +95,8 @@ function frmSubmit(){
         country:$('#ddl-country').val(),
         description:$('#txtarea-desc').val()
     };
-    alert(JSON.stringify($JsonData));
+    console.log(JSON.stringify($JsonData));
+    
     $.ajax({
         type: 'POST',
         url: 'HireAdd',
@@ -101,23 +113,21 @@ function frmSubmit(){
     });
     
 }
+
 function keyPressControl(e){
     if(!(e.keyCode >=48 && e.keyCode <=57))
         e.preventDefault();
 }
-function chekOnBlur(control){
-    if(control.val()==""){
-        control.closest('.input-group').addClass('has-error');
+function chekEmpty(){
+    if($(this).val()==""){
+        $(this).closest('.input-group').addClass('has-error');
     }else{
-        control.closest('.input-group').removeClass('has-error');
+        $(this).closest('.input-group').removeClass('has-error');
     }
 }
-function chekOnKeyUp(id){
-    $('#'+ id).closest('.input-group').removeClass('has-error');
+function chekOnKeyUp(){
+    $(this).closest('.input-group').removeClass('has-error');
 }
-
-
-
 function allowJustNumbers(e){
     
     // Allow: backspace, delete, tab, escape, enter and .
