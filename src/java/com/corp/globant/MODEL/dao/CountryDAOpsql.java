@@ -38,9 +38,7 @@ public class CountryDAOpsql {
             country.setDesc(rs.getString("countries_desc"));
             countries.add(country);
         }
-        // Cierra el Statement y la Connection
         stmt.close();
-        // Retorna el alumno
         return countries;
     }
 }

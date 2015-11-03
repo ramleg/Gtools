@@ -15,7 +15,7 @@ public class LocationDAOpsql {
         // Construye la coleccion
         ArrayList<Location> locations = new ArrayList();
         // Arma la consulta y la ejecuta
-        String laConsulta = 
+        String query = 
                 "SELECT \n" +
                 "  locations.locations_id, \n" +
                 "  locations.locations_desc, \n" +
@@ -28,8 +28,8 @@ public class LocationDAOpsql {
                 "  app.countries\n" +
                 "WHERE \n" +
                 "  locations.locations_country_fk = countries.countries_id;";
-        Statement stmtConsulta = conn.createStatement();
-        ResultSet rs = stmtConsulta.executeQuery(laConsulta);
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
         // Obtiene los datos
         while (rs.next()) {
             Location location = new Location();
@@ -47,7 +47,7 @@ public class LocationDAOpsql {
             locations.add(location);
         }
         // Cierra el Statement y la Connection
-        stmtConsulta.close();
+        stmt.close();
         // Retorna el ArrayList de Sites
         return locations;
     }

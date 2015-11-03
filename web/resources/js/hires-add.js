@@ -1,33 +1,33 @@
 $(function (){//'DocumentReady' Block
     
-    var optGroup = $('#option-group');
-    var optGlobant = $('#opt-glb');
-    var optExternals = $('#opt-ext');
-    var ddlSubDomain = $('#ddl-subdomain');
-    var txtName = $('#txt-name');
-    var txtLastname = $('#txt-lastname');
-    var txtUsername = $('#txt-username');
+    var optGroup =      $('#option-group');
+    var optGlobant =    $('#opt-glb');
+    var optExternals =  $('#opt-ext');
+    var ddlSubDomain =  $('#ddl-subdomain');
+    var txtName =       $('#txt-name');
+    var txtLastname =   $('#txt-lastname');
+    var txtUsername =   $('#txt-username');
     var ddlEmailDomain = $('#ddl-emaildomain');
-    var btnBuildUser = $('#btn-builduser');
-    var btnCheckUser = $('#btn-checkuser');
-    var ddlCountry = $('#ddl-country');
-    var txtIdNumber = $('#txt-idnumber');
-    var ddlPosition = $('#ddl-position');
-    var ddlLocation = $('#ddl-location');
+    var btnBuildUser =  $('#btn-builduser');
+    var btnCheckUser =  $('#btn-checkuser');
+    var ddlCountry =    $('#ddl-country');
+    var txtIdNumber =   $('#txt-idnumber');
+    var ddlPosition =   $('#ddl-position');
+    var ddlLocation =   $('#ddl-location');
     var ddlEmailGroup = $('#ddl-emailgroup');
-    var txtPhone = $('txt-phonenumber');
+    var txtPhone =      $('txt-phonenumber');
     var btnGetPhoneNumber = $('#btn-getphonenumber');
     var txtDescription = $('#txt-desc');
-    var btnSubmit = $('#btn-submit');
-    var btnCancel= $("#btn-cancel");
+    var btnSubmit =     $('#btn-submit');
+    var btnCancel=      $("#btn-cancel");
     //********************************//
     // Fill the Form Controls --->>>  //
     //********************************//
     getList('GetSubDomainList',ddlSubDomain);
-//    getList('GetCountryList',ddlCountry);
-//    getList('GetPositionList',ddlPosition);
-//    getList('GetLocationList',ddlLocation);
-//    getList('GetEmailGroupList',ddlEmailGroup);
+    getList('GetCountryList',ddlCountry);
+    getList('GetPositionList',ddlPosition);
+    getList('GetLocationList',ddlLocation);
+    getList('GetEmailGroupList',ddlEmailGroup);
     
     //********************************//
     //Events Listeners --->>>         //
@@ -45,6 +45,7 @@ $(function (){//'DocumentReady' Block
     txtUsername.on('keyup', chekEmpty);
     
     txtPhone.on('keypress',keyPressControl);
+    
     btnSubmit.on('click',frmSubmit);
 
 //********************************//
@@ -52,17 +53,24 @@ $(function (){//'DocumentReady' Block
 //********************************//
 function getList($url, $ddl, $flag){
     
-    if (typeof $flag == "undefined")
-        $flag='';
-    var $json = {flag:'GET'};
+    
+    if (typeof $flag !== "undefined"){
+        var $type = 'GET';
+        var $JsonData = {flag:'null'};
+    }else{
+        var $type = 'POST';
+        var $JsonData = {flag:$flag};
+    }
+        
+    var JsonData = {flag:""};
+    JsonData.flag = "GLB";
     $.ajax({
         type: 'GET',
         url: $url,
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify($json),
+        data: JSON.stringify($JsonData),
         success: function(data){
-                alert(JSON.stringify(data));
             setDDL(data, $ddl);
             //$ddl.val($i).change();
         },
@@ -74,8 +82,8 @@ function getList($url, $ddl, $flag){
 }
 function setDDL(json, control){
     var htmlData = '';
-    for(var key in json[0])
-        htmlData = htmlData + '<option value=' + json[0][key].id + ' >' + json[0][key].desc + '</option>';
+    for(var key in json)
+        htmlData = htmlData + '<option value=' + json[key].id + ' >' + json[key].desc + '</option>';
     control.append(htmlData);
 }
 // Submit DATA ----->>>

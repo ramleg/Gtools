@@ -1,6 +1,6 @@
 package com.corp.globant.VIEW;
 
-import com.corp.globant.MODEL.beans.Pinchila;
+import com.corp.globant.MODEL.beans.Flag;
 import com.corp.globant.MODEL.beans.SubDomain;
 import com.corp.globant.MODEL.dao.*;
 import com.google.gson.*;
@@ -24,14 +24,10 @@ public class GetSubDomainList extends HttpServlet {
         
         ArrayList<SubDomain> responseList = new ArrayList();
         response.setContentType("application/json; charset=utf8");
-//        Pinchila flag = new Gson().fromJson(request.getReader(), Pinchila.class);
-        Pinchila flag = new Pinchila();
-        flag.setPinchi("GET");
+        
         try {
-                
-                Connection conn = ConnectionManager.getConnection();
-                responseList = SubDomainDAOpsql.getAllbyCategory(conn, flag.getPinchi());
-                System.out.println(responseList.get(1));
+                Flag flag = new Gson().fromJson(request.getReader(), Flag.class);
+                responseList = SubDomainDAOpsql.getAllbyCategory(ConnectionManager.getConnection(), flag.getFlag());
         } catch (Exception ex) {
             Logger.getLogger(GetSubDomainList.class.getName()).log(Level.SEVERE, null, ex);
         }finally{

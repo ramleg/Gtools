@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * @author ramiro.acoglanis
  */
 public class FrmUserAdd {
+    
     @SerializedName("subOrganization")
     private String subOrganization;
     @SerializedName("name")

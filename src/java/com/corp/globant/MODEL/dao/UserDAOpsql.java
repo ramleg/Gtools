@@ -12,9 +12,9 @@ public class UserDAOpsql {
         
     public static User getByUserDomain (Connection conn, String domainUser) throws SQLException{
         
-        String laConsulta = "SELECT * FROM app.users WHERE users_domain_user='" + domainUser + "';";
-        Statement stmtConsulta = conn.createStatement();
-        ResultSet rs = stmtConsulta.executeQuery(laConsulta);
+        String query = "SELECT * FROM app.users WHERE users_domain_user='" + domainUser + "';";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
         User user = new User();
         if(rs.next()){
             user.setId(rs.getString("users_id"));
@@ -24,7 +24,7 @@ public class UserDAOpsql {
             user.setRol(rs.getString("users_rol"));
         }
         
-        stmtConsulta.close();
+        stmt.close();
         
         return user;
     }
@@ -32,9 +32,9 @@ public class UserDAOpsql {
         // Construye la coleccion
         ArrayList users = new ArrayList();
         // Arma la consulta y la ejecuta
-        String laConsulta = "SELECT * FROM app.users;";
-        Statement stmtConsulta = conn.createStatement();
-        ResultSet rs = stmtConsulta.executeQuery(laConsulta);
+        String query = "SELECT * FROM app.users;";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
         // Obtiene los datos
         
         while (rs.next()) {
@@ -47,7 +47,7 @@ public class UserDAOpsql {
             users.add(user);
         }
         // Cierra el Statement y la Connection
-        stmtConsulta.close();
+        stmt.close();
         // Retorna el alumno
         return users;
     }

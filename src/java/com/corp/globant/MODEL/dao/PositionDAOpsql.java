@@ -13,16 +13,16 @@ public class PositionDAOpsql {
     
     public static Position getById (Connection conn, String id)throws Exception{
         
-        String laConsulta = "SELECT * FROM app.positions WHERE positions_id=" + id + ";";
-        Statement stmtConsulta = conn.createStatement();
-        ResultSet rs = stmtConsulta.executeQuery(laConsulta);
+        String query = "SELECT * FROM app.positions WHERE positions_id=" + id + ";";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
         
         Position pos = new Position();
         pos.setId(rs.getString("positions_id"));
         pos.setDesc(rs.getString("positions_desc"));
         pos.setOu(rs.getString("positions_ou"));
         
-        stmtConsulta.close();
+        stmt.close();
         
         return pos;
     }
@@ -30,9 +30,9 @@ public class PositionDAOpsql {
         // Construye la coleccion
         ArrayList positions = new ArrayList();
         // Arma la consulta y la ejecuta
-        String laConsulta = "SELECT * FROM app.positions";
-        Statement stmtConsulta = conn.createStatement();
-        ResultSet rs = stmtConsulta.executeQuery(laConsulta);
+        String query = "SELECT * FROM app.positions";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
         // Obtiene los datos
         while (rs.next()) {
             Position pos = new Position();
@@ -43,7 +43,7 @@ public class PositionDAOpsql {
             positions.add(pos);
         }
         // Cierra el Statement y la Connection
-        stmtConsulta.close();
+        stmt.close();
         // Retorna la posision
         return positions;
     }

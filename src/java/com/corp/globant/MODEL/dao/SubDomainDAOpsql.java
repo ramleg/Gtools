@@ -31,7 +31,7 @@ public class SubDomainDAOpsql {
         // Construye la coleccion
         ArrayList<SubDomain> subDomainList = new ArrayList();
         // Arma la consulta y la ejecuta
-        String query = "SELECT * FROM app.subdomain WHERE subdomain_category LIKE '" + cat + "';";
+        String query = "SELECT * FROM app.subdomain WHERE subdomain_category = '" + cat + "';";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         // Obtiene los datos

@@ -23,10 +23,8 @@ public class GetCountryList extends HttpServlet {
         ArrayList responseList = new ArrayList();
         response.setContentType("application/json; charset=utf8");
         try {
-            Connection conn = ConnectionManager.getConnection();
-            responseList.add(CountryDAOpsql.getAll(conn));
+            responseList = CountryDAOpsql.getAll(ConnectionManager.getConnection());
         } catch (Exception ex) {
-            responseList.add("error getting data");
             Logger.getLogger(GetCountryList.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             PrintWriter out = response.getWriter();

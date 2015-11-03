@@ -23,10 +23,8 @@ public class GetPositionList extends HttpServlet {
         ArrayList responseList = new ArrayList();
         response.setContentType("application/json; charset=utf8");
         try {
-            Connection conn = ConnectionManager.getConnection();
-            responseList.add(PositionDAOpsql.getAll(conn));
+            responseList = PositionDAOpsql.getAll(ConnectionManager.getConnection());
         } catch (Exception ex) {
-            responseList.add("error getting data");
             Logger.getLogger(GetPositionList.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             PrintWriter out = response.getWriter();
