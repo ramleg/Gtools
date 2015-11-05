@@ -3,27 +3,29 @@ $(function (){//'DocumentReady' Block
     var optGroup =      $('#option-group');
     var optGlobant =    $('#opt-glb');
     var optExternals =  $('#opt-ext');
+    
     var ddlSubDomain =  $('#ddl-subdomain');
-    var txtName =       $('#txt-name');
-    var txtLastname =   $('#txt-lastname');
-    var txtUsername =   $('#txt-username');
     var ddlEmailDomain = $('#ddl-emaildomain');
-    var btnBuildUser =  $('#btn-builduser');
-    var btnCheckUser =  $('#btn-checkuser');
     var ddlCountry =    $('#ddl-country');
-    var txtIdNumber =   $('#txt-idnumber');
     var ddlPosition =   $('#ddl-position');
     var ddlLocation =   $('#ddl-location');
     var ddlEmailGroup = $('#ddl-emailgroup');
-    var txtPhone =      $('txt-phonenumber');
-    var btnGetPhoneNumber = $('#btn-getphonenumber');
+    
+    var txtName =       $('#txt-name');
+    var txtLastname =   $('#txt-lastname');
+    var txtUsername =   $('#txt-username');
+    var txtIdNumber =   $('#txt-idnumber');
     var txtDescription = $('#txt-desc');
+    var txtPhone =      $('#txt-phonenumber');
+    
+    var btnBuildUser =  $('#btn-builduser');
+    var btnCheckUser =  $('#btn-checkuser');
+    var btnGetPhoneNumber = $('#btn-getphonenumber');    
     var btnSubmit =     $('#btn-submit');
     var btnCancel=      $("#btn-cancel");
     //********************************//
     // Fill the Form Controls --->>>  //
     //********************************//
-    getList('GetSubDomainList',ddlSubDomain);
     getList('GetCountryList',ddlCountry);
     getList('GetPositionList',ddlPosition);
     getList('GetLocationList',ddlLocation);
@@ -32,8 +34,8 @@ $(function (){//'DocumentReady' Block
     //********************************//
     //Events Listeners --->>>         //
     //********************************//
-//    optGlobant.on('click', getList('GetSubDomainList',ddlSubDomain, 'GLB'));
-//    optExternals.on('click', getList('GetSubDomainList',ddlSubDomain, 'EXT'));
+    optGlobant.on('click', function(){getList('GetSubDomainList',ddlSubDomain, 'GLB');});
+    optExternals.on('click', function(){getList('GetSubDomainList',ddlSubDomain, 'EXT');});
     
     txtName.on('blur', chekEmpty);
     txtName.on('keyup', chekEmpty);
@@ -47,29 +49,28 @@ $(function (){//'DocumentReady' Block
     txtPhone.on('keypress',keyPressControl);
     
     btnSubmit.on('click',frmSubmit);
+    
+    btnCancel.on('click', function(){
+        clearForm();
+    });
 
 //********************************//
 // a bunch of functions --->>>    //
 //********************************//
 function getList($url, $ddl, $flag){
+
+    $ddl.find('option').remove().end()
+    .append
+    ('<option value="">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </option>');
     
-    
-    if (typeof $flag !== "undefined"){
-        var $type = 'GET';
-        var $JsonData = {flag:'null'};
-    }else{
-        var $type = 'POST';
-        var $JsonData = {flag:$flag};
-    }
-        
-    var JsonData = {flag:""};
-    JsonData.flag = "GLB";
+    var jsonData = {flag:$flag};
+    console.log($flag);
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: $url,
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify($JsonData),
+        data: JSON.stringify(jsonData),
         success: function(data){
             setDDL(data, $ddl);
             //$ddl.val($i).change();
@@ -157,6 +158,34 @@ function allowJustNumbers(e){
         }
 }
 
+function clearForm(){
+    
+    ddlSubDomain.val('').change();
+    txtName.val('');
+    txtLastname.val('');
+    txtUsername.val('');
+    ddlEmailDomain.val('').change();
+    ddlCountry.val('').change();
+    txtIdNumber.val('');
+    ddlPosition.val('').change();
+    ddlLocation.val('').change();
+    ddlEmailGroup.val('').change();
+    txtPhone.val('');
+    txtDescription.val('');
+    
+    ddlSubDomain.closest('.input-group').removeClass('has-error has-success');
+    txtName.closest('.input-group').removeClass('has-error has-success');
+    txtLastname.closest('.input-group').removeClass('has-error has-success');
+    txtUsername.closest('.input-group').removeClass('has-error has-success');
+    ddlEmailDomain.closest('.input-group').removeClass('has-error has-success');
+    ddlCountry.closest('.input-group').removeClass('has-error has-success');
+    txtIdNumber.closest('.input-group').removeClass('has-error has-success');
+    ddlPosition.closest('.input-group').removeClass('has-error has-success');
+    ddlLocation.closest('.input-group').removeClass('has-error has-success');
+    ddlEmailGroup.closest('.input-group').removeClass('has-error has-success');
+    txtPhone.closest('.input-group').removeClass('has-error has-success');
+    txtDescription.closest('.input-group').removeClass('has-error has-success');
+}
 });//Close the 'DocumentReady' Block
 
 
