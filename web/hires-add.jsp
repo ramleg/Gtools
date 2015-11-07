@@ -6,6 +6,7 @@
   <%@include file="common/commonHead.html" %>
   <link href="resources/css/gtools-hiresadd.css" rel="stylesheet" type="text/css"/>
   <script src="resources/js/hires-add.js"></script>
+  <script src="resources/js/validator.js"></script>
 </head>
 <body>
 <%@include file="common/mainMenu.jsp" %>
@@ -25,7 +26,7 @@
                         
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-10">
-                                <div id="option-group" class="input-group-addon">
+                                <div id="option-group" class="input-group-addon cursor">
                                     <div class="radio col-md-3">
                                     <label><input type="radio" name="optionsRadios" id="opt-glb"> Globant </label>
                                     </div>
@@ -43,11 +44,11 @@
                         
                         <div class="row">
                                 <div class="input-group col-sm-12 col-md-5">
-                                    <div class="input-group-addon">></div>
+                                    <div class="input-group-addon cursor">></div>
                                     <input class="form-control text-capitalize" id="txt-name" type="text" maxlength="40" placeholder="Name">
                                 </div>
                                 <div class="input-group col-sm-12 col-md-5">
-                                    <div class="input-group-addon">></div>
+                                    <div class="input-group-addon cursor">></div>
                                     <input class="form-control text-capitalize" id="txt-lastname" type="text" maxlength="40" placeholder="Lastname">
                                 </div>
                                 
@@ -57,12 +58,12 @@
                         
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
-                                <div id="btn-builduser" class="input-group-addon"><b>></b></div>
+                                <div id="btn-builduser" class="input-group-addon cursor"><b>></b></div>
                                 <input class="form-control text-lowercase" id="txt-username" maxlength="21" placeholder="User">
-                                <div id="btn-checkuser" class="input-group-addon">Check</div>
+                                <div id="btn-checkuser" class="input-group-addon clickable">Check</div>
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
-                                <div class="input-group-addon">@</div>
+                                <div class="input-group-addon cursor">@</div>
                                 <select class="form-control" id="ddl-emaildomain">
                                     <option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option>
                                     <option>globant.com</option>
@@ -74,11 +75,11 @@
                         
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
-                                <div class="input-group-addon">Country</div>
+                                <div class="input-group-addon cursor">Country</div>
                                 <select class="form-control" id="ddl-country"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
-                                <div class="input-group-addon">></div>
+                                <div class="input-group-addon cursor">></div>
                                 <input class="form-control text-uppercase" id="txt-idnumber" type="text" placeholder="ID Number">
                             </div>
                         </div>
@@ -87,11 +88,11 @@
                         
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
-                                <div class="input-group-addon">Position</div>
+                                <div class="input-group-addon cursor">Position</div>
                                 <select class="form-control" id="ddl-position"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
-                                <div class="input-group-addon">Location</div>
+                                <div class="input-group-addon cursor">Location</div>
                                 <select class="form-control" id="ddl-location"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
                         </div>
@@ -100,13 +101,13 @@
                         
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
-                                <div class="input-group-addon">eMailGroup</div>
+                                <div class="input-group-addon cursor">eMailGroup</div>
                                 <select class="form-control" id="ddl-emailgroup"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
-                            <div class="input-group-addon">Phone</div>
+                            <div class="input-group-addon cursor">Phone</div>
                             <input class="form-control" id="txt-phonenumber" maxlength="5" type="text" placeholder="Phone">
-                            <div id="btn-getphonenumber" class="input-group-addon">++</div>
+                            <div id="btn-getphonenumber" class="input-group-addon clickable">++</div>
                             </div>
                         </div>
                         
@@ -114,7 +115,7 @@
                         
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-10">
-                                <div class="input-group-addon">></div>
+                                <div class="input-group-addon cursor">></div>
                                 <textarea id="txt-desc" class="form-control" maxlength="200" placeholder="Description"></textarea>
                             </div>
                         </div>

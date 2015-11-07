@@ -1,4 +1,7 @@
-function isnumeric(str){
-    
-    return true;
+function chekEmpty(obj){
+    if(obj.val()==""){
+        return false;
+    }else{
+        return true;
+    }
 }

@@ -1,3 +1,13 @@
+.clickable:hover{
+    cursor:pointer;
+    color:#ff6600;
+}
+.cursor{
+    cursor:default;
+}
+.hilighted{
+    
+}
 .block-one{
     background-color:#ccccff;
 }

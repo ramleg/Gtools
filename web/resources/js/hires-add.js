@@ -1,58 +1,98 @@
 $(function (){//'DocumentReady' Block
     
-    var optGroup =      $('#option-group');
-    var optGlobant =    $('#opt-glb');
-    var optExternals =  $('#opt-ext');
+    var opt = {
+        group:$('#option-group'),
+        glb:$('#opt-glb'),
+        ext:$('#opt-ext')
+    };
+    var txt = {
+        name:$('#txt-name'),
+        lastname:$('#txt-lastname'),
+        username:$('#txt-username'),
+        idNumber:$('#txt-idnumber'),
+        description:$('#txt-desc'),
+        phone:$('#txt-phonenumber')
+    };
+    var ddl = {
+        subDomain:$('#ddl-subdomain'),
+        emailDomain:$('#ddl-emaildomain'),
+        country:$('#ddl-country'),
+        position:$('#ddl-position'),
+        location:$('#ddl-location'),
+        emailGroup:$('#ddl-emailgroup')
+    };
+    var btn = {
+        buildUser:$('#btn-builduser'),
+        checkUser:$('#btn-checkuser'),
+        phoneNumber:$('#btn-getphonenumber'), 
+        submit:$('#btn-submit'),
+        cancel:$("#btn-cancel")
+    };
     
-    var ddlSubDomain =  $('#ddl-subdomain');
-    var ddlEmailDomain = $('#ddl-emaildomain');
-    var ddlCountry =    $('#ddl-country');
-    var ddlPosition =   $('#ddl-position');
-    var ddlLocation =   $('#ddl-location');
-    var ddlEmailGroup = $('#ddl-emailgroup');
-    
-    var txtName =       $('#txt-name');
-    var txtLastname =   $('#txt-lastname');
-    var txtUsername =   $('#txt-username');
-    var txtIdNumber =   $('#txt-idnumber');
-    var txtDescription = $('#txt-desc');
-    var txtPhone =      $('#txt-phonenumber');
-    
-    var btnBuildUser =  $('#btn-builduser');
-    var btnCheckUser =  $('#btn-checkuser');
-    var btnGetPhoneNumber = $('#btn-getphonenumber');    
-    var btnSubmit =     $('#btn-submit');
-    var btnCancel=      $("#btn-cancel");
     //********************************//
     // Fill the Form Controls --->>>  //
     //********************************//
-    getList('GetCountryList',ddlCountry);
-    getList('GetPositionList',ddlPosition);
-    getList('GetLocationList',ddlLocation);
-    getList('GetEmailGroupList',ddlEmailGroup);
+    getList('GetCountryList',ddl.country);
+    getList('GetPositionList',ddl.position);
+    getList('GetLocationList',ddl.location);
+    getList('GetEmailGroupList',ddl.emailGroup);
     
     //********************************//
     //Events Listeners --->>>         //
     //********************************//
-    optGlobant.on('click', function(){getList('GetSubDomainList',ddlSubDomain, 'GLB');});
-    optExternals.on('click', function(){getList('GetSubDomainList',ddlSubDomain, 'EXT');});
-    
-    txtName.on('blur', chekEmpty);
-    txtName.on('keyup', chekEmpty);
-    
-    txtLastname.on('blur', chekEmpty);
-    txtLastname.on('keyup', chekEmpty);
-    
-    txtUsername.on('blur', chekEmpty);
-    txtUsername.on('keyup', chekEmpty);
-    
-    txtPhone.on('keypress',keyPressControl);
-    
-    btnSubmit.on('click',frmSubmit);
-    
-    btnCancel.on('click', function(){
-        clearForm();
+    opt.glb.on('click', function(){
+        getList('GetSubDomainList',ddl.subDomain, 'GLB');
+        chekSubDomain;
     });
+    opt.glb.on('blur',chekSubDomain);
+    //-----------------------------------
+    opt.ext.on('click', function(){
+        getList('GetSubDomainList',ddl.subDomain, 'EXT');
+        chekSubDomain;
+    });
+    opt.ext.on('blur',chekSubDomain);
+    //-----------------------------------
+    ddl.subDomain.on('change',chekSelect);
+    ddl.subDomain.on('blur',chekSelect);
+    //-----------------------------------
+    txt.name.on('blur', chekName);
+    txt.name.on('keyup', chekName);
+    //-----------------------------------
+    txt.lastname.on('blur', chekName);
+    txt.lastname.on('keyup', chekName);
+    //-----------------------------------
+    txt.username.on('blur', chekName);
+    txt.username.on('keyup', chekName);
+    //-----------------------------------
+    ddl.emailDomain.on('change',chekSelect);
+    ddl.emailDomain.on('blur',chekSelect);
+    //-----------------------------------
+    ddl.country.on('change',chekSelect);
+    ddl.country.on('blur',chekSelect);
+    //-----------------------------------
+    txt.idNumber.on('blur', chekName);
+    txt.idNumber.on('keyup', chekName);
+    //-----------------------------------
+    ddl.position.on('change',chekSelect);
+    ddl.position.on('blur',chekSelect);
+    //-----------------------------------
+    ddl.location.on('change',chekSelect);
+    ddl.location.on('blur',chekSelect);
+    //-----------------------------------
+    ddl.emailGroup.on('change',chekSelect);
+    ddl.emailGroup.on('blur',chekSelect);
+    //-----------------------------------
+    txt.phone.on('blur', chekName);
+    txt.phone.on('keyup', chekName);
+    txt.phone.on('keypress',onlyNumeric);
+    //-----------------------------------
+    //btn.checkUser.on('over', )
+    //-----------------------------------
+    btn.phoneNumber.on('click',reservePhoneNumber);
+    //-----------------------------------
+    btn.submit.on('click',frmSubmit);
+    //-----------------------------------
+    btn.cancel.on('click', clearForm);
 
 //********************************//
 // a bunch of functions --->>>    //
@@ -64,7 +104,6 @@ function getList($url, $ddl, $flag){
     ('<option value="">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </option>');
     
     var jsonData = {flag:$flag};
-    console.log($flag);
     $.ajax({
         type: 'POST',
         url: $url,
@@ -123,16 +162,60 @@ function frmSubmit(){
     
 }
 
-function keyPressControl(e){
+function reservePhoneNumber(){
+    
+    var $JsonData = {
+      country:1  
+    };
+    
+    $.ajax({
+        type: 'POST',
+        url: 'GetPhone',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify($JsonData) ,
+        success: function(data){
+            console.log(JSON.stringify(data));
+            btn.phoneNumber.val(data.number);
+        }
+    });
+    
+}
+
+function chekSelect(){
+    if(chekEmpty($(this))){
+        $(this).closest('.input-group').removeClass('has-error');
+        $(this).closest('.input-group').addClass('has-success');
+    }else{
+        $(this).closest('.input-group').removeClass('has-success');
+        $(this).closest('.input-group').addClass('has-error');
+    }
+}
+function chekSubDomain(){
+    if(chekEmpty(ddl.subDomain)){
+        ddl.subDomain.closest('.input-group').removeClass('has-error');
+        ddl.subDomain.closest('.input-group').addClass('has-success');
+    }else{
+        ddl.subDomain.closest('.input-group').removeClass('has-success');
+        ddl.subDomain.closest('.input-group').addClass('has-error');
+    }
+}
+
+function chekName(){
+    
+    if(chekEmpty($(this))){
+        $(this).closest('.input-group').removeClass('has-error');
+        $(this).closest('.input-group').addClass('has-success');
+    }else{
+        $(this).closest('.input-group').removeClass('has-success');
+        $(this).closest('.input-group').addClass('has-error');
+    }
+    
+}
+
+function onlyNumeric(e){
     if(!(e.keyCode >=48 && e.keyCode <=57))
         e.preventDefault();
-}
-function chekEmpty(){
-    if($(this).val()==""){
-        $(this).closest('.input-group').addClass('has-error');
-    }else{
-        $(this).closest('.input-group').removeClass('has-error');
-    }
 }
 function chekOnKeyUp(){
     $(this).closest('.input-group').removeClass('has-error');
@@ -160,31 +243,15 @@ function allowJustNumbers(e){
 
 function clearForm(){
     
-    ddlSubDomain.val('').change();
-    txtName.val('');
-    txtLastname.val('');
-    txtUsername.val('');
-    ddlEmailDomain.val('').change();
-    ddlCountry.val('').change();
-    txtIdNumber.val('');
-    ddlPosition.val('').change();
-    ddlLocation.val('').change();
-    ddlEmailGroup.val('').change();
-    txtPhone.val('');
-    txtDescription.val('');
-    
-    ddlSubDomain.closest('.input-group').removeClass('has-error has-success');
-    txtName.closest('.input-group').removeClass('has-error has-success');
-    txtLastname.closest('.input-group').removeClass('has-error has-success');
-    txtUsername.closest('.input-group').removeClass('has-error has-success');
-    ddlEmailDomain.closest('.input-group').removeClass('has-error has-success');
-    ddlCountry.closest('.input-group').removeClass('has-error has-success');
-    txtIdNumber.closest('.input-group').removeClass('has-error has-success');
-    ddlPosition.closest('.input-group').removeClass('has-error has-success');
-    ddlLocation.closest('.input-group').removeClass('has-error has-success');
-    ddlEmailGroup.closest('.input-group').removeClass('has-error has-success');
-    txtPhone.closest('.input-group').removeClass('has-error has-success');
-    txtDescription.closest('.input-group').removeClass('has-error has-success');
+    for(var attr in txt){
+        txt[attr].val('');
+        txt[attr].closest('.input-group').removeClass('has-error has-success');
+    }
+    for(var attr in ddl){
+        ddl[attr].val('').change();
+        ddl[attr].closest('.input-group').removeClass('has-error has-success');
+    }
+
 }
 });//Close the 'DocumentReady' Block
 
