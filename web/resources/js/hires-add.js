@@ -165,7 +165,9 @@ function frmSubmit(){
 function reservePhoneNumber(){
     
     var $JsonData = {
-      country:1  
+      userAssigned:txt.username.val(),
+      number:txt.phone.val(),
+      country:ddl.country.val()
     };
     
     $.ajax({
@@ -175,8 +177,7 @@ function reservePhoneNumber(){
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify($JsonData) ,
         success: function(data){
-            console.log(JSON.stringify(data));
-            btn.phoneNumber.val(data.number);
+            txt.phone.val(data.number);
         }
     });
     

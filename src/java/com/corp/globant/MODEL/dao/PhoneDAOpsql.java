@@ -12,32 +12,29 @@ import java.sql.Statement;
  */
 public class PhoneDAOpsql {
 
-    public static PhoneNumber getOneByCountry (Connection conn, String countryFk)throws Exception{
+    public static PhoneNumber reserve (Connection conn, String countryFk)throws Exception{
 
-        String query =  "BEGIN;"
-                        + "SELECT * FROM app.telephony "
-                        + "WHERE (telephony_reserved = false AND telephony_countries_fk = 1) "
-                        + "ORDER BY telephony_number LIMIT 1; "
-//                        + "WITH new_values AS "
-//                        + "("
-//                        + "SELECT * FROM app.telephony "
-//                        + "WHERE (telephony_reserved = false AND telephony_countries_fk = 1) "
-//                        + "ORDER BY telephony_number LIMIT 1"
-//                        + ")"
-//                        + "UPDATE app.telephony AS up "
-//                        + "SET telephony_reserved = true "
-//                        + "FROM new_values nv "
-//                        + "WHERE nv.telephony_number = up.telephony_number;"
-                        + "COMMIT;";
-
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(query);
-        rs.first();
         PhoneNumber reservedNumber = new PhoneNumber();
+        Statement stmt = conn.createStatement();
+        ResultSet rs;
+        String query;
+        
+        query =  "SELECT * FROM app.telephony\n" +
+                 "WHERE (telephony_reserved = false AND telephony_countries_fk = 1)\n" +
+                 "ORDER BY telephony_number LIMIT 1;";
+        
+        rs = stmt.executeQuery(query);
+        rs.next();
         reservedNumber.setNumber(rs.getString("telephony_number"));
+        System.out.println(reservedNumber.getNumber());
+        query =  
+                "UPDATE app.telephony\n" +
+                "SET telephony_reserved = true\n" +
+                "WHERE telephony_number = " + reservedNumber.getNumber()
+                + ";";
         
-        System.out.println(rs.getString("telephony_number"));
-        
+        stmt.executeUpdate(query);
+//        
         stmt.close();
         
         return reservedNumber;

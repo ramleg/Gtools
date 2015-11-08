@@ -9,7 +9,8 @@ public class PhoneNumber {
     private String number;
     private String userAssigned;
     private Country country;
-
+    private Boolean reserved;
+    
     public String getNumber() {
         return number;
     }
@@ -32,6 +33,14 @@ public class PhoneNumber {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public Boolean getReserved() {
+        return reserved;
+    }
+
+    public void setReserved(Boolean reserved) {
+        this.reserved = reserved;
     }
     
     

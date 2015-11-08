@@ -4,6 +4,7 @@ import com.corp.globant.MODEL.beans.PhoneNumber;
 import com.corp.globant.MODEL.dao.ConnectionManager;
 import com.corp.globant.MODEL.dao.CountryDAOpsql;
 import com.corp.globant.MODEL.dao.PhoneDAOpsql;
+import com.corp.globant.VIEW.beans.PhoneData;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,8 +30,20 @@ public class GetPhone extends HttpServlet {
         
         response.setContentType("application/json; charset=utf8");
         PhoneNumber reservedNumber = new PhoneNumber();
+        PhoneData phoneData = new Gson().fromJson(request.getReader(), PhoneData.class);
+
         try {
-            reservedNumber = PhoneDAOpsql.getOneByCountry(ConnectionManager.getConnection(),"1");
+            
+            if (reservedNumber.getNumber().equals("")){
+                reservedNumber = PhoneDAOpsql.reserve(ConnectionManager.getConnection(), phoneData.getCountyId());
+            }else{
+                
+            }
+            
+            
+            
+            
+            
         } catch (Exception ex) {
             Logger.getLogger(GetCountryList.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
