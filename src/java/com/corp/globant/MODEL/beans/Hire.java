@@ -15,7 +15,7 @@ public class Hire {
     private Location location;
     private String phoneNumber;
     private Country country;
-    private SubDomain suborg;
+    private SubDomain subDomain;
     private String desc;
     
     public String getId() {
@@ -107,11 +107,11 @@ public class Hire {
     }
 
     public SubDomain getSuborg() {
-        return suborg;
+        return subDomain;
     }
 
     public void setSuborg(SubDomain suborg) {
-        this.suborg = suborg;
+        this.subDomain = suborg;
     }
 
     public String getDesc() {

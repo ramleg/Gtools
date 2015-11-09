@@ -159,7 +159,6 @@ function frmSubmit(){
             }
         }
     });
-    
 }
 
 function reservePhoneNumber(){
@@ -167,9 +166,9 @@ function reservePhoneNumber(){
     var $JsonData = {
       userAssigned:txt.username.val(),
       number:txt.phone.val(),
-      country:ddl.country.val()
+      countyId:ddl.country.val()
     };
-    
+    console.log(JSON.stringify($JsonData));
     $.ajax({
         type: 'POST',
         url: 'GetPhone',
@@ -177,7 +176,16 @@ function reservePhoneNumber(){
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify($JsonData) ,
         success: function(data){
-            txt.phone.val(data.number);
+            if (typeof data.number === "undefined"){
+                txt.phone.val('');
+                chekPhone();
+            }else{
+                txt.phone.val(data.number);
+                chekPhone();
+            }
+                
+                
+                
         }
     });
     
@@ -210,6 +218,18 @@ function chekName(){
     }else{
         $(this).closest('.input-group').removeClass('has-success');
         $(this).closest('.input-group').addClass('has-error');
+    }
+    
+}
+
+function chekPhone(){
+    
+    if(chekEmpty(txt.phone)){
+        txt.phone.closest('.input-group').removeClass('has-error');
+        txt.phone.closest('.input-group').addClass('has-success');
+    }else{
+        txt.phone.closest('.input-group').removeClass('has-success');
+        txt.phone.closest('.input-group').addClass('has-error');
     }
     
 }

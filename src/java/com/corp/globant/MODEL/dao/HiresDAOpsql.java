@@ -38,7 +38,7 @@ public class HiresDAOpsql {
                 + "hires_email_group_fk, "
                 + "hires_phone_number_fk, "
                 + "hires_country_fk, "
-                + "hires_suborg_fk,"
+                + "hires_subdomain_fk,"
                 + "hires_desc"
                 + ") " 
                 + "VALUES "
