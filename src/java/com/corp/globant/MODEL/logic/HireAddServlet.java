@@ -30,19 +30,27 @@ public class HireAddServlet extends HttpServlet {
         
         response.setContentType("application/json; charset=utf-8");
         FrmUserAdd frmUserAdd = new Gson().fromJson(request.getReader(), FrmUserAdd.class);
-        
         Hire hire = buildHire(frmUserAdd);
+        Errors errors = new Errors();
         JsonParser parser = new JsonParser();
-        JsonObject comeBack = (JsonObject)parser.parse("{\"data\": \"HireAddServlet\"}");
+        //JsonObject comeBack = (JsonObject)parser.parse("{\"data\": \"HireAddServlet\"}");
+        JsonObject comeBack = new JsonObject();
         
         try {
-            hire = new ValidateHire().validate(hire);
-            HiresDAOpsql.create(ConnectionManager.getConnection(), hire);
+            hire = new ValidateHire().fix(hire);
+            errors = new ValidateHire().validate(hire);
+            if(errors.getErrors().isEmpty()){
+                HiresDAOpsql.create(ConnectionManager.getConnection(), hire);
+                comeBack = (JsonObject)parser.parse(new Gson().toJson(hire));
+            }else{
+                throw new ValidateException();
+            }
             
-            comeBack = (JsonObject)parser.parse(new Gson().toJson(hire));
+            
         } catch (ValidateException ex) {
-            comeBack.addProperty("error",ex.getMessage());
+            comeBack.addProperty("error",new Gson().toJson(errors.getErrors()));
         } catch (Exception ex) {
+            Logger.getLogger(HireAddServlet.class.getName()).log(Level.SEVERE, null, ex);
             comeBack.addProperty("error",ex.getMessage());
         }finally{
             response.getWriter().print(comeBack);
@@ -58,7 +66,7 @@ public class HireAddServlet extends HttpServlet {
         //Set LastName
         hire.setLastname(frm.getLastName());
         //Set ID Number
-        hire.setIdNumber(frm.getIdentificationNumber());
+        hire.setIdNumber(frm.getIdNumber());
         //Set DomainUser
         hire.setDomainUser(frm.getDomainUser());
         //Set eMail
@@ -69,12 +77,10 @@ public class HireAddServlet extends HttpServlet {
         hire.setPosition(new Position(frm.getPosition()));
         //Set Location
         hire.setLocation(new Location(frm.getLocation()));
-        //Set Phone Number
-        hire.setPhoneNumber(frm.getPhoneNumber());
         //Set Country
         hire.setCountry(new Country(frm.getCountry()));
         //Set SubDomain
-        hire.setSuborg(new SubDomain(frm.getSubOrganization()));
+        hire.setSubDomain(new SubDomain(frm.getSubDomain()));
         
         return hire;
     }

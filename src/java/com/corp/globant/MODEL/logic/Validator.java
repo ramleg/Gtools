@@ -1,10 +1,12 @@
 package com.corp.globant.MODEL.logic;
 
+import com.corp.globant.MODEL.dao.*;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
-
 /**
  *
  * @author ramiro.acoglanis
@@ -57,6 +59,25 @@ public class Validator {
             }
         }
         return response;
+    }
+    
+    public boolean existInAD(String user){
+        
+        try{
+            LdapDAO.getCN(user);
+        }catch(Exception e){
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean existInDB(String user){
+        try {
+            return HiresDAOpsql.getByDomainUser(ConnectionManager.getConnection(), user).getDomainUser() != null;
+        } catch (Exception ex) {
+            Logger.getLogger(Validator.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
     
 }

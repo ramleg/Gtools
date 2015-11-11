@@ -8,37 +8,33 @@ import com.google.gson.annotations.SerializedName;
  */
 public class FrmUserAdd {
     
-    @SerializedName("subOrganization")
-    private String subOrganization;
+    @SerializedName("subDomain")
+    private String subDomain;
     @SerializedName("name")
     private String name;
     @SerializedName("lastName")
     private String lastName;
-    @SerializedName("identificationNumber")
-    private String identificationNumber;
-    @SerializedName("domainName")
+    @SerializedName("idNumber")
+    private String idNumber;
+    @SerializedName("domainUser")
     private String domainUser;
     @SerializedName("email")
     private String email;
     @SerializedName("position")
     private String position;
-    @SerializedName("areaOU")
-    private String areaOU;
     @SerializedName("location")
     private String location;
     @SerializedName("emailGroup")
     private String emailGroup;
-    @SerializedName("phoneNumber")
-    private String phoneNumber;
     @SerializedName("country")
     private String country;
 
-    public String getSubOrganization() {
-        return subOrganization;
+    public String getSubDomain() {
+        return subDomain;
     }
 
-    public void setSubOrganization(String subOrganization) {
-        this.subOrganization = subOrganization;
+    public void setSubDomain(String subDomain) {
+        this.subDomain = subDomain;
     }
 
     public String getName() {
@@ -57,12 +53,12 @@ public class FrmUserAdd {
         this.lastName = lastName;
     }
 
-    public String getIdentificationNumber() {
-        return identificationNumber;
+    public String getIdNumber() {
+        return idNumber;
     }
 
-    public void setIdentificationNumber(String identificationNumber) {
-        this.identificationNumber = identificationNumber;
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
     }
 
     public String getDomainUser() {
@@ -88,15 +84,7 @@ public class FrmUserAdd {
     public void setPosition(String position) {
         this.position = position;
     }
-
-    public String getAreaOU() {
-        return areaOU;
-    }
-
-    public void setAreaOU(String areaOU) {
-        this.areaOU = areaOU;
-    }
-
+    
     public String getLocation() {
         return location;
     }
@@ -111,14 +99,6 @@ public class FrmUserAdd {
 
     public void setEmailGroup(String emailGroup) {
         this.emailGroup = emailGroup;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getCountry() {

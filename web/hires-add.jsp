@@ -104,11 +104,6 @@
                                 <div class="input-group-addon cursor">eMailGroup</div>
                                 <select class="form-control" id="ddl-emailgroup"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
                             </div>
-                            <div class="input-group col-sm-12 col-md-5">
-                            <div class="input-group-addon cursor">Phone</div>
-                            <input class="form-control" id="txt-phonenumber" maxlength="5" type="text" placeholder="Phone">
-                            <div id="btn-getphonenumber" class="input-group-addon clickable">++</div>
-                            </div>
                         </div>
                         
                         <br><br>
@@ -151,6 +146,21 @@
             </div>
     </div>
 </div>
+
+
+<div class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content modal-error">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 </body>

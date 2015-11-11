@@ -15,3 +15,7 @@
 .block-two{
     background-color:#99ff99;
 }
+.modal-error{
+    background-color:#ffffcc;
+    color:#ff3333;
+}

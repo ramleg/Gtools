@@ -73,7 +73,6 @@ public class GetPhone extends HttpServlet {
         catch (Exception ex) {
             Logger.getLogger(GetCountryList.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
-            System.out.println(session.getAttribute("sessionReservedPhone"));
             PrintWriter out = response.getWriter();
             out.print(new Gson().toJson(reservedNumber));
             out.flush();

@@ -17,6 +17,7 @@ public class Hire {
     private Country country;
     private SubDomain subDomain;
     private String desc;
+    private String status;
     
     public String getId() {
         return id;
@@ -105,21 +106,29 @@ public class Hire {
     public void setCountry(Country country) {
         this.country = country;
     }
-
-    public SubDomain getSuborg() {
-        return subDomain;
-    }
-
-    public void setSuborg(SubDomain suborg) {
-        this.subDomain = suborg;
-    }
-
+    
     public String getDesc() {
         return desc;
     }
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public SubDomain getSubDomain() {
+        return subDomain;
+    }
+
+    public void setSubDomain(SubDomain subDomain) {
+        this.subDomain = subDomain;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
     
     

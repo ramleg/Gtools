@@ -16,10 +16,10 @@ public class HiresDAOpsql {
         Hire hire = new Hire();
         if(rs.next()){
             hire.setId(rs.getString("hires_id"));
+            hire.setDomainUser("hires_domain_users");
+            hire.setStatus("hires_status_fk");
         }
-        
         stmt.close();
-        
         return hire;
     }
     
@@ -53,7 +53,7 @@ public class HiresDAOpsql {
                 + hire.getEmailGroup().getId() + ", "
                 + hire.getPhoneNumber() + ", "
                 + hire.getCountry().getId() + ", "
-                + hire.getSuborg().getId()+ ", "
+                + hire.getSubDomain().getId()+ ", "
                 + "'" + hire.getDesc() + "'"
                 + ");"
                 

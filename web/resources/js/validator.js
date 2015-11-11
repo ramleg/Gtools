@@ -1,5 +1,5 @@
-function chekEmpty(obj){
-    if(obj.val()==""){
+function chekEmpty(text){
+    if(text==""){
         return false;
     }else{
         return true;

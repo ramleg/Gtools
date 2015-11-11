@@ -1,5 +1,6 @@
 package com.corp.globant.MODEL.logic;
 
+import com.corp.globant.MODEL.beans.Errors;
 import com.corp.globant.MODEL.beans.Hire;
 import com.corp.globant.MODEL.beans.ValidateException;
 import java.util.Locale;
@@ -11,24 +12,35 @@ import org.apache.commons.lang3.text.WordUtils;
  */
 public class ValidateHire {
     Validator v = new Validator();
-    public Hire validate(Hire hire) throws ValidateException{
+    Errors e = new Errors();
+    
+    public Hire fix(Hire hire){
+        
+        hire.setName(WordUtils.capitalizeFully(v.spaceCorrect(hire.getName())));
+        hire.setLastname(WordUtils.capitalizeFully(v.spaceCorrect(hire.getLastname())));
+        hire.setIdNumber(hire.getIdNumber().toUpperCase(Locale.ENGLISH));
+        hire.setDomainUser(hire.getDomainUser().toLowerCase().trim());
+        System.out.println("3");
+        return hire;
+    }
+    
+    
+    public Errors validate(Hire hire){
         //Validate Name
         if(!this.validateName(hire))
-            throw new ValidateException("name");
+            e.addError("Name");
         //Validate LastName
         if(!this.validateLastName(hire))
-            throw new ValidateException("lastname");
+            e.addError("Last Name");
         //Validate ID Number
         if(!this.validateIdNumber(hire))
-            throw new ValidateException("idnumber");
+            e.addError("ID Number");
         //Validate DomainUser
         if(!this.validateDomainUser(hire))
-            throw new ValidateException("user");
-        
+            e.addError("User");
         //Validate SubDomain
         
-        
-        return hire;
+        return e;
     }
     
     public boolean validateName(Hire hire){
@@ -39,9 +51,6 @@ public class ValidateHire {
             return false;
         if(!v.maxLength(hire.getName(), 30))
             return false;
-        
-        hire.setName(WordUtils.capitalizeFully(v.spaceCorrect(hire.getName())));
-        
         return true;
     }
     public boolean validateLastName(Hire hire){
@@ -51,33 +60,32 @@ public class ValidateHire {
             return false;
         if(!v.maxLength(hire.getLastname(), 30))
             return false;
-        
-        hire.setLastname(WordUtils.capitalizeFully(v.spaceCorrect(hire.getLastname())));
-        
         return true;
     }
     public boolean validateIdNumber(Hire hire){
         if(hire.getIdNumber().isEmpty())
             return false;
-        if(!v.forbiddenCaracters(hire.getIdNumber(), "[^a-z0-9]"))
+        if(!v.forbiddenCaracters(hire.getIdNumber(), "[^A-Z0-9]"))
             return false;
         if(!v.maxLength(hire.getIdNumber(), 30))
             return false;
-            
-        hire.setIdNumber(hire.getIdNumber().toUpperCase(Locale.ENGLISH));
-        
         return true;
     }
     public boolean validateDomainUser(Hire hire){
         if(hire.getDomainUser().isEmpty())
             return false;
-        if (!v.forbiddenCaracters(hire.getDomainUser().toLowerCase(), "[^a-z .]"))
+        if(!v.forbiddenCaracters(hire.getDomainUser(), "[^a-z .]"))
             return false;
         if(!v.maxLength(hire.getDomainUser(), 21))
             return false;
         if(!v.dotCheck(hire.getDomainUser()))
             return false;
+        if(v.existInDB(hire.getDomainUser()))
+            return false;
+        if(v.existInAD(hire.getDomainUser()))
+            return false;
         
         return true;
     }
+    
 }

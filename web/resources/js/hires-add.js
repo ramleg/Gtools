@@ -8,10 +8,9 @@ $(function (){//'DocumentReady' Block
     var txt = {
         name:$('#txt-name'),
         lastname:$('#txt-lastname'),
-        username:$('#txt-username'),
+        domainUser:$('#txt-username'),
         idNumber:$('#txt-idnumber'),
-        description:$('#txt-desc'),
-        phone:$('#txt-phonenumber')
+        description:$('#txt-desc')
     };
     var ddl = {
         subDomain:$('#ddl-subdomain'),
@@ -21,6 +20,7 @@ $(function (){//'DocumentReady' Block
         location:$('#ddl-location'),
         emailGroup:$('#ddl-emailgroup')
     };
+    
     var btn = {
         buildUser:$('#btn-builduser'),
         checkUser:$('#btn-checkuser'),
@@ -61,8 +61,8 @@ $(function (){//'DocumentReady' Block
     txt.lastname.on('blur', chekName);
     txt.lastname.on('keyup', chekName);
     //-----------------------------------
-    txt.username.on('blur', chekName);
-    txt.username.on('keyup', chekName);
+    txt.domainUser.on('blur', chekUserName);
+    txt.domainUser.on('keyup', chekUserName);
     //-----------------------------------
     ddl.emailDomain.on('change',chekSelect);
     ddl.emailDomain.on('blur',chekSelect);
@@ -82,13 +82,7 @@ $(function (){//'DocumentReady' Block
     ddl.emailGroup.on('change',chekSelect);
     ddl.emailGroup.on('blur',chekSelect);
     //-----------------------------------
-    txt.phone.on('blur', chekName);
-    txt.phone.on('keyup', chekName);
-    txt.phone.on('keypress',onlyNumeric);
-    //-----------------------------------
-    //btn.checkUser.on('over', )
-    //-----------------------------------
-    btn.phoneNumber.on('click',reservePhoneNumber);
+    btn.checkUser.on('click',checkDomainUser);
     //-----------------------------------
     btn.submit.on('click',frmSubmit);
     //-----------------------------------
@@ -128,24 +122,25 @@ function setDDL(json, control){
 }
 // Submit DATA ----->>>
 function frmSubmit(){
-
-    var $JsonData = {
-        subOrganization:$("#ddl-suborg option:selected").val(),
-        name:$('#txt-name').val(),
-        lastName:$('#txt-lastname').val(),
-        identificationNumber:$('#txt-idnumber').val(),
-        domainName:$('#txt-username').val(),
-        email:$('#txt-username').val() + '@' + $('#ddl-emaildomain option:selected').text() ,
-        position:$('#ddl-position').val(),
-        location:$('#ddl-location').val(),
-        emailGroup:$('#ddl-emailgroup').val(),
-        phoneNumber:$('#txt-phonenumber').val(),
-        country:$('#ddl-country').val(),
-        description:$('#txtarea-desc').val()
-    };
-    console.log(JSON.stringify($JsonData));
     
-    $.ajax({
+    var $JsonData = {
+        subDomain:ddl.subDomain.find(':selected').val(),
+        name:txt.name.val(),
+        lastName:txt.lastname.val(),
+        idNumber:txt.idNumber.val(),
+        domainUser:txt.domainUser.val(),
+        email:ddl.emailDomain.find(':selected').val() ,
+        position:ddl.position.find(':selected').val(),
+        location:ddl.location.find(':selected').val(),
+        emailGroup:ddl.emailGroup.find(':selected').val(),
+        country:ddl.country.find(':selected').val(),
+        description:txt.description.val()
+    };    
+    
+    var $errors = checkSubmit($JsonData);
+    if(!Object.keys($errors).length > 0){
+        
+        $.ajax({
         type: 'POST',
         url: 'HireAdd',
         dataType: 'json',
@@ -153,18 +148,98 @@ function frmSubmit(){
         data: JSON.stringify($JsonData) ,
         success: function(data){
             if (typeof data.error === "undefined"){
-                alert('Success: ' + data.email);
+                alert('Success: ' + JSON.stringify(data));
             }else{
-                alert('Error: ' + data.error);
+                toggleAlert(data);
             }
         }
+        });
+        
+    }else{
+        toggleAlert($errors);
+    }
+        
+    
+    
+}
+function toggleAlert(data){
+    $('.modal').modal('toggle');
+}
+function checkSubmit($JsonData){
+    
+    var $errors = {};
+    
+    if(!chekEmpty($JsonData.subDomain))
+        $errors.subDomain='Sub Domain';
+    if(!chekEmpty($JsonData.name))
+        $errors.name='Name';
+    if(!chekEmpty($JsonData.lastName))
+        $errors.lastName='Last Name';
+    if(!chekEmpty($JsonData.idNumber))
+        $errors.idNumber='ID Number';
+    if(!chekEmpty($JsonData.domainUser))
+        $errors.domainUser='Domain User';
+    if(!chekEmpty($JsonData.email))
+        $errors.email='Email Domain';
+    if(!chekEmpty($JsonData.position))
+        $errors.position='Position';
+    if(!chekEmpty($JsonData.location))
+        $errors.location='Location';
+    if(!chekEmpty($JsonData.emailGroup))
+        $errors.emailGroup='Email Group';
+    if(!chekEmpty($JsonData.country))
+        $errors.country='Country';
+    
+    return $errors;
+}
+function checkDomainUser(){
+    
+    var $JsonData = {
+        domainUser:txt.domainUser.val()
+    };
+    
+    $.ajax({
+        type: 'POST',
+        url: 'CheckDomainUser',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify($JsonData) ,
+        success: function(data){
+            showUserCheck(data);
+        }
+                
     });
 }
-
+function showUserCheck(data){
+    if (typeof data.errors[0] === 'undefined'){
+        btn.checkUser.closest('.input-group').removeClass('has-error');
+        btn.checkUser.closest('.input-group').addClass('has-success');
+        btn.checkUser.text(' Ok ');
+    }else{
+        btn.checkUser.closest('.input-group').removeClass('has-success');
+        btn.checkUser.closest('.input-group').addClass('has-error');
+        txt.domainUser.val('');
+        txt.domainUser.attr("placeholder", data.errors[0]);
+        btn.checkUser.text(' Bad ');
+    }
+}
+function chekUserName(){
+    
+    btn.checkUser.text('Check');
+    txt.domainUser.attr("placeholder", 'user');
+    
+    if(chekEmpty($(this).val())){
+        $(this).closest('.input-group').removeClass('has-error');
+        $(this).closest('.input-group').addClass('has-success');
+    }else{
+        $(this).closest('.input-group').removeClass('has-success');
+        $(this).closest('.input-group').addClass('has-error');
+    }
+}
 function reservePhoneNumber(){
     
     var $JsonData = {
-      userAssigned:txt.username.val(),
+      userAssigned:txt.domainUser.val(),
       number:txt.phone.val(),
       countyId:ddl.country.val()
     };
@@ -190,7 +265,6 @@ function reservePhoneNumber(){
     });
     
 }
-
 function chekSelect(){
     if(chekEmpty($(this))){
         $(this).closest('.input-group').removeClass('has-error');
@@ -209,10 +283,9 @@ function chekSubDomain(){
         ddl.subDomain.closest('.input-group').addClass('has-error');
     }
 }
-
 function chekName(){
     
-    if(chekEmpty($(this))){
+    if(chekEmpty($(this).val())){
         $(this).closest('.input-group').removeClass('has-error');
         $(this).closest('.input-group').addClass('has-success');
     }else{
@@ -221,7 +294,6 @@ function chekName(){
     }
     
 }
-
 function chekPhone(){
     
     if(chekEmpty(txt.phone)){
@@ -233,7 +305,6 @@ function chekPhone(){
     }
     
 }
-
 function onlyNumeric(e){
     if(!(e.keyCode >=48 && e.keyCode <=57))
         e.preventDefault();
@@ -261,7 +332,6 @@ function allowJustNumbers(e){
             e.preventDefault();
         }
 }
-
 function clearForm(){
     
     for(var attr in txt){
@@ -272,7 +342,8 @@ function clearForm(){
         ddl[attr].val('').change();
         ddl[attr].closest('.input-group').removeClass('has-error has-success');
     }
-
+    btn.checkUser.text('Check');
+    txt.domainUser.attr("placeholder",'user');
 }
 });//Close the 'DocumentReady' Block
 
