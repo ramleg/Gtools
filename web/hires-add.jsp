@@ -66,7 +66,6 @@
                                 <div class="input-group-addon cursor">@</div>
                                 <select class="form-control" id="ddl-emaildomain">
                                     <option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option>
-                                    <option>globant.com</option>
                                 </select>
                             </div>
                         </div>
@@ -138,9 +137,23 @@
             <div class="panel panel-primary">
             <div class="panel-heading">Logs</div>
             <div class="panel-body">
-            
-            hola
-            
+                <div class="table-responsive">
+                    <table class="table js-dynamitable table-striped table-condensed">
+                    <tr>
+                        <th>#ID</th><th>User</th><th>Name</th><th>Lastname</th>
+                    </tr>
+                    <tr>
+                        <td>1</td><td>ramiro.acoglanis</td><td>Ramiro</td><td>Acoglanis</td>
+                    </tr>
+                    <tr>
+                        <td>2</td><td>hola.mundo</td><td>Hola</td><td>Mundo</td>
+                    </tr>
+                    <tr>
+                        <td>3</td><td>bata.manta</td><td>Bata</td><td>Manta</td>
+                    </tr>
+                </table>
+                    
+                </div>
             </div>    
             </div>
             </div>
@@ -153,11 +166,9 @@
     <div class="modal-content modal-error">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">Error on the following Fields:</h4>
       </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
+      <div class="modal-body"></div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

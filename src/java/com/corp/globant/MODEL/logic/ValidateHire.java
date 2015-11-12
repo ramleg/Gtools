@@ -3,7 +3,11 @@ package com.corp.globant.MODEL.logic;
 import com.corp.globant.MODEL.beans.Errors;
 import com.corp.globant.MODEL.beans.Hire;
 import com.corp.globant.MODEL.beans.ValidateException;
+import com.corp.globant.MODEL.dao.ConnectionManager;
+import com.corp.globant.MODEL.dao.SubDomainDAOpsql;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.lang3.text.WordUtils;
 
 /**
@@ -88,4 +92,15 @@ public class ValidateHire {
         return true;
     }
     
+    private boolean validateSubDomain(Hire hire){
+        
+        try {
+            if(SubDomainDAOpsql.getById(ConnectionManager.getConnection(), hire.getSubDomain().getId()).getId().equals(""));
+                return false;
+        } catch (Exception ex) {
+            Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return true;
+    }
 }

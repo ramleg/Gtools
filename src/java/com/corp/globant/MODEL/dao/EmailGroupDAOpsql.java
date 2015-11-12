@@ -30,9 +30,9 @@ public class EmailGroupDAOpsql {
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         // extract data from query
+        EmailGroup emailGroup = new EmailGroup();
+        Location location = new Location();
         while (rs.next()) {
-            EmailGroup emailGroup = new EmailGroup();
-            Location location = new Location();
             emailGroup.setId(rs.getString("email_groups_id"));
             emailGroup.setDesc(rs.getString("email_groups_desc"));
             emailGroup.setDomainGroup(rs.getString("email_groups_domain_group"));

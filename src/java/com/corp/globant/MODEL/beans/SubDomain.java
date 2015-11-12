@@ -6,8 +6,8 @@ package com.corp.globant.MODEL.beans;
 public class SubDomain {
    private String id;
    private String desc;
-   private String domainEmail;
-
+   private String category;
+   
     public SubDomain() {}
 
     public SubDomain(String id) {
@@ -30,14 +30,11 @@ public class SubDomain {
         this.desc = desc;
     }
 
-    public String getDomainEmail() {
-        return domainEmail;
+    public String getCategory() {
+        return category;
     }
 
-    public void setDomainEmail(String domainEmail) {
-        this.domainEmail = domainEmail;
+    public void setCategory(String category) {
+        this.category = category;
     }
-
-
-
 }

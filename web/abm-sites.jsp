@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
   <title>Proy-NewHires</title>
-  <%@include file="webs/commonHead.html" %>
+  <%@include file="common/commonHead.html" %>
   <%
       Connection conn = ConnectionManager.getConnection();
     %>
@@ -22,7 +22,7 @@
 </head>
 <body>
  
-<%@include file="webs/mainMenu.jsp" %> <!-- Llama al menu-->
+<%@include file="common/mainMenu.jsp" %> <!-- Llama al menu-->
     
 <div class="container-fluid" style="width: 90%">
   <div class="panel panel-primary">
@@ -33,10 +33,6 @@
           <label class="control-label col-sm-2" for="ddl_pais">Country: </label> 
           <div class="col-sm-10" style="width:40%">
            <select class="form-control" id="ddl_pais">
-               <%
-                   ArrayList ddlPais = PaisDAO.getAll(conn);
-                   pageContext.setAttribute("paises", ddlPais);
-               %>
                 <c:forEach items="${paises}" var="current">        
                    <option value="<c:out value="${current.id}"/>"><c:out value="${current.desc}"/></option>
                 </c:forEach>
@@ -87,10 +83,6 @@
               </tr>
             </thead>
             <tbody>
-                <%
-                       ArrayList tableSites = SiteDAO.getAll(conn);
-                       pageContext.setAttribute("sites", tableSites);
-                %>
                 <c:forEach items="${sites}" var="current">
                     <tr>
                     <td class="hidden"><c:out value="${current.id}"/></td>

@@ -28,7 +28,9 @@ public class FrmUserAdd {
     private String emailGroup;
     @SerializedName("country")
     private String country;
-
+    @SerializedName("description")
+    private String description;
+    
     public String getSubDomain() {
         return subDomain;
     }
@@ -107,6 +109,14 @@ public class FrmUserAdd {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
     

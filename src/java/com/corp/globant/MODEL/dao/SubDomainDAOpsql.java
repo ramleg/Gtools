@@ -13,18 +13,21 @@ public class SubDomainDAOpsql {
         
     public static SubDomain getById (Connection conn, String id)throws Exception{
         
-        String laConsulta = "SELECT * FROM app.subdomain WHERE subdomain_id=" + id + ";";
-        Statement stmtConsulta = conn.createStatement();
-        ResultSet rs = stmtConsulta.executeQuery(laConsulta);
+        String query = "SELECT * FROM app.subdomain WHERE subdomain_id=" + id + ";";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
         
-        SubDomain sub_org = new SubDomain();
-        sub_org.setId(rs.getString("subdomain_id"));
-        sub_org.setDesc(rs.getString("subdomain_desc"));
-        sub_org.setDomainEmail(rs.getString("subdomain_email"));
-        
-        stmtConsulta.close();
+        SubDomain subDomain = new SubDomain();
+        if(rs.next()){
+            subDomain.setId(rs.getString("subdomain_id"));
+            subDomain.setDesc(rs.getString("subdomain_desc"));
+            subDomain.setCategory(rs.getString("subdomain_category"));
+        }else{
+            subDomain.setId("");
+        }
+        stmt.close();
         conn.close();
-        return sub_org;
+        return subDomain;
     }
     
     public static ArrayList getAllbyCategory(Connection conn, String cat) throws Exception {
@@ -41,12 +44,13 @@ public class SubDomainDAOpsql {
             // Arma el objeto Organization
             subDomain.setId(rs.getString("subdomain_id"));
             subDomain.setDesc(rs.getString("subdomain_desc"));
-            subDomain.setDomainEmail(rs.getString("subdomain_email"));
+            subDomain.setCategory(rs.getString("subdomain_category"));
             // Agrega la coleccion
             subDomainList.add(subDomain);
         }
         // Cierra el Statement y la Connection
         stmt.close();
+        conn.close();
         return subDomainList;
     }
 

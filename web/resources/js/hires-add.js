@@ -52,8 +52,18 @@ $(function (){//'DocumentReady' Block
     });
     opt.ext.on('blur',chekSubDomain);
     //-----------------------------------
-    ddl.subDomain.on('change',chekSelect);
+    ddl.subDomain.on('change',function(){
+        if (chekSelect()){
+            getList('GetEmailDomain',ddl.emailDomain, ddl.subDomain.find(':selected').val());
+        }else{
+            ddl.emailDomain.find('option').remove().end()
+            .append
+            ('<option value="">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </option>');
+        }
+        
+    });
     ddl.subDomain.on('blur',chekSelect);
+    
     //-----------------------------------
     txt.name.on('blur', chekName);
     txt.name.on('keyup', chekName);
@@ -105,6 +115,7 @@ function getList($url, $ddl, $flag){
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(jsonData),
         success: function(data){
+            console.log('hola: ' + JSON.stringify(data));
             setDDL(data, $ddl);
             //$ddl.val($i).change();
         },
@@ -162,12 +173,18 @@ function frmSubmit(){
     
     
 }
-function toggleAlert(data){
+function toggleAlert(errors){
+    
+    $('.modal-body').find('p').remove();
+    for(var key in errors)
+        $('.modal-body').append('<p>' + errors[key] + '</p>');
     $('.modal').modal('toggle');
+    
 }
 function checkSubmit($JsonData){
     
     var $errors = {};
+    console.log($errors);
     
     if(!chekEmpty($JsonData.subDomain))
         $errors.subDomain='Sub Domain';
@@ -269,9 +286,11 @@ function chekSelect(){
     if(chekEmpty($(this))){
         $(this).closest('.input-group').removeClass('has-error');
         $(this).closest('.input-group').addClass('has-success');
+        return true;
     }else{
         $(this).closest('.input-group').removeClass('has-success');
         $(this).closest('.input-group').addClass('has-error');
+        return false;
     }
 }
 function chekSubDomain(){

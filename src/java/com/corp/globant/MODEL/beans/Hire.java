@@ -9,14 +9,14 @@ public class Hire {
     private String lastname;
     private String idNumber;
     private String domainUser;
-    private String email;
+    private String DomainEmail;
     private EmailGroup emailGroup;
     private Position position;
     private Location location;
     private String phoneNumber;
     private Country country;
     private SubDomain subDomain;
-    private String desc;
+    private String description;
     private String status;
     
     public String getId() {
@@ -59,12 +59,12 @@ public class Hire {
         this.domainUser = domainUser;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDomainEmail() {
+        return DomainEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDomainEmail(String DomainEmail) {
+        this.DomainEmail = DomainEmail;
     }
 
     public EmailGroup getEmailGroup() {
@@ -107,12 +107,12 @@ public class Hire {
         this.country = country;
     }
     
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public SubDomain getSubDomain() {

@@ -4,7 +4,7 @@
 <head>
   <title>Proy-NewHires</title>
   <meta charset="utf-8">
-  <%@include file="webs/commonHead.html" %>
+  <%@include file="common/commonHead.html" %>
 </head>
 <body>
   

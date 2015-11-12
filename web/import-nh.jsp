@@ -4,11 +4,11 @@
 <head>
   <title>Proy-NewHires</title>
   <meta charset="utf-8">
-  <%@include file="webs/commonHead.html" %>
+  <%@include file="common/commonHead.html" %>
 </head>
 <body>
 
-<%@include file="webs/mainMenu.jsp" %>
+<%@include file="common/mainMenu.jsp" %>
   
 <div class="container-fluid">
     <div class="panel panel-primary">
