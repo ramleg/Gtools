@@ -70,7 +70,7 @@ public class HireAddServlet extends HttpServlet {
         //Set DomainUser
         hire.setDomainUser(frm.getDomainUser());
         //Set eMail
-        hire.setDomainEmail(frm.getEmail());
+        hire.setEmailDomian(new EmailDomain(frm.getEmailDomain()));
         //Set EmailGroup
         hire.setEmailGroup(new EmailGroup(frm.getEmailGroup()));
         //Set Position

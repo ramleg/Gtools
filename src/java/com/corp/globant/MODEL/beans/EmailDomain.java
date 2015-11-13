@@ -9,6 +9,12 @@ public class EmailDomain {
     private String desc;
     private String subDomain;
 
+    public EmailDomain(){}
+    
+    public EmailDomain(String id) {
+        this.id = id;
+    }
+    
     public String getId() {
         return id;
     }

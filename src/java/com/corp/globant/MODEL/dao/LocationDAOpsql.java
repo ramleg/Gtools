@@ -3,6 +3,7 @@ package com.corp.globant.MODEL.dao;
 import com.corp.globant.MODEL.beans.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 /**
@@ -52,4 +53,23 @@ public class LocationDAOpsql {
         return locations;
     }
     
+    public static Location getById(Connection conn, String id) throws SQLException{
+        
+        String query = "SELECT * \n" +
+        "FROM \n" +
+        "  app.locations\n" +
+        "WHERE\n" +
+        "  locations_id=" + id + ";";
+        
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        Location location = new Location();
+        if(rs.next()){
+            location.setId(rs.getString("locations_id"));
+        }else{
+            location.setId("");
+        }
+        
+        return location;
+    }
 }

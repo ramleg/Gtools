@@ -140,7 +140,7 @@ function frmSubmit(){
         lastName:txt.lastname.val(),
         idNumber:txt.idNumber.val(),
         domainUser:txt.domainUser.val(),
-        email:ddl.emailDomain.find(':selected').val() ,
+        emailDomain:ddl.emailDomain.find(':selected').val() ,
         position:ddl.position.find(':selected').val(),
         location:ddl.location.find(':selected').val(),
         emailGroup:ddl.emailGroup.find(':selected').val(),
@@ -161,21 +161,22 @@ function frmSubmit(){
             if (typeof data.error === "undefined"){
                 alert('Success: ' + JSON.stringify(data));
             }else{
-                toggleAlert(data);
+                toggleAlert('Server side Error:', data);
             }
         }
         });
         
     }else{
-        toggleAlert($errors);
+        toggleAlert('Form Error:',$errors);
     }
         
     
     
 }
-function toggleAlert(errors){
+function toggleAlert(title, errors){
     
     $('.modal-body').find('p').remove();
+    $('.modal-title').text(title);
     for(var key in errors)
         $('.modal-body').append('<p>' + errors[key] + '</p>');
     $('.modal').modal('toggle');
@@ -187,25 +188,25 @@ function checkSubmit($JsonData){
     console.log($errors);
     
     if(!chekEmpty($JsonData.subDomain))
-        $errors.subDomain='Sub Domain';
+        $errors.subDomain='[Sub Domain]';
     if(!chekEmpty($JsonData.name))
-        $errors.name='Name';
+        $errors.name='[Name]';
     if(!chekEmpty($JsonData.lastName))
-        $errors.lastName='Last Name';
+        $errors.lastName='[Last Name]';
     if(!chekEmpty($JsonData.idNumber))
-        $errors.idNumber='ID Number';
+        $errors.idNumber='[ID Number]';
     if(!chekEmpty($JsonData.domainUser))
-        $errors.domainUser='Domain User';
-    if(!chekEmpty($JsonData.email))
-        $errors.email='Email Domain';
+        $errors.domainUser='[Domain User]';
+    if(!chekEmpty($JsonData.emailDomain))
+        $errors.emailDomain='[Email Domain]';
     if(!chekEmpty($JsonData.position))
-        $errors.position='Position';
+        $errors.position='[Position]';
     if(!chekEmpty($JsonData.location))
-        $errors.location='Location';
+        $errors.location='[Location]';
     if(!chekEmpty($JsonData.emailGroup))
-        $errors.emailGroup='Email Group';
+        $errors.emailGroup='[Email Group]';
     if(!chekEmpty($JsonData.country))
-        $errors.country='Country';
+        $errors.country='[Country]';
     
     return $errors;
 }

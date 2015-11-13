@@ -4,6 +4,11 @@ import com.corp.globant.MODEL.beans.Errors;
 import com.corp.globant.MODEL.beans.Hire;
 import com.corp.globant.MODEL.beans.ValidateException;
 import com.corp.globant.MODEL.dao.ConnectionManager;
+import com.corp.globant.MODEL.dao.CountryDAOpsql;
+import com.corp.globant.MODEL.dao.EmailDomainDAOpsql;
+import com.corp.globant.MODEL.dao.EmailGroupDAOpsql;
+import com.corp.globant.MODEL.dao.LocationDAOpsql;
+import com.corp.globant.MODEL.dao.PositionDAOpsql;
 import com.corp.globant.MODEL.dao.SubDomainDAOpsql;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -43,6 +48,20 @@ public class ValidateHire {
         if(!this.validateDomainUser(hire))
             e.addError("User");
         //Validate SubDomain
+        if(!this.validateSubDomain(hire))
+            e.addError("Sub Domain");
+        //Validate Email Domain
+        if(!this.validateEmailDomain(hire))
+            e.addError("Email Domain");
+        //Validate Country
+        if(!this.validateCountry(hire))
+            e.addError("Country");
+        if(!this.validatePosition(hire))
+            e.addError("Position");
+        if(!this.validateLocation(hire))
+            e.addError("Location");
+        if(!this.validateEmailGroup(hire))
+            e.addError("Email Groups");
         
         return e;
     }
@@ -88,14 +107,85 @@ public class ValidateHire {
             return false;
         if(v.existInAD(hire.getDomainUser()))
             return false;
-        
         return true;
     }
     
     private boolean validateSubDomain(Hire hire){
         
         try {
-            if(SubDomainDAOpsql.getById(ConnectionManager.getConnection(), hire.getSubDomain().getId()).getId().equals(""));
+            if (hire.getSubDomain().getId().isEmpty())
+                return false;
+            if(SubDomainDAOpsql.getById(ConnectionManager.getConnection(), hire.getSubDomain().getId()).getId() == null);
+                return false;
+        } catch (Exception ex) {
+            Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return true;
+    }
+    
+    private boolean validateEmailDomain(Hire hire){
+        
+        try {
+            if (hire.getEmailDomian().getId().isEmpty())
+                return false;
+            if(EmailDomainDAOpsql.getById(ConnectionManager.getConnection(), hire.getEmailDomian().getId()) == null);
+                return false;
+        } catch (Exception ex) {
+            Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return true;
+    }
+    
+    private boolean validateCountry(Hire hire){
+        
+        try {
+            if (hire.getCountry().getId().isEmpty())
+                return false;
+            if(CountryDAOpsql.getById(ConnectionManager.getConnection(), hire.getCountry().getId()) == null);
+                return false;
+        } catch (Exception ex) {
+            Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return true;
+    }
+    
+    private boolean validatePosition(Hire hire){
+        
+        try {
+            if (hire.getPosition().getId().isEmpty())
+                return false;
+            if(PositionDAOpsql.getById(ConnectionManager.getConnection(), hire.getPosition().getId()) == null);
+                return false;
+        } catch (Exception ex) {
+            Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return true;
+    }
+    
+    private boolean validateLocation(Hire hire){
+        
+        try {
+            if (hire.getLocation().getId().isEmpty())
+                return false;
+            if(LocationDAOpsql.getById(ConnectionManager.getConnection(), hire.getPosition().getId()) == null);
+                return false;
+        } catch (Exception ex) {
+            Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return true;
+    }
+    
+    private boolean validateEmailGroup(Hire hire){
+        
+        try {
+            if (hire.getEmailGroup().getId().isEmpty())
+                return false;
+            if(EmailGroupDAOpsql.getById(ConnectionManager.getConnection(), hire.getEmailGroup().getId()) == null);
                 return false;
         } catch (Exception ex) {
             Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);

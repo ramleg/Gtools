@@ -9,7 +9,7 @@ public class Hire {
     private String lastname;
     private String idNumber;
     private String domainUser;
-    private String DomainEmail;
+    private EmailDomain emailDomian;
     private EmailGroup emailGroup;
     private Position position;
     private Location location;
@@ -59,12 +59,12 @@ public class Hire {
         this.domainUser = domainUser;
     }
 
-    public String getDomainEmail() {
-        return DomainEmail;
+    public EmailDomain getEmailDomian() {
+        return emailDomian;
     }
 
-    public void setDomainEmail(String DomainEmail) {
-        this.DomainEmail = DomainEmail;
+    public void setEmailDomian(EmailDomain emailDomian) {
+        this.emailDomian = emailDomian;
     }
 
     public EmailGroup getEmailGroup() {

@@ -49,7 +49,7 @@ public class HiresDAOpsql {
                 + "'" + hire.getDomainUser() + "', "
                 + hire.getPosition().getId() + ", "
                 + hire.getLocation().getId() + ", "
-                + "'" + hire.getDomainEmail() + "', "
+                + "'" + hire.getEmailDomian() + "', "
                 + hire.getEmailGroup().getId() + ", "
                 + hire.getPhoneNumber() + ", "
                 + hire.getCountry().getId() + ", "

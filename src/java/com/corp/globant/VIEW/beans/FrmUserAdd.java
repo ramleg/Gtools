@@ -18,8 +18,8 @@ public class FrmUserAdd {
     private String idNumber;
     @SerializedName("domainUser")
     private String domainUser;
-    @SerializedName("email")
-    private String email;
+    @SerializedName("emailDomain")
+    private String emailDomain;
     @SerializedName("position")
     private String position;
     @SerializedName("location")
@@ -71,12 +71,12 @@ public class FrmUserAdd {
         this.domainUser = domainUser;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailDomain() {
+        return emailDomain;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailDomain(String emailDomain) {
+        this.emailDomain = emailDomain;
     }
 
     public String getPosition() {

@@ -3,6 +3,7 @@ package com.corp.globant.MODEL.dao;
 import com.corp.globant.MODEL.beans.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 /**
@@ -51,4 +52,24 @@ public class EmailGroupDAOpsql {
         return emailGroupList;
     }
     
+    
+    public static EmailGroup getById(Connection conn, String id) throws SQLException{
+        
+        String query = "SELECT * \n" +
+        "FROM \n" +
+        "  app.email_groups\n" +
+        "WHERE\n" +
+        "  email_groups_id=" + id + ";";
+        
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        EmailGroup emailGroup = new EmailGroup();
+        if(rs.next()){
+            emailGroup.setId(rs.getString("email_group_id"));
+        }else{
+            emailGroup.setId("");
+        }
+        
+        return emailGroup;
+    }
 }
