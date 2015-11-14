@@ -16,12 +16,14 @@ public class PositionDAOpsql {
         String query = "SELECT * FROM app.positions WHERE positions_id=" + id + ";";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        
         Position pos = new Position();
-        pos.setId(rs.getString("positions_id"));
-        pos.setDesc(rs.getString("positions_desc"));
-        pos.setOu(rs.getString("positions_ou"));
-        
+        if(rs.next()){
+            pos.setId(rs.getString("positions_id"));
+            pos.setDesc(rs.getString("positions_desc"));
+            pos.setOu(rs.getString("positions_ou"));
+        }else{
+            pos.setId("");
+        }
         stmt.close();
         
         return pos;

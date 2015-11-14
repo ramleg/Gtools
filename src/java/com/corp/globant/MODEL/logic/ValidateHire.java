@@ -1,8 +1,6 @@
 package com.corp.globant.MODEL.logic;
 
-import com.corp.globant.MODEL.beans.Errors;
-import com.corp.globant.MODEL.beans.Hire;
-import com.corp.globant.MODEL.beans.ValidateException;
+import com.corp.globant.MODEL.beans.*;
 import com.corp.globant.MODEL.dao.ConnectionManager;
 import com.corp.globant.MODEL.dao.CountryDAOpsql;
 import com.corp.globant.MODEL.dao.EmailDomainDAOpsql;
@@ -115,7 +113,8 @@ public class ValidateHire {
         try {
             if (hire.getSubDomain().getId().isEmpty())
                 return false;
-            if(SubDomainDAOpsql.getById(ConnectionManager.getConnection(), hire.getSubDomain().getId()).getId() == null);
+            SubDomain x = SubDomainDAOpsql.getById(ConnectionManager.getConnection(), hire.getSubDomain().getId());
+            if(x.getId().isEmpty())
                 return false;
         } catch (Exception ex) {
             Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,7 +128,8 @@ public class ValidateHire {
         try {
             if (hire.getEmailDomian().getId().isEmpty())
                 return false;
-            if(EmailDomainDAOpsql.getById(ConnectionManager.getConnection(), hire.getEmailDomian().getId()) == null);
+            EmailDomain x = EmailDomainDAOpsql.getById(ConnectionManager.getConnection(), hire.getEmailDomian().getId());
+            if(x.getId().isEmpty())
                 return false;
         } catch (Exception ex) {
             Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);
@@ -143,7 +143,7 @@ public class ValidateHire {
         try {
             if (hire.getCountry().getId().isEmpty())
                 return false;
-            if(CountryDAOpsql.getById(ConnectionManager.getConnection(), hire.getCountry().getId()) == null);
+            if(CountryDAOpsql.getById(ConnectionManager.getConnection(), hire.getCountry().getId()).getId().isEmpty())
                 return false;
         } catch (Exception ex) {
             Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);
@@ -157,7 +157,7 @@ public class ValidateHire {
         try {
             if (hire.getPosition().getId().isEmpty())
                 return false;
-            if(PositionDAOpsql.getById(ConnectionManager.getConnection(), hire.getPosition().getId()) == null);
+            if(PositionDAOpsql.getById(ConnectionManager.getConnection(), hire.getPosition().getId()).getId().isEmpty())
                 return false;
         } catch (Exception ex) {
             Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);
@@ -171,7 +171,7 @@ public class ValidateHire {
         try {
             if (hire.getLocation().getId().isEmpty())
                 return false;
-            if(LocationDAOpsql.getById(ConnectionManager.getConnection(), hire.getPosition().getId()) == null);
+            if(LocationDAOpsql.getById(ConnectionManager.getConnection(), hire.getLocation().getId()).getId().isEmpty())
                 return false;
         } catch (Exception ex) {
             Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);
@@ -185,7 +185,7 @@ public class ValidateHire {
         try {
             if (hire.getEmailGroup().getId().isEmpty())
                 return false;
-            if(EmailGroupDAOpsql.getById(ConnectionManager.getConnection(), hire.getEmailGroup().getId()) == null);
+            if(EmailGroupDAOpsql.getById(ConnectionManager.getConnection(), hire.getEmailGroup().getId()).getId().isEmpty())
                 return false;
         } catch (Exception ex) {
             Logger.getLogger(ValidateHire.class.getName()).log(Level.SEVERE, null, ex);

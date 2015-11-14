@@ -115,7 +115,6 @@ function getList($url, $ddl, $flag){
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(jsonData),
         success: function(data){
-            console.log('hola: ' + JSON.stringify(data));
             setDDL(data, $ddl);
             //$ddl.val($i).change();
         },
@@ -147,6 +146,8 @@ function frmSubmit(){
         country:ddl.country.find(':selected').val(),
         description:txt.description.val()
     };    
+    
+    console.log(JSON.stringify($JsonData));
     
     var $errors = checkSubmit($JsonData);
     if(!Object.keys($errors).length > 0){
@@ -185,8 +186,7 @@ function toggleAlert(title, errors){
 function checkSubmit($JsonData){
     
     var $errors = {};
-    console.log($errors);
-    
+        
     if(!chekEmpty($JsonData.subDomain))
         $errors.subDomain='[Sub Domain]';
     if(!chekEmpty($JsonData.name))

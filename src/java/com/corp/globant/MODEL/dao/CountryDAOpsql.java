@@ -14,11 +14,14 @@ public class CountryDAOpsql {
         String query = "SELECT * FROM app.countries WHERE countries_id=" + id + ";";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        
         Country country = new Country();
-        country.setId(rs.getString("countries_id"));
-        country.setDesc(rs.getString("countries_desc"));
         
+        if(rs.next()){
+            country.setId(rs.getString("countries_id"));
+            country.setDesc(rs.getString("countries_desc"));
+        }else{
+            country.setId("");
+        }
         stmt.close();
         
         return country;

@@ -34,7 +34,7 @@ public class HiresDAOpsql {
                 + "hires_domain_user, "
                 + "hires_position_fk, "
                 + "hires_location_fk, "
-                + "hires_email, "
+                + "hires_email_domain_fk, "
                 + "hires_email_group_fk, "
                 + "hires_phone_number_fk, "
                 + "hires_country_fk, "
@@ -49,14 +49,22 @@ public class HiresDAOpsql {
                 + "'" + hire.getDomainUser() + "', "
                 + hire.getPosition().getId() + ", "
                 + hire.getLocation().getId() + ", "
-                + "'" + hire.getEmailDomian() + "', "
+                + hire.getEmailDomian().getId() + ", "
                 + hire.getEmailGroup().getId() + ", "
                 + hire.getPhoneNumber() + ", "
                 + hire.getCountry().getId() + ", "
                 + hire.getSubDomain().getId()+ ", "
                 + "'" + hire.getDescription() + "'"
                 + ");"
-                
+                + "WITH new_values AS (\n" +
+                "SELECT * FROM app.telephony \n" +
+                "WHERE (telephony_user_assigned IS NULL AND telephony_countries_fk = " + hire.getCountry().getId() + ")\n" +
+                "ORDER BY telephony_number LIMIT 1\n" +
+                ")\n" +
+                "UPDATE app.telephony AS up\n" +
+                "SET telephony_user_assigned = '" + hire.getDomainUser() + "'\n" +
+                "FROM new_values nv\n" +
+                "WHERE nv.telephony_number = up.telephony_number;"
                 + "COMMIT;";
         
         Statement stmt = conn.createStatement();

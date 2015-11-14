@@ -65,7 +65,7 @@ public class EmailGroupDAOpsql {
         ResultSet rs = stmt.executeQuery(query);
         EmailGroup emailGroup = new EmailGroup();
         if(rs.next()){
-            emailGroup.setId(rs.getString("email_group_id"));
+            emailGroup.setId(rs.getString("email_groups_id"));
         }else{
             emailGroup.setId("");
         }
