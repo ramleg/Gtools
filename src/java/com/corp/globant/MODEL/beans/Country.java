@@ -12,6 +12,11 @@ public class Country {
     public Country(String id) {
         this.id = id;
     }
+
+    public Country(String id, String desc) {
+        this.id = id;
+        this.desc = desc;
+    }
     
     public void setId(String id) {
         this.id = id;

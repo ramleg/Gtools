@@ -138,21 +138,9 @@
             <div class="panel-heading">Logs</div>
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table js-dynamitable table-striped table-condensed">
-                    <tr>
-                        <th>#ID</th><th>User</th><th>Name</th><th>Lastname</th>
-                    </tr>
-                    <tr>
-                        <td>1</td><td>ramiro.acoglanis</td><td>Ramiro</td><td>Acoglanis</td>
-                    </tr>
-                    <tr>
-                        <td>2</td><td>hola.mundo</td><td>Hola</td><td>Mundo</td>
-                    </tr>
-                    <tr>
-                        <td>3</td><td>bata.manta</td><td>Bata</td><td>Manta</td>
-                    </tr>
+                    <table id="table-hires" class="table js-dynamitable table-striped table-condensed">
+                    <tr></tr>
                 </table>
-                    
                 </div>
             </div>    
             </div>

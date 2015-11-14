@@ -18,6 +18,11 @@ public class Location {
     public Location(String id) {
         this.id = id;
     }
+
+    public Location(String id, String desc) {
+        this.id = id;
+        this.desc = desc;
+    }
     
     public String getId() {
         return id;

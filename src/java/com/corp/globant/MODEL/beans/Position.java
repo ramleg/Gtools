@@ -13,6 +13,11 @@ public class Position {
     public Position(String id) {
         this.id = id;
     }
+
+    public Position(String id, String desc) {
+        this.id = id;
+        this.desc = desc;
+    }
     
     public String getId() {
         return id;

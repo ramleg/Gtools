@@ -36,7 +36,7 @@ $(function (){//'DocumentReady' Block
     getList('GetPositionList',ddl.position);
     getList('GetLocationList',ddl.location);
     getList('GetEmailGroupList',ddl.emailGroup);
-    
+    getHiresTable();
     //********************************//
     //Events Listeners --->>>         //
     //********************************//
@@ -130,6 +130,36 @@ function setDDL(json, control){
         htmlData = htmlData + '<option value=' + json[key].id + ' >' + json[key].desc + '</option>';
     control.append(htmlData);
 }
+function getHiresTable(){
+    
+    $('#table-hires').find('tr').remove();
+    
+    $.ajax({
+        type: 'GET',
+        url: 'GetHiresList',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        success: function(data){
+            console.log(JSON.stringify(data));
+            setTable(data);
+        }
+        });
+    
+    
+}
+
+function setTable (json){
+    
+    $('#table-hires').append('<tr><th>User</th><th>Full Name</th><th>Position</th><th>Location</th><th><span class="glyphicon glyphicon-asterisk"></span></th></tr>');
+    
+    for(var key in json){
+        $('#table-hires').append('<tr><td>' + json[key].domainUser + '@' + json[key].emailDomian.desc + '</td><td>' + json[key].name + ', ' + json[key].lastname + '</td><td>' + json[key].position.desc + '</td><td>' + json[key].location.desc + '</td><td><span class="glyphicon glyphicon-asterisk"></span></td></tr>');
+    }
+    
+}
+    
+
+
 // Submit DATA ----->>>
 function frmSubmit(){
     
@@ -147,8 +177,6 @@ function frmSubmit(){
         description:txt.description.val()
     };    
     
-    console.log(JSON.stringify($JsonData));
-    
     var $errors = checkSubmit($JsonData);
     if(!Object.keys($errors).length > 0){
         
@@ -160,7 +188,8 @@ function frmSubmit(){
         data: JSON.stringify($JsonData) ,
         success: function(data){
             if (typeof data.error === "undefined"){
-                alert('Success: ' + JSON.stringify(data));
+                clearForm();
+                getHiresTable();
             }else{
                 toggleAlert('Server side Error:', data);
             }
@@ -228,6 +257,9 @@ function checkDomainUser(){
                 
     });
 }
+
+
+
 function showUserCheck(data){
     if (typeof data.errors[0] === 'undefined'){
         btn.checkUser.closest('.input-group').removeClass('has-error');
@@ -253,35 +285,6 @@ function chekUserName(){
         $(this).closest('.input-group').removeClass('has-success');
         $(this).closest('.input-group').addClass('has-error');
     }
-}
-function reservePhoneNumber(){
-    
-    var $JsonData = {
-      userAssigned:txt.domainUser.val(),
-      number:txt.phone.val(),
-      countyId:ddl.country.val()
-    };
-    console.log(JSON.stringify($JsonData));
-    $.ajax({
-        type: 'POST',
-        url: 'GetPhone',
-        dataType: 'json',
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify($JsonData) ,
-        success: function(data){
-            if (typeof data.number === "undefined"){
-                txt.phone.val('');
-                chekPhone();
-            }else{
-                txt.phone.val(data.number);
-                chekPhone();
-            }
-                
-                
-                
-        }
-    });
-    
 }
 function chekSelect(){
     if(chekEmpty($(this))){
