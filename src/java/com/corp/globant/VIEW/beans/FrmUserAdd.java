@@ -1,13 +1,14 @@
 package com.corp.globant.VIEW.beans;
 
 import com.google.gson.annotations.SerializedName;
-
 /**
  *
  * @author ramiro.acoglanis
  */
 public class FrmUserAdd {
     
+    @SerializedName("id")
+    private String id;
     @SerializedName("subDomain")
     private String subDomain;
     @SerializedName("name")
@@ -30,6 +31,14 @@ public class FrmUserAdd {
     private String country;
     @SerializedName("description")
     private String description;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     
     public String getSubDomain() {
         return subDomain;

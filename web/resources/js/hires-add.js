@@ -26,7 +26,8 @@ $(function (){//'DocumentReady' Block
         checkUser:$('#btn-checkuser'),
         phoneNumber:$('#btn-getphonenumber'), 
         submit:$('#btn-submit'),
-        cancel:$("#btn-cancel")
+        cancel:$("#btn-cancel"),
+        disableUser:$('.disable-user')
     };
     
     //********************************//
@@ -97,6 +98,8 @@ $(function (){//'DocumentReady' Block
     btn.submit.on('click',frmSubmit);
     //-----------------------------------
     btn.cancel.on('click', clearForm);
+    
+    
 
 
 //********************************//
@@ -140,8 +143,10 @@ function getHiresTable(){
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function(data){
-                    console.log(JSON.stringify(data));
                     setTable(data);
+                    $('.disable-user').on('click', function(){
+                        disableUser($(this).attr('data-user'));
+                    }); 
                 }
             });
            $('#panel-2').slideDown('slow');
@@ -153,7 +158,7 @@ function setTable (json){
     $('#table-hires').append('<tr><th>User</th><th>Full Name</th><th>Position</th><th>Location</th><th></th></tr>');
     
     for(var key in json){
-        $('#table-hires').append('<tr><td>' + json[key].domainUser + '@' + json[key].emailDomian.desc + '</td><td>' + json[key].name + ', ' + json[key].lastname + '</td><td>' + json[key].position.desc + '</td><td>' + json[key].location.desc + '</td><td class="rojo"><span class="glyphicon glyphicon-remove"></span></td></tr>');
+        $('#table-hires').append('<tr><td>' + json[key].domainUser + '@' + json[key].emailDomian.desc + '</td><td>' + json[key].name + ', ' + json[key].lastname + '</td><td>' + json[key].position.desc + '</td><td>' + json[key].location.desc + '</td><td class="disable-user glyphicon glyphicon-remove" data-user="' + json[key].domainUser + '"></td></tr>');
     }
     
 }
@@ -201,10 +206,27 @@ function frmSubmit(){
     }else{
         toggleAlert('Form Error:',$errors);
     }
-        
+}
+
+function disableUser(hireUser){
+    
+    console.log(hireUser);
+    if(hireUser!=''){
+        var $JsonData = {domainUser:hireUser};
+        $.ajax({
+            type: 'POST',
+            url: 'HireDisableServlet',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify($JsonData) ,
+            success: getHiresTable()
+        });
+    }
     
     
 }
+
+
 function toggleAlert(title, errors){
     
     $('.modal-body').find('p').remove();

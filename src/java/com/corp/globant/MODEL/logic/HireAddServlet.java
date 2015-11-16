@@ -59,7 +59,7 @@ public class HireAddServlet extends HttpServlet {
     }
     
     
-    public static Hire buildHire(FrmUserAdd frm){
+    private static Hire buildHire(FrmUserAdd frm){
         Hire hire = new Hire();
         //Set Name
         hire.setName(frm.getName());

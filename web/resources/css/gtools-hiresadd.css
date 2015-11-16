@@ -2,7 +2,7 @@
     cursor:pointer;
     color:#ff6600;
 }
-.rojo:hover{
+.disable-user:hover{
     cursor:pointer;
     color:red
 }
