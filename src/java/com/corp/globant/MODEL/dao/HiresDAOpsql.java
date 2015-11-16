@@ -42,6 +42,7 @@ public class HiresDAOpsql {
         "INNER JOIN app.positions ON positions.positions_id = hires.hires_position_fk\n" +
         "INNER JOIN app.locations ON locations.locations_id = hires.hires_location_fk\n" +
         "INNER JOIN app.email_domains ON email_domains.email_domains_id = hires.hires_email_domain_fk\n" +
+        "WHERE hires.hires_status_fk !=6\n" +  
         "ORDER BY hires.hires_id;";
         
         Statement stmt = conn.createStatement();
@@ -115,5 +116,11 @@ public class HiresDAOpsql {
         Statement stmt = conn.createStatement();
         stmt.executeUpdate(query);
         stmt.close();
+    }
+    
+    public static void disable(Connection conn, Hire hire) throws SQLException {
+        
+        
+        
     }
 }

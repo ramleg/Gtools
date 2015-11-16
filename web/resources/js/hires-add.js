@@ -98,6 +98,7 @@ $(function (){//'DocumentReady' Block
     //-----------------------------------
     btn.cancel.on('click', clearForm);
 
+
 //********************************//
 // a bunch of functions --->>>    //
 //********************************//
@@ -131,29 +132,28 @@ function setDDL(json, control){
     control.append(htmlData);
 }
 function getHiresTable(){
-    
-    $('#table-hires').find('tr').remove();
-    
-    $.ajax({
-        type: 'GET',
-        url: 'GetHiresList',
-        dataType: 'json',
-        contentType: 'application/json; charset=utf-8',
-        success: function(data){
-            console.log(JSON.stringify(data));
-            setTable(data);
-        }
+    $('#panel-2').slideUp(function(){
+           $('#table-hires').find('tr').remove();
+            $.ajax({
+                type: 'GET',
+                url: 'GetHiresList',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function(data){
+                    console.log(JSON.stringify(data));
+                    setTable(data);
+                }
+            });
+           $('#panel-2').slideDown('slow');
         });
-    
-    
 }
 
 function setTable (json){
     
-    $('#table-hires').append('<tr><th>User</th><th>Full Name</th><th>Position</th><th>Location</th><th><span class="glyphicon glyphicon-asterisk"></span></th></tr>');
+    $('#table-hires').append('<tr><th>User</th><th>Full Name</th><th>Position</th><th>Location</th><th></th></tr>');
     
     for(var key in json){
-        $('#table-hires').append('<tr><td>' + json[key].domainUser + '@' + json[key].emailDomian.desc + '</td><td>' + json[key].name + ', ' + json[key].lastname + '</td><td>' + json[key].position.desc + '</td><td>' + json[key].location.desc + '</td><td><span class="glyphicon glyphicon-asterisk"></span></td></tr>');
+        $('#table-hires').append('<tr><td>' + json[key].domainUser + '@' + json[key].emailDomian.desc + '</td><td>' + json[key].name + ', ' + json[key].lastname + '</td><td>' + json[key].position.desc + '</td><td>' + json[key].location.desc + '</td><td class="rojo"><span class="glyphicon glyphicon-remove"></span></td></tr>');
     }
     
 }
@@ -187,12 +187,14 @@ function frmSubmit(){
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify($JsonData) ,
         success: function(data){
+            btn.submit.toogleClass('disabled');
             if (typeof data.error === "undefined"){
                 clearForm();
                 getHiresTable();
             }else{
                 toggleAlert('Server side Error:', data);
             }
+            btn.submit.toogleClass('disabled');
         }
         });
         

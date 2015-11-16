@@ -134,7 +134,7 @@
         
         <!-- PANEL 2 -->
         <div class="col-xs-12 col-sm-12 col-md-5">
-            <div class="panel panel-primary">
+            <div id="panel-2" class="panel panel-primary">
             <div class="panel-heading">Logs</div>
             <div class="panel-body">
                 <div class="table-responsive">
