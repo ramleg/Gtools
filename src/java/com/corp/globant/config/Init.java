@@ -19,7 +19,6 @@ public class Init implements ServletContextListener{
     public void contextInitialized(ServletContextEvent e){
         
         String path = getClass().getResource(File.separator).getPath();
-        
         try {  
             BufferedReader br = new BufferedReader(new FileReader(path + "config.json"));
             config = new Gson().fromJson(br, Config.class);
