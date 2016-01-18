@@ -11,7 +11,7 @@
   <%@include file="webs/commonHead.html" %>
   <%
       Connection conn = ConnectionManager.getConnection();
-    %>
+  %>
 <script> //SUBMIT
   $(document).ready(function(){
     $("#btn-submit").click(function(){
@@ -30,7 +30,6 @@
 	  padding-right: 15px;
   }
   </style>
-
 </head>
 <body>
 
