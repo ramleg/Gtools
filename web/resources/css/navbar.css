@@ -1,0 +1,26 @@
+/* General styles*/
+nav div{
+    background-color: #C1D736;
+    color: #000;
+}
+nav a{
+    color: #000;
+}  
+nav ul{
+    background-color: #C1D736;
+    color: #000;
+}
+nav li {
+    background-color: #C1D736;
+    color: #000;
+}
+nav span{
+    color: #000;
+}
+nav li:hover ul{
+    display: block;
+    background: #C1D736;
+}
+nav li:hover{
+    background: #eee;
+}
