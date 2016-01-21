@@ -4,40 +4,40 @@
 <head>
   <title>Proy-NewHires</title>
   <meta charset="utf-8">
-  <%@include file="webs/commonHead.html" %>
+  <%@include file="common/commonHead.html" %>
 
 </head>
 <body>
 
-<%@include file="webs/mainMenu.jsp" %>
-         
-<div class="container-fluid" style="width: 90%">
+<%@include file="common/mainMenu.jsp" %>
+<!-- PANEL 1 -->         
+<div class="container-fluid" style="width: 50%; margin-left: 0">
   <div class="panel panel-primary">
     <div class="panel-heading">Import internal numbers</div>
     <div class="panel-body">
          <form class="form-horizontal" role="form">
-            <div class="col-sm-2">
+            <div class="col-xs-2 col-sm-2">
              <button id="btn-select" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-file"></span> Select file </button>
             </div>
-            <div class="col-sm-8">  
+            <div class=" col-xs-8 col-sm-8">  
              <input type="text" class="form-control" id="txt-file" placeholder="Import file">
             </div> 
-            <div class="col-sm-2">  
+            <div class="col-xs-2 col-sm-2">  
              <button id="btn-import" type="button" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-import"></span> Import</button>    
             </div>
          </form>
     </div>
   </div>   
 </div>
-
-<div class="container-fluid" style="width: 90%">
+<!-- PANEL 2 -->
+<div class="container-fluid" style="width: 90%; margin-left: 0">
   <div class="panel panel-primary">
     <div class="panel-heading">Free internal numbers</div>
     <div class="panel-body">
         
         <div id="div-grilla"class="container table-responsive">
           
-            <table id="grid-user" class="js-dynamitable table table-bordered table-hover">
+            <table id="grid-internos" class="table table-bordered table-hover js-dynamitable">
             <thead>
               <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->
                 <th id="txt-argentina" style="text-align:center">Argentina<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
@@ -124,7 +124,7 @@
 
 <script>
   $(document).ready( function () {
-    $('#grid-user').bdt();
+    $('#grid-internos').bdt();
   });
 </script>
 
