@@ -35,7 +35,7 @@
                                     </div>
                                 </div>
                                 <select class="form-control" id="ddl-subdomain">
-                                    <option value="">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </option>
+                                    <option value=""></option>
                                 </select>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon cursor">@</div>
                                 <select class="form-control" id="ddl-emaildomain">
-                                    <option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option>
+                                    <option value=""></option>
                                 </select>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                         <div class="row">
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon cursor">Country</div>
-                                <select class="form-control" id="ddl-country"><option value="">. . . . . . . . . . . . . . . . . . . . . . . .</option></select>
+                                <select class="form-control" id="ddl-country"><option value="">...................</option></select>
                             </div>
                             <div class="input-group col-sm-12 col-md-5">
                                 <div class="input-group-addon cursor">></div>

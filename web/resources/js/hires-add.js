@@ -59,7 +59,7 @@ $(function (){//'DocumentReady' Block
         }else{
             ddl.emailDomain.find('option').remove().end()
             .append
-            ('<option value="">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </option>');
+            ('<option value=""></option>');
         }
         
     });
@@ -109,8 +109,9 @@ function getList($url, $ddl, $flag){
 
     $ddl.find('option').remove().end()
     .append
-    ('<option value="">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </option>');
-    
+    ('<option value=""> </option>');
+    console.log($url)
+            
     var jsonData = {flag:$flag};
     $.ajax({
         type: 'POST',
@@ -119,7 +120,7 @@ function getList($url, $ddl, $flag){
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(jsonData),
         success: function(data){
-            setDDL(data, $ddl);
+            setDDL(data, $ddl, $url);
             //$ddl.val($i).change();
         },
         error: function(data){
@@ -128,12 +129,21 @@ function getList($url, $ddl, $flag){
     });
     
 }
-function setDDL(json, control){
+function setDDL(json, control, type){
     var htmlData = '';
     for(var key in json)
-        htmlData = htmlData + '<option value=' + json[key].id + ' >' + json[key].desc + '</option>';
+        htmlData = htmlData + '<option value="' + json[key].id + '" >' + json[key].desc + '</option>';
     control.append(htmlData);
+    initPlugins(control, type);
+    
 }
+/* Carga Dropdown de Country test no tocar*/
+function initPlugins(control,type){
+    if(type === 'GetCountryList'){
+        control.customselect();
+    }
+}
+
 function getHiresTable(){
     $('#panel-2').slideUp(function(){
            $('#table-hires').find('tr').remove();

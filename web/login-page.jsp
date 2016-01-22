@@ -5,6 +5,7 @@
 <head>
     <title>JSP Page</title>
     <jsp:include page="common/commonHead.html" />
+    <link rel="stylesheet" href="resources/css/navbar.css">
 </head>
 <body>
     
@@ -15,7 +16,7 @@
                 <img src="resources/img/gtools1.png" alt=""/>
             </div>
             <ul class="nav navbar-nav navbar-right">
-              <li><a><span class="glyphicon glyphicon-wrench"> </span>  IST Service Desk </a></li>
+              <li><a style="color: #000"><span class="glyphicon glyphicon-wrench"> </span>  IST Service Desk </a></li>
             </ul>
         </div>
     </nav>

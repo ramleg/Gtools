@@ -6,16 +6,21 @@
   <meta charset="utf-8">
   <%@include file="common/commonHead.html" %>
 
+  <script src='resources/js/test-select.js'></script>
+  <script src="resources/js/hires-add.js"></script>
+  <link href='resources/css/custom-select.css' rel='stylesheet' />
+  
 </head>
 <body>
 
 <%@include file="common/mainMenu.jsp" %>
+
 <!-- PANEL 1 -->         
 <div class="container-fluid" style="width: 50%; margin-left: 0">
   <div class="panel panel-primary">
     <div class="panel-heading">Import internal numbers</div>
     <div class="panel-body">
-         <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form">
             <div class="col-xs-2 col-sm-2">
              <button id="btn-select" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-file"></span> Select file </button>
             </div>
@@ -25,10 +30,23 @@
             <div class="col-xs-2 col-sm-2">  
              <button id="btn-import" type="button" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-import"></span> Import</button>    
             </div>
-         </form>
+        </form>
     </div>
   </div>   
 </div>
+
+<div class="container-fluid">
+    <form>
+        <select id="ddl-country" class="custom-select">
+        </select>
+        <script>
+            $(function() {
+              $("#ddl-country").autocomplete();
+            });
+        </script>
+    </form>
+</div>
+
 <!-- PANEL 2 -->
 <div class="container-fluid" style="width: 90%; margin-left: 0">
   <div class="panel panel-primary">
