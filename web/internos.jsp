@@ -6,36 +6,130 @@
   <meta charset="utf-8">
   <%@include file="common/commonHead.html" %>
 
-  <script src='resources/js/test-select.js'></script>
+  <!--<script src='resources/js/test-select.js'></script>
   <script src="resources/js/hires-add.js"></script>
-  <link href='resources/css/custom-select.css' rel='stylesheet' />
+  <link href='resources/css/custom-select.css' rel='stylesheet' />-->
   
 </head>
 <body>
 
 <%@include file="common/mainMenu.jsp" %>
 
-<!-- PANEL 1 -->         
-<div class="container-fluid" style="width: 50%; margin-left: 0">
-  <div class="panel panel-primary">
-    <div class="panel-heading">Import internal numbers</div>
-    <div class="panel-body">
-        <form class="form-horizontal" role="form">
-            <div class="col-xs-2 col-sm-2">
-             <button id="btn-select" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-file"></span> Select file </button>
-            </div>
-            <div class=" col-xs-8 col-sm-8">  
-             <input type="text" class="form-control" id="txt-file" placeholder="Import file">
-            </div> 
-            <div class="col-xs-2 col-sm-2">  
-             <button id="btn-import" type="button" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-import"></span> Import</button>    
-            </div>
-        </form>
-    </div>
-  </div>   
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#grid">Internal Numbers</a></li>
+    <li><a data-toggle="tab" href="#import">Import CSV</a></li>
+    <li><a data-toggle="tab" href="#new">New Internal</a></li>
+  </ul>
 </div>
 
-<div class="container-fluid">
+<div class="tab-content container-fluid"> 
+    <br>
+    <br>
+    <div id="grid" class="tab-pane fade in active container">
+        <div class="panel panel-body panel-primary">
+            <div id="div-grilla"class="container-fluid table-responsive">
+                <table id="grid-internos" class="table table-bordered table-hover js-dynamitable">
+                    <thead>
+                        <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->
+                            <th id="txt-argentina" style="text-align:center">Internal<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                            <th id="txt-usa" style="text-align:center">User<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                            <th id="txt-uruguay" style="text-align:center">Country<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
+                            <th id="txt-colombia" style="text-align:center">Status<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>         
+                        </tr>
+                    </thead>
+                    <tbody>
+                  <tr style="text-align:center">
+                    <td>12563</td>
+                    <td></td>
+                    <td>Argentina</td>
+                    <td>Not asigned</td>
+                  </tr>
+                  <tr style="text-align:center">
+                    <td>16356</td>
+                    <td>juan.perez</td>
+                    <td>Argentina</td>
+                    <td>Asigned</td>
+                  </tr>
+                  <tr style="text-align:center">
+                    <td>26523</td>
+                    <td>luis.perez</td>
+                    <td>Uruguay</td>
+                    <td>Asigned</td>
+                  </tr>
+                  <tr style="text-align:center">
+                    <td>44584</td>
+                    <td></td>
+                    <td>Colombia</td>
+                    <td>Not asigned</td>
+                  </tr>
+                </tbody>
+               </table>
+            </div>
+        </div>
+    </div>  
+    <div id="import" class=" tab-pane fade container">
+        <div class="panel panel-body panel-primary">           
+            <form class="form-horizontal row" role="form" style="margin: 30px auto;overflow: hidden;width: 90%">
+                <div class="col-md-2 col-sm-2">
+                 <button id="btn-select" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-file"></span> Select file </button>
+                </div>
+                <div class=" col-md-8 col-sm-8">  
+                 <input type="text" class="form-control" id="txt-file" placeholder="Import file">
+                </div> 
+                <div class="col-md-2 col-sm-2">  
+                 <button id="btn-import" type="button" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-import"></span> Import</button>    
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="new" class="tab-pane fade container">
+        <div class="panel panel-body panel-primary">
+            <form class="form-horizontal row" role="form" style="margin: 15px;width: 90%">
+                <div class="row form-group">
+                    <label class="control-label col-md-1 col-sm-1" for="range">Range</label>
+                    <div class="form-inline col-md-11 col-sm-11" role="form">
+                        <div class="row form-group col-md-2 col-sm-2">
+                            <input class="form-control" type="text" id="start-int" placeholder="Start" style="width: 100%;text-align: center">
+                        </div>
+                        <div class="row form-group col-md-9 col-sm-9">
+                            <input class="form-control pull-left" type="text" id="finish-int" placeholder="Finish" style="width: 18%;text-align: center">
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-1" for="country">Country</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="ddl-country" style="width: 30.8%">
+                          <option value="">Argentina</option>
+                          <option value="">Brazil</option>
+                          <option value="">USA</option>
+                          <option value="">India</option>
+                          <option value="">Colombia</option>
+                          <option value="">Etc</option>
+                        </select> 
+                    </div>
+                </div>
+                <div class=" row form-group">
+                    <label class="control-label col-sm-1" for="status">Status</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="ddl-country" style="width: 30.8%">
+                          <option value="">Free</option>
+                          <option value="">Do not use</option>
+                          <option value="">Assigned</option>
+                          <option value="">Others</option>
+                        </select> 
+                    </div>
+                </div>
+                <div class="row form-group" style="width: 35%">
+                    <button id="btn-submit" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-save"></span> Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--<div class="container-fluid">
     <form>
         <select id="ddl-country" class="custom-select">
         </select>
@@ -45,106 +139,16 @@
             });
         </script>
     </form>
-</div>
+</div>-->
 
-<!-- PANEL 2 -->
-<div class="container-fluid" style="width: 90%; margin-left: 0">
-  <div class="panel panel-primary">
-    <div class="panel-heading">Free internal numbers</div>
-    <div class="panel-body">
-        
-        <div id="div-grilla"class="container table-responsive">
-          
-            <table id="grid-internos" class="table table-bordered table-hover js-dynamitable">
-            <thead>
-              <tr class="success" style="width:auto"> <!--Encabezado mas botones de Asc y Desc-->
-                <th id="txt-argentina" style="text-align:center">Argentina<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-usa" style="text-align:center">USA<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-uruguay" style="text-align:center">Uruguay<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-colombia" style="text-align:center">Colombia<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-peru" style="text-align:center">Peru<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-mexico" style="text-align:center">Mexico<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-brasil" style="text-align:center">Brasil<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>
-                <th id="txt-india" style="text-align:center">India<span class="js-sorter-desc glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc glyphicon glyphicon-chevron-up pull-right"></span></th>          
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="text-align:center">
-                <td>12563</td>
-                <td>25632</td>
-                <td>36521</td>
-                <td>44563</td>
-                <td>23652</td>
-                <td>49632</td>
-                <td>75632</td>
-                <td>63263</td>
-              </tr>
-              <tr style="text-align:center">
-                <td>16356</td>
-                <td>24695</td>
-                <td>34523</td>
-                <td>45632</td>
-                <td>28965</td>
-                <td>41256</td>
-                <td>78963</td>
-                <td>61256</td>
-              </tr>
-              <tr style="text-align:center">
-                <td>13652</td>
-                <td>26523</td>
-                <td>38965</td>
-                <td>41236</td>
-                <td>29563</td>
-                <td>45715</td>
-                <td>71256</td>
-                <td>67563</td>
-              </tr>
-              <tr style="text-align:center">
-                <td>16932</td>
-                <td>25563</td>
-                <td>36652</td>
-                <td>44584</td>
-                <td>24523</td>
-                <td>45632</td>
-                <td>75894</td>
-                <td>66356</td>
-              </tr>
-              <tr style="text-align:center">
-                <td>15482</td>
-                <td>24712</td>
-                <td>35892</td>
-                <td>44523</td>
-                <td>24445</td>
-                <td>49652</td>
-                <td>77895</td>
-                <td>69541</td>
-              </tr>
-              <tr style="text-align:center">
-                <td>19632</td>
-                <td>25684</td>
-                <td>31254</td>
-                <td>47895</td>
-                <td>24562</td>
-                <td>46548</td>
-                <td>78951</td>
-                <td>63579</td>
-              </tr>
-
-            </tbody>
-           </table> 
-        </div> 
-    </div>
-  </div>
-</div>    
-
-<script src="resources/js/JQuery/dynamitable.jquery.min.js"></script>
+<!--<script src="resources/js/JQuery/dynamitable.jquery.min.js"></script>
 <script src="resources/js/JQuery/jquery.bdt.js"></script>
 
 <script>
   $(document).ready( function () {
     $('#grid-internos').bdt();
   });
-</script>
+</script>-->
 
 </body>
 </html>
