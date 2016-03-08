@@ -74,7 +74,7 @@
                 <div class="col-md-2 col-sm-2">
                  <button id="btn-select" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-file"></span> Select file </button>
                 </div>
-                <div class=" col-md-8 col-sm-8">  
+                <div class="col-md-8 col-sm-8">  
                  <input type="text" class="form-control" id="txt-file" placeholder="Import file">
                 </div> 
                 <div class="col-md-2 col-sm-2">  
