@@ -13,12 +13,14 @@
       </button>
         <img src="resources/img/gtools1.png" alt="Gtools"/>
     </div>
-        
+    
+    
+
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="dropdown"><a href="home.jsp" style="color: #000">Home</a></li>
+         <li class="dropdown"><a href="home.jsp">Home</a></li>
          <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #000">Hires<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hires<span class="caret"></span></a>
           <ul class="dropdown-menu">
               <li><a href="AddNH">Single New Hires</a></li>
               <li><a href="UpdateNH">Update & Delete</a></li>
@@ -33,13 +35,13 @@
           </ul>
         </li>-->
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #000">Sites<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sites<span class="caret"></span></a>
           <ul class="dropdown-menu">
               <li><a href="abm-sites.jsp">Alta Sites</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #000">Internos<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Internos<span class="caret"></span></a>
           <ul class="dropdown-menu">
               <li><a href="internos.jsp">Import Internos</a></li>
           </ul>

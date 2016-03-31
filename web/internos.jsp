@@ -6,9 +6,7 @@
   <meta charset="utf-8">
   <%@include file="common/commonHead.html" %>
 
-  <!--<script src='resources/js/test-select.js'></script>
-  <script src="resources/js/hires-add.js"></script>
-  <link href='resources/css/custom-select.css' rel='stylesheet' />-->
+  <script src="resources/js/internos.js"></script>
   
 </head>
 <body>
@@ -90,10 +88,10 @@
                     <label class="control-label col-md-1 col-sm-1" for="range">Range</label>
                     <div class="form-inline col-md-11 col-sm-11" role="form">
                         <div class="row form-group col-md-2 col-sm-2">
-                            <input class="form-control" type="text" id="start-int" placeholder="Start" style="width: 100%;text-align: center">
+                            <input class="form-control" type="number" min="1" max="9999" id="start-int" placeholder="Start" style="width: 100%;text-align: center">
                         </div>
                         <div class="row form-group col-md-9 col-sm-9">
-                            <input class="form-control pull-left" type="text" id="finish-int" placeholder="Finish" style="width: 18%;text-align: center">
+                            <input class="form-control pull-left" type="number" min="1" max="9999" id="finish-int" placeholder="Finish" style="width: 18%;text-align: center">
                         </div>
                     </div>
                 </div>
@@ -101,6 +99,7 @@
                     <label class="control-label col-sm-1" for="country">Country</label>
                     <div class="col-sm-10">
                         <select class="form-control" id="ddl-country" style="width: 30.8%">
+                          <option value=""></option>
                           <option value="">Argentina</option>
                           <option value="">Brazil</option>
                           <option value="">USA</option>
@@ -113,8 +112,9 @@
                 <div class=" row form-group">
                     <label class="control-label col-sm-1" for="status">Status</label>
                     <div class="col-sm-10">
-                        <select class="form-control" id="ddl-country" style="width: 30.8%">
-                          <option value="">Free</option>
+                        <select class="form-control" id="ddl-status" style="width: 30.8%">
+                            <option value=""></option>
+                            <option value="">Free</option>
                           <option value="">Do not use</option>
                           <option value="">Assigned</option>
                           <option value="">Others</option>
@@ -129,26 +129,7 @@
     </div>
 </div>
 
-<!--<div class="container-fluid">
-    <form>
-        <select id="ddl-country" class="custom-select">
-        </select>
-        <script>
-            $(function() {
-              $("#ddl-country").autocomplete();
-            });
-        </script>
-    </form>
-</div>-->
-
-<!--<script src="resources/js/JQuery/dynamitable.jquery.min.js"></script>
-<script src="resources/js/JQuery/jquery.bdt.js"></script>
-
-<script>
-  $(document).ready( function () {
-    $('#grid-internos').bdt();
-  });
-</script>-->
+<%@include file="common/modal-errors.jsp" %>
 
 </body>
 </html>
