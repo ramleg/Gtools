@@ -2,7 +2,7 @@
     "ldapserverDefault":"ldap://IACTIVEDIRXW26.globant.com:389",
     "ldapseverAlternative":"ldap://globant.com:389",
     "ldapuser":"CN=Ramiro Acoglanis,OU=Rosario,OU=Users,OU=Service_Desk,OU=OU_Infrastructure,OU=People,DC=globant,DC=com",
-    "ldappasswd":"Batamanta5",
+    "ldappasswd":"Batamanta1",
     "dbDriver":"org.postgresql.Driver",
     "dbConnection":"jdbc:postgresql://10.80.10.181:5432/db_gtools",
     "dbUser":"postgres",
