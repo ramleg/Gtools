@@ -110,7 +110,7 @@ function getList($url, $ddl, $flag){
     $ddl.find('option').remove().end()
     .append
     ('<option value=""> </option>');
-    console.log($url)
+    console.log($url);
             
     var jsonData = {flag:$flag};
     $.ajax({
