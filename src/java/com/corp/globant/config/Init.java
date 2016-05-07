@@ -20,7 +20,7 @@ public class Init implements ServletContextListener{
         
         String path = getClass().getResource(File.separator).getPath();
         try {  
-            BufferedReader br = new BufferedReader(new FileReader(path + "config.json"));
+            BufferedReader br = new BufferedReader(new FileReader("/home/glassfish/gtools/config.json"));
             config = new Gson().fromJson(br, Config.class);
             
         } catch (FileNotFoundException ex) {

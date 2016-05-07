@@ -1,6 +1,5 @@
 package com.corp.globant.config;
 /**
- *
  * @author Ramiro Acoglanis
  */
 public class Config {
